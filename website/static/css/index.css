@@ -8,6 +8,10 @@ body {
     background-size: cover;
 }
 
+.opaco {
+    background: black !important;
+}
+
 header {
     background-color: #f3f3f3;
     color: #6381a8;
@@ -116,12 +120,11 @@ nav li a {
     padding: 10px 20px;
 }
 
-#transparentBg {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
+/* LOGIN CSS */
+
+.container-form{
     width: 100%;
-    height: 100%;
-    display: none;
-}
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
