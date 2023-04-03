@@ -1,12 +1,16 @@
-from flask import Flask
+from flask import send_from_directory
 
-app = Flask(__name__)
+from website import create_app
 
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+app = create_app()
 
 
-if __name__ == '__main__':
-    app.run()
+# so static files can be accessed
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
+
+# if we run this file, we will execute this line
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>QUASILL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="diagnosis.html">Diagnosis</a></li>
+            <li><a href="aboutus.html.html">About Us</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!--HASTA AQUÍ PARA TODAS LAS PÁGINAS-->
+<div class="transparentBg">
+    <div class="contenedorIzq">
+        <h1 id="quasill">Quasill</h1>
+        <h2 id="quasill2">Your health through your symptons</h2>
+        <h4 class="informacion">
+            Quasill is an application that allows you know what's happening in your body by entering your symptoms.
+            We use artificial intelligence that evaluates the symptoms entered and calculates the probabilities of your
+            possible diseases.
+        </h4>
+    </div>
+
+    <div class="contenedorDer">
+        <div class="diagnosticoEj">
+            <h4 class="sintomas">
+                I'm feeling terrible. I have stomach pain, back pain and I vomit blood.
+            </h4>
+            <button id="btnResultado">NEW DIAGNOSIS</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
