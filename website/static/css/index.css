@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Annexus';
+    src: url('../fonts/Annexxus_Demo.ttf');
+}
+
+body {
+    background-image: url('../img/bg1.gif');
+    background-size: cover;
+}
+
+header {
+    background-color: #f3f3f3;
+    color: #6381a8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+}
+
+nav li:hover {
+    background-color: #ddd;
+}
+
+nav li a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+    padding: 10px;
+}
+
+/*HASTA AQUÍ ES PARA TODAS LAS PÁGINAS*/
+
+.contenedorIzq {
+    float: left;
+    width: 50%;
+}
+
+.contenedorDer {
+    float: right;
+    margin-right: 30px;
+}
+
+
+#quasill {
+    font-size: 110px;
+    font-family: 'Annexus', sans-serif;
+    margin-bottom: 0;
+    margin-left: 30px;
+    color: #6381a8;
+}
+
+#quasill2 {
+    font-size: 70px;
+    font-family: 'Annexus', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 30px;
+    color: #acc5e1;
+}
+
+.informacion {
+    font-size: 26px;
+    margin-left: 30px;
+    text-justify: auto;
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+.diagnosticoEj {
+    border: 2px solid #6381a8;
+    padding: 10px;
+    clear: both;
+    width: 50%;
+    text-align: center;
+}
+
+.sintomas {
+    border: 2px solid #acc5e1;
+    padding: 20px;
+    clear: both;
+    width: 50%;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+#btnResultado {
+    font-size: 20px;
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+}
+
+#transparentBg {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
