@@ -10,3 +10,14 @@ class User:
         self.username = username
         self.diagnostics = []
         self.email = email
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'surname': self.surname,
+            'surname2': self.surname2,
+            'username': self.username,
+            'email': self.email,
+            'diagnostics': self.diagnostics
+        }

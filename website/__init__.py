@@ -1,11 +1,4 @@
-from flask import Flask
-from azure.cosmos import CosmosClient
-
-url = "https://quasilldemo.documents.azure.com:443/"
-key = "mcNSjp5GoICXNMaynSrSMtgTGRcnQkMlVuXVAp0hf9UeVMEzpj1kY4pzGF05aSOp82NZiAgKwD95ACDb4zftIQ=="
-client = CosmosClient(url, credential=key)
-database = client.get_database_client("quasilldb")
-container = database.get_container_client("users")
+from flask import Flask, request, session, redirect, url_for
 
 
 def create_app():
