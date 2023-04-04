@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="diagnosis.html">Diagnosis</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container-form">
+    <h1>SIGN UP</h1>
+    <form class="login">
+        <div class="form-name">
+            <label for="username">Name</label>
+            <input type="text" id="name" name="name" placeholder="Paco" required>
+        </div>
+        <div class="form-surname1">
+            <label for="surname1">First last name</label>
+            <input type="text" id="surname1" name="surname1" placeholder="Chocolatero" required>
+        </div>
+        <div class="form-surname2">
+            <label for="surname2">Second last Name</label>
+            <input type="text" id="surname2" name="surname2" placeholder="Perez">
+        </div>
+        <div class="form-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="choco@gmail.com" required>
+        </div>
+        <div class="form-username">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="paquitoEnfermo" required>
+        </div>
+        <div class="form-pass">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="p4quit0!" required>
+        </div>
+        <div class="form-btn">
+            <h4>Don't have an account?</h4>
+            <button type="button">Create account</button>
+        </div>
+    </form>
+
+</div>
 
 </body>
 </html>

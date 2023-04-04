@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="diagnosis.html">Diagnosis</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container-form">
+    <h1>Login</h1>
+    <form class="login">
+        <div class="form-username">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="paquitoEnfermo" required>
+        </div>
+        <div class="form-pass">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="p4quit0!" required>
+        </div>
+        <div class="form-btn">
+            <button type="submit">Login</button>
+            <h4>Don't have an account?</h4>
+            <button type="button">Sign Up</button>
+        </div>
+    </form>
+
+</div>
 
 </body>
 </html>
