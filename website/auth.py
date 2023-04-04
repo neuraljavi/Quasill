@@ -92,3 +92,4 @@ def sign_up():
         if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$", password):
             return redirect(url_for('auth.sign_up'))
         register_user(name, surname, username, email, password, surname2)
+
