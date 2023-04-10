@@ -93,3 +93,4 @@ def sign_up():
             return redirect(url_for('auth.sign_up'))
         register_user(name, surname, username, email, password, surname2)
 
+    return render_template("signup.html")

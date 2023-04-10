@@ -8,4 +8,22 @@ views = Blueprint('views', __name__)
 def index():
     return render_template("index.html")
 
+@views.route('/diagnosis')
+def diagnosis():
+    return render_template("diagnosis.html")
 
+@views.route('/feedback')
+def feedback():
+    return render_template("feedback.html")
+
+@views.route('/home')
+def home():
+    return render_template("home.html")
+
+@views.route('/nosotros')
+def nosotros():
+    return render_template("nosotros.html")
+
+@views.route('/results')
+def results():
+    return render_template("results.html")
