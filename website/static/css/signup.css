@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'Annexus';
-    src: url('../fonts/Annexxus_Demo.ttf');
-}
-
-@font-face {
     font-family: 'Cambria';
 }
 
@@ -15,53 +10,84 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Cambria', 'Calibri', sans-serif;
 }
 
 body {
-    background-color: #f7f7f792;
+    font-family: '', sans-serif;
+    background-color: #f7f7f7;
+
+
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    width: 100%;
+    box-shadow: 0 5px 5px rgba(233, 219, 223, 0.1);
 }
 
 .logo img {
-    width: 100px;
+    height: 50px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    margin: 0;
-    padding: 0;
+}
+
+nav li {
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px 10px;
+    /* Increase the top and bottom padding */
+    background-color: #ffffff;
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    /* Add display flex to center the text */
+    justify-content: center;
+    /* Center the text horizontally */
+    align-items: center;
+    /* Center the text vertically */
+}
+
+nav li:hover {
+    background-color: #f0f0f0;
 }
 
 nav a {
     text-decoration: none;
-    color: #6280a6;
-    font-family: 'Calibri';
-    font-size: 16px;
-    padding: 15px;
-    margin: 10px;
+    color: #000;
 }
 
-nav a:hover {
-    border-right: 1px solid #6280a6;
-    border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+nav ul {
+    padding: 0;
+    /* Remove default padding */
 }
 
-/*HASTA AQUÍ PARA TODAS LAS PÁGINAS*/
+nav li:first-child {
+    margin-left: 0;
+    /* Remove margin from first child */
+}
+
+nav li:last-child {
+    margin-right: 0;
+    /* Remove margin from last child */
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Style container form */
 
 .container-form {
     display: flex;
@@ -81,21 +107,17 @@ h1 {
     margin-bottom: 20px;
     margin-top: 10px;
     color: #fff;
-    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
 }
 
 .signup {
     width: 400px;
     padding: 40px;
     background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-family: 'Calibri';
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
 }
+
 
 input {
     border: none;
@@ -107,6 +129,7 @@ input {
     margin-bottom: 20px;
     font-family: 'Calibri';
     position: relative;
+
 }
 
 input::placeholder {
@@ -115,57 +138,14 @@ input::placeholder {
     transform: translateY(3px);
 }
 
-.btnCreate {
-    background-color: #e98ca7;
+.btnsignup {
+    background-color: #e36a8cc4;
     color: white;
     border: none;
     padding: 5px 20px;
+    font-size: 16px;
     width: 100%;
     cursor: pointer;
     font-family: 'Calibri';
-    font-weight: 500;
-    font-size: 20px;
 }
 
-
-@media only screen and (max-width: 1500px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-    .logo img {
-        width: 80px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}
-
-
-@media only screen and (max-width: 400px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-
-    .container-form{
-        height: 100%;
-
-    }
-}
