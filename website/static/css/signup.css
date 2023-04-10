@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'Cambria';
+}
+
+@font-face {
+    font-family: 'Calibri';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cambria', 'Calibri', sans-serif;
+}
+
+body {
+    font-family: '', sans-serif;
+    background-color: #f7f7f7;
+
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 5px rgba(233, 219, 223, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px 10px;
+    /* Increase the top and bottom padding */
+    background-color: #ffffff;
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    /* Add display flex to center the text */
+    justify-content: center;
+    /* Center the text horizontally */
+    align-items: center;
+    /* Center the text vertically */
+}
+
+nav li:hover {
+    background-color: #f0f0f0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul {
+    padding: 0;
+    /* Remove default padding */
+}
+
+nav li:first-child {
+    margin-left: 0;
+    /* Remove margin from first child */
+}
+
+nav li:last-child {
+    margin-right: 0;
+    /* Remove margin from last child */
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Style container form */
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    width: 400px;
+    padding: 10px;
+    background-color: #6280a6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Cambria';
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.signup {
+    width: 400px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Calibri';
+    color: #6280a6;
+}
+
+
+input {
+    border: none;
+    border-bottom: 1px solid #6381a8;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: 'Calibri';
+    position: relative;
+
+}
+
+input::placeholder {
+    color: #acc5e1;
+    font-family: 'Calibri';
+    transform: translateY(3px);
+}
+
+.btnsignup {
+    background-color: #e36a8cc4;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    font-family: 'Calibri';
+}
+

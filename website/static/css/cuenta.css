@@ -1,0 +1,250 @@
+@font-face {
+    font-family: 'Annexus';
+    src: url('../fonts/Annexxus_Demo.ttf');
+}
+
+@font-face {
+    font-family: 'Cambria';
+}
+
+@font-face {
+    font-family: 'Calibri';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f7f792;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.logo img {
+    width: 100px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #6280a6;
+    font-family: 'Calibri';
+    font-size: 16px;
+    padding: 15px;
+    margin: 10px;
+}
+
+nav a:hover {
+    border-right: 1px solid #6280a6;
+    border-bottom: 1px solid #6280a6;
+    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+}
+
+/*HASTA AQUÍ PARA TODAS LAS PÁGINAS*/
+
+
+.container-form,
+.container-diagnosis {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.container-form {
+    position: sticky;
+    top: 200px;
+    left: 250px;
+}
+
+.container-diagnosis {
+    margin-left: 400px;
+    margin-top: 150px;
+}
+
+.h1img {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #6381a8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+}
+
+.img-user {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 40px;
+}
+
+h1 {
+    padding-left: 20px;
+    font-family: 'Cambria';
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    color: white;
+}
+
+.account {
+    width: 350px;
+    padding: 40px;
+    background-color: #fff;
+    font-family: 'Calibri';
+    color: #6280a6;
+    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #6381a8;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: 'Calibri';
+    position: relative;
+}
+
+input::placeholder {
+    color: #acc5e1;
+    font-family: 'Calibri';
+    transform: translateY(3px);
+}
+
+.form-btn {
+    background-color: #e98ca7;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}
+
+.btnEdit {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.form-btn:hover {
+    background-color: #d45f7c;
+}
+
+.result {
+    width: 700px;
+    padding: 40px;
+    background-color: #fff;
+    font-family: 'Cambria';
+    color: #6280a6;
+    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    margin-bottom: 30px;
+}
+
+.result:hover {
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+}
+
+.circle {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #acc5e1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 600px;
+    height: 2px;
+    background-color: #acc5e1;
+    transform: translateY(-50%);
+}
+
+h4 {
+    font-family: 'Cambria';
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+@media only screen and (max-width: 1500px) {
+    body {
+        font-size: 14px;
+        text-align: center;
+
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 10px;
+        margin: 5px;
+    }
+}
+
+
+@media only screen and (max-width: 415px) {
+    body {
+        font-size: 14px;
+        text-align: center;
+
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 10px;
+        margin: 5px;
+    }
+}
