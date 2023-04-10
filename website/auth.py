@@ -55,18 +55,17 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
+        if not username or not password:
+            return redirect(url_for('auth.login'))
         if login_user(username, password):
-            return render_template("index.html", user=session.get('user_id'))
+            return redirect(url_for('views.index'))
         else:
             return redirect(url_for('auth.login'))
-    else:
-        return render_template("login.html", user=session.get('user_id'))
 
 
 @auth.route('/logout')
 def logout():
-    session.pop('user_id')
+    session['user_id'] = None
     return redirect(url_for('auth.login'))
 
 
@@ -92,4 +91,3 @@ def sign_up():
         if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$", password):
             return redirect(url_for('auth.sign_up'))
         register_user(name, surname, username, email, password, surname2)
-
