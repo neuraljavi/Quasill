@@ -32,6 +32,7 @@ class User:
         self.username = username
         self.diagnostics = []
         self.email = email
+        self.password = None
 
     def to_dict(self):
         return {
@@ -40,8 +41,9 @@ class User:
             'surname': self.surname,
             'surname2': self.surname2,
             'username': self.username,
+            'diagnostics': self.diagnostics,
             'email': self.email,
-            'diagnostics': self.diagnostics
+            'password': self.password
         }
 
     def add_diagnostic(self, diagnostic: Diagnostic):
