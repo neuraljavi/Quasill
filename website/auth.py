@@ -57,12 +57,11 @@ def login():
         password = request.form.get('password')
 
         if login_user(username, password):
-            # LE DAMOS LA PÁGINA CUENTA AL USUARIO
-            return render_template('auth/cuenta.html', user=session.get('user_id'))
+            return render_template("index.html", user=session.get('user_id'))
         else:
             return redirect(url_for('auth.login'))
     else:
-        return render_template("login.html")
+        return render_template("login.html", user=session.get('user_id'))
 
 
 @auth.route('/logout')
@@ -71,40 +70,8 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-@auth.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        surname = request.form.get('surname')
-        surname2 = request.form.get('surname2')
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        password2 = request.form.get('password2')
-        print("funciona ig")
-        if password != password2:
-            return redirect(url_for('auth.signup'))
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return redirect(url_for('auth.signup'))
-        if not re.match(r"[A-Za-z0-9]+", username):
-            return redirect(url_for('auth.signup'))
-        if not name or not surname or not username or not email or not password or not password2:
-            return redirect(url_for('auth.signup'))
-        if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$", password):
-            return redirect(url_for('auth.signup'))
-        register_user(name, surname, username, email, password, surname2)
-        print("llega")
-        return '''
-                   <script>
-                       alert("Sign-up successful!");
-                       window.location.href = "{}";
-                   </script>
-               '''.format(url_for('auth.login'))
-
-    return render_template("signup.html")
-
-@auth.route('/editar', methods=['GET', 'POST'])
-def editar():
+@auth.route('/sign-up', methods=['GET', 'POST'])
+def sign_up():
     if request.method == 'POST':
         name = request.form.get('name')
         surname = request.form.get('surname')
@@ -126,9 +93,3 @@ def editar():
             return redirect(url_for('auth.sign_up'))
         register_user(name, surname, username, email, password, surname2)
 
-    return render_template("editar.html")
-
-
-@auth.route('/cuenta')
-def cuenta():
-    return render_template("cuenta.html")
