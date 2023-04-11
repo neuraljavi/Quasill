@@ -2,9 +2,8 @@ import uuid
 
 
 class Diagnostic:
-    def __init__(self, name, user_id, diagnostic_id=None, text="", predictions={}):
+    def __init__(self, user_id, diagnostic_id=None, text="", predictions={}):
         self.id = diagnostic_id
-        self.name = name
         self.text = text
         self.predictions = predictions
         self.user_id = user_id
@@ -15,7 +14,6 @@ class Diagnostic:
     def to_dict(self):
         return {
             'id': self.id,
-            'name': self.name,
             'text': self.text,
             'predictions': self.predictions,
             'user_id': self.user_id
