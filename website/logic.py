@@ -12,9 +12,9 @@ container = database.get_container_client("users")
 
 
 def register_user(name, surname, username, email, password, surname2=None):
-    query = "SELECT max(c.id) as id FROM c"
+    query = "SELECT VALUE MAX(c.id) as id FROM c"
     items = list(container.query_items(query=query, enable_cross_partition_query=True))
-    if len(items) == 0:
+    if not items or items[0] is None:
         id = 1
     else:
         id = items[0]['id'] + 1
