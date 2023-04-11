@@ -19,10 +19,7 @@
 
 body {
     background-image: url('../img/bg1.gif');
-    background-size: cover;
-    text-align: justify;
-    background-attachment: fixed;
-
+background-repeat: no-repeat;
 }
 
 header {
@@ -51,22 +48,21 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #6280a6;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-size: 16px;
     padding: 15px;
     margin: 10px;
-    margin-top: 100px;
 }
 
 nav a:hover {
     border-right: 1px solid #6280a6;
     border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
 }
 
-/*HASTA AQUÍ PARA TODAS LAS PÁGINAS*/
+/*NAV BAR CSS*/
 
 .container-left,
 .container-right {
@@ -89,11 +85,12 @@ nav a:hover {
     width: 30%;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+
 }
 
 .h1demo {
@@ -105,11 +102,11 @@ nav a:hover {
     margin-bottom: 30px;
     font-size: 20px;
     font-weight: 500;
-    text-align: justify;
+    text-align: center;
     border: 2px solid #6381a8;
     padding: 20px;
     color: black;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     position: relative;
     height: 100px;
 }
@@ -122,7 +119,7 @@ nav a:hover {
     border-radius: 5px;
     font-size: 20px;
     font-weight: bold;
-    text-align: justify;
+    text-align: center;
     width: 100%;
     cursor: pointer;
 }
@@ -168,7 +165,7 @@ Twitter: @xsgames_
     text-justify: auto;
     margin-top: 20px;
     font-weight: normal;
-    text-align: justify;
+    text-align: center
 }
 
 /* BTN::after */
@@ -195,7 +192,7 @@ Twitter: @xsgames_
 }
 
 h2 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     font-size: 25px;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -203,186 +200,4 @@ h2 {
 
 .demo {
     margin-top: 20px;
-}
-
-
-@media (min-width: 412px) and (max-width: 1650px) {
-
-    body {
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .logo img {
-        width: 80px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-
-    .container-left {
-        height: auto;
-        margin: 0 auto;
-        width: 80%;
-        margin-top: 100px;
-    }
-
-    .container-right {
-        height: auto;
-        margin: 0 auto;
-        width: 80%;
-        margin-top: 50px;
-        padding: 20px;
-        font-size: 14px;
-    }
-
-
-    .h1demo {
-        font-size: 20px;
-    }
-
-    #inputDemo {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        padding: 10px;
-        height: 80px;
-    }
-
-    #btnDemo {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    #quasill {
-        font-size: 80px;
-        margin-left: 10px;
-        margin-bottom: 10px;
-        text-align: center;
-
-    }
-
-    #quasill2 {
-        font-size: 40px;
-        margin-left: 20px;
-        text-align: center;
-
-    }
-
-    .informacion {
-        font-size: 18px;
-        margin-left: 20px;
-    }
-
-    .circle {
-        width: 10px;
-        height: 10px;
-        margin-top: 10px;
-        margin-bottom: 5px;
-    }
-
-    .circle::after {
-        width: 200px;
-    }
-}
-
-@media (max-width: 411px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-
-    .container-left {
-        height: auto;
-        width: 80%;
-        margin-top: 100px;
-    }
-
-    .container-right {
-        height: auto;
-        margin: 0 auto;
-        width: 80%;
-        margin-top: 50px;
-        padding: 20px;
-        font-size: 14px;
-    }
-
-    .h1demo {
-        font-size: 20px;
-    }
-
-    #inputDemo {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        padding: 10px;
-        height: 80px;
-    }
-
-    #btnDemo {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    #quasill {
-        font-size: 80px;
-        margin-bottom: 10px;
-        margin-right: 50px;
-        animation: slide-right 0.9s linear both
-    }
-
-    @keyframes slide-right {
-        0% {
-            transform: translateX(0)
-        }
-
-        100% {
-            transform: translateX(10px)
-        }
-    }
-
-    #quasill2 {
-        font-size: 40px;
-        margin-left: 80px;
-        animation: slide-left 0.9s linear both
-    }
-
-    @keyframes slide-left {
-        0% {
-            transform: translateX(0)
-        }
-
-        100% {
-            transform: translateX(-30px)
-        }
-    }
-
-    .informacion {
-        font-size: 18px;
-        margin-left: 15px;
-    }
-
-    .circle {
-        width: 10px;
-        height: 10px;
-        margin-top: 10px;
-        margin-bottom: 5px;
-    }
-
-    .circle::after {
-        width: 200px;
-    }
 }

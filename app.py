@@ -1,6 +1,6 @@
 from flask import send_from_directory
-
 from website import create_app
+
 
 app = create_app()
 

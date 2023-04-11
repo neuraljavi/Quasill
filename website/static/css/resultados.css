@@ -47,7 +47,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #6280a6;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-size: 16px;
     padding: 15px;
     margin: 10px;
@@ -56,48 +56,10 @@ nav a {
 nav a:hover {
     border-right: 1px solid #6280a6;
     border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
 }
 
-/*HASTA AQUÍ PARA TODAS LAS PÁGINAS*/
+/*NAV BAR CSS*/
 
-
-@media only screen and (max-width: 1500px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-.logo img {
-        width: 80px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}
-
-
-
-@media only screen and (max-width: 415px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}

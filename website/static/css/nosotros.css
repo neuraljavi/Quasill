@@ -28,6 +28,9 @@ header {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .logo img {
@@ -57,6 +60,9 @@ nav a:hover {
     -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
     box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
 }
+
+/*NAV BAR CSS*/
+
 
 .tfg {
     background-color: #fff;
@@ -95,10 +101,10 @@ h3 {
 .container-left {
     float: left;
     margin-left: 70px;
-    background: #FFFFFF;
     width: 40%;
     margin-right: 20px;
     height: 650px;
+    background-color: #fff;
     font-family: 'Cambria', sans-serif;
     color: #6280a6;
     margin-top: 15px;
@@ -133,10 +139,10 @@ p {
 .container-right {
     float: left;
     margin-left: 70px;
-    background: #FFFFFF;
     width: 40%;
     margin-right: 20px;
     height: 650px;
+    background-color: #fff;
     font-family: 'Cambria', sans-serif;
     color: #6280a6;
     margin-top: 15px;
@@ -163,54 +169,6 @@ p {
     }
 }
 
-@media only screen and (min-width: 411px) and (max-width: 1400px) {
 
-    .us {
-        width: 100%;
-        height: 100%;
-    }
 
-    .container-left {
-        width: 100%;
-        height: 100%;
-    }
 
-    .container-right {
-        width: 100%;
-        height: 100%;
-    }
-}
-@media (min-width: 412px) and (max-width: 1650px) {
-
-    body {
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .logo img {
-        width: 80px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}
-
-@media (max-width: 411px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}

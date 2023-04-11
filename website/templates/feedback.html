@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>QUASILL</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>FEEDBACK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
 
 </head>
 
@@ -19,16 +19,16 @@
     </div>
     <nav>
         <ul>
-            <li><a href="diagnosis.html">Diagnosis</a></li>
-            <li><a href="nosotros.html">About Us</a></li>
-            <li><a href="login.html">Account</a></li>
-            <li><a href="editar.html.html">Edit</a></li>
-            <li><a href="editar.html.html">Log out</a></li>
+           <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
+            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
+            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
+            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
         </ul>
     </nav>
 </header>
 
-<body>
 
 </body>
+
 </html>

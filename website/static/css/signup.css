@@ -1,4 +1,9 @@
 @font-face {
+    font-family: 'Annexus';
+    src: url('../fonts/Annexxus_Demo.ttf');
+}
+
+@font-face {
     font-family: 'Cambria';
 }
 
@@ -10,84 +15,54 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Cambria', 'Calibri', sans-serif;
 }
 
 body {
-    font-family: '', sans-serif;
-    background-color: #f7f7f7;
-
-
+    background-color: #f7f7f792;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     background-color: #fff;
-    box-shadow: 0 5px 5px rgba(233, 219, 223, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .logo img {
-    height: 50px;
+    width: 100px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-}
-
-nav li {
-    margin-right: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px 10px;
-    /* Increase the top and bottom padding */
-    background-color: #ffffff;
-    display: inline-block;
-    width: 150px;
-    height: 20px;
-    text-align: center;
-    cursor: pointer;
-    display: flex;
-    /* Add display flex to center the text */
-    justify-content: center;
-    /* Center the text horizontally */
-    align-items: center;
-    /* Center the text vertically */
-}
-
-nav li:hover {
-    background-color: #f0f0f0;
-}
-
-nav a {
-    text-decoration: none;
-    color: #000;
-}
-
-nav ul {
+    margin: 0;
     padding: 0;
-    /* Remove default padding */
-}
-
-nav li:first-child {
-    margin-left: 0;
-    /* Remove margin from first child */
-}
-
-nav li:last-child {
-    margin-right: 0;
-    /* Remove margin from last child */
 }
 
 nav a {
     text-decoration: none;
-    color: #000;
+    color: #6280a6;
+    font-family: 'Calibri', sans-serif;
+    font-size: 16px;
+    padding: 15px;
+    margin: 10px;
 }
 
-/* Style container form */
+nav a:hover {
+    border-right: 1px solid #6280a6;
+    border-bottom: 1px solid #6280a6;
+    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
+}
+
+/*NAV BAR CSS*/
+
 
 .container-form {
     display: flex;
@@ -101,21 +76,25 @@ h1 {
     width: 400px;
     padding: 10px;
     background-color: #6280a6;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
     color: #fff;
+    -webkit-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px rgba(233, 140, 166, 1);
 }
 
 .signup {
     width: 400px;
     padding: 40px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     color: #6280a6;
+    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
 }
 
 
@@ -127,25 +106,24 @@ input {
     padding: 5px;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     position: relative;
-
 }
 
 input::placeholder {
     color: #acc5e1;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     transform: translateY(3px);
 }
 
-.btnsignup {
-    background-color: #e36a8cc4;
+.btnCreate {
+    background-color: #e98ca7;
     color: white;
     border: none;
     padding: 5px 20px;
-    font-size: 16px;
     width: 100%;
     cursor: pointer;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
 }
-

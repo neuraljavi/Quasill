@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CUENTA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cuenta.css') }}">
+
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
+            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
+            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
+            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<div class="container-form">
+
+    <div class="h1img">
+<img src="{{ url_for('static', filename='/img/headwhite.png') }}" alt="user-icon" class="img-user">
+        <h1>MI PERFIL</h1>
+    </div>
+
+    <div class="account">
+        <div class="form-name">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Paco" required>
+            <span class="data" id="name-data"></span>
+        </div>
+
+        <div class="form-surname1">
+            <label for="surname1">Primer apellido</label>
+            <input type="text" id="surname1" name="surname1" placeholder="Chocolatero" required>
+            <span class="data" id="surname1-data"></span>
+        </div>
+
+        <div class="form-username">
+            <label for="username">Nombre de usuario</label>
+            <input type="text" id="username" name="username" placeholder="paquitoEnfermo" required>
+            <span class="data" id="username-data"></span>
+        </div>
+
+        <div class="form-email">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="chocochurro@gmail.com" required>
+            <span class="data" id="email-data"></span>
+        </div>
+
+        <div class="form-btn">
+            <button class="btnEdit" type="button" onclick="location.href='{{ url_for('auth.editar') }}'">EDITAR
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container-diagnosis">
+    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
+        <h4>DIAGNÓSTICO:
+            <span class="data" id="disease-data"></span>
+        </h4>
+        <h4>PROBABILIDAD:
+            <span class="data" id="probability-data"></span>
+        </h4>
+        <div class="circle"></div>
+        <h4>15/11/2054
+            <span class="result-date" id="result-date"></span>
+        </h4>
+    </div>
+    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
+        <h4>DIAGNÓSTICO:
+            <span class="data" id="disease-data"></span>
+        </h4>
+        <h4>PROBABILIDAD:
+            <span class="data" id="probability-data"></span>
+        </h4>
+        <div class="circle"></div>
+        <h4>15/11/2054
+            <span class="result-date" id="result-date"></span>
+        </h4>
+    </div>
+    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
+        <h4>DIAGNÓSTICO:
+            <span class="data" id="disease-data"></span>
+        </h4>
+        <h4>PROBABILIDAD:
+            <span class="data" id="probability-data"></span>
+        </h4>
+        <div class="circle"></div>
+        <h4>15/11/2054
+            <span class="result-date" id="result-date"></span>
+        </h4>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+
+</html>

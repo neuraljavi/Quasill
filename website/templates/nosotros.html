@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>QUASILL</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nosotros.css') }}">
 
 </head>
 
@@ -19,16 +19,82 @@
     </div>
     <nav>
         <ul>
-            <li><a href="diagnosis.html">Diagnosis</a></li>
-            <li><a href="nosotros.html">About Us</a></li>
-            <li><a href="login.html">Account</a></li>
-            <li><a href="editar.html.html">Edit</a></li>
-            <li><a href="editar.html.html">Log out</a></li>
+            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
+            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
+            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
+            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
         </ul>
     </nav>
 </header>
 
+<div class="about">
+    <div class="tfg">
+        <h1>TFG QUASILL</h1>
+        <h3>El problema que nuestro proyecto aborda es la falta de acceso de los pacientes a información precisa y
+            comprensible sobre su estado de salud. En estos días, los pacientes experimentan con frecuencia ansiedad
+            y confusión acerca de su salud debido a que la información que brindan los profesionales médicos puede
+            ser confusa, errónea, o, en algunos casos, incluso inaccesible.
+            <br>
+            <br>
+            A través de la creación de una aplicación para el diagnóstico de enfermedades basada en inteligencia
+            artificial, nuestro proyecto pretende solucionar este problema. Esta aplicación evaluará los síntomas
+            del paciente y ofrecerá probabilidades para cada enfermedad conectándolas con los síntomas que el
+            usuario ha proporcionado. También se tendrán en cuenta los antecedentes médicos familiares y factores de
+            riesgo, lo que ayudará a proporcionar un diagnóstico más preciso y completo.
+            La aplicación también proporcionará información educativa sobre las enfermedades, ayudando a los
+            pacientes a comprender mejor su salud y cómo actuar basándonos en ella. Además, la aplicación será fácil de
+            usar y accesible, lo que garantizará que los pacientes puedan obtener la información que necesitan de
+            manera rápida y sencilla.
+        </h3>
+    </div>
+    <div class="us">
+        <div class="container-left">
+            <div class="jav">
+                <div class="container-img">
+                    <img src="{{ url_for('static', filename='img/jav.png') }}" alt="jav-icon">
+                </div>
+                <h2>JAVIER</h2>
+                <p>Javier es una persona.</p>
+                <p>Cupcake ipsum dolor sit amet chocolate bar candy cake pie. Pudding sweet wafer jelly-o muffin
+                    bear claw jujubes cheesecake. Dessert macaroon sweet roll I love sweet roll lollipop. Bonbon
+                    tootsie roll oat cake powder jelly beans topping cake. Marshmallow lollipop tiramisu I love
+                    tiramisu. Jelly beans pastry muffin bonbon I love bonbon I love tart tiramisu. Gummies oat cake
+                    gummies danish ice cream chocolate powder jelly. Candy canes caramels dessert sweet candy I love
+                    pastry tart shortbread.
+                </p>
+                <p>
+                    Tart cotton candy fruitcake apple pie chocolate bar biscuit. Wafer macaroon soufflé toffee jelly
+                    beans lollipop caramels. Jujubes I love cake biscuit wafer croissant. Wafer cheesecake liquorice
+                    I love pastry tiramisu powder. Chocolate cheesecake jelly cake gummies. Sugar plum bear claw
+                    muffin cupcake dragée sesame snaps chocolate. Chocolate cake candy bonbon shortbread bonbon. I
+                    love gingerbread brownie lollipop I love dessert topping sugar plum candy canes.</p>
+            </div>
+        </div>
 
+        <div class="container-right">
+            <div class="ale">
+                <div class="container-img">
+                    <img src="{{ url_for('static', filename='img/ale.png') }}" alt="ale-icon">
+                </div>
+                <h2>ALEJANDRA</h2>
+                <p>Alejandra es una persona.</p>
+                <p>I love donut macaroon I love chocolate cake pudding toffee pudding. Chocolate bar cookie I
+                    love lemon drops I love. Fruitcake soufflé I love lemon drops brownie croissant cake I
+                    love. Danish carrot cake croissant pastry jelly-o sweet roll. Sesame snaps chupa chups pastry I
+                    love sweet roll jujubes chocolate. Macaroon dessert sweet roll shortbread biscuit oat cake candy
+                    jelly. Cupcake gingerbread chupa chups sweet cake I love sesame snaps.
+                </p>
+                <p> Jelly beans sweet roll gummies apple pie chocolate bar candy sesame snaps soufflé. Cake tootsie
+                    roll carrot cake bear claw macaroon muffin. Sweet sesame snaps icing candy canes icing fruitcake
+                    jelly-o sugar plum. Lemon drops I love marzipan bonbon cake marshmallow chocolate cake. Dessert
+                    topping macaroon cake candy canes dragée chocolate cake I love. I love sweet tiramisu candy
+                    sweet roll I love tiramisu. Jujubes carrot cake pie cookie marshmallow muffin wafer.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
+
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FICHA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enfermedad.css') }}">
+
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
+            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
+            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
+            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container-illness">
+    <div class="container-info">
+        <div class="probabilidades">
+            <img src="{{ url_for('static', filename='img/report2.png') }}" alt="jav-icon">
+        </div>
+        <div class="enfermedad">
+            <h1 class="nombreEnfermedad">Asma</h1>
+            <p>
+                El asma es una enfermedad crónica que afecta a los pulmones.
+                Se caracteriza por la inflamación de las vías respiratorias, que se contraen y se estrechan,
+                dificultando la respiración. La inflamación de las vías respiratorias provoca que los pulmones no
+                funcionen correctamente, lo que provoca que el aire no pueda circular con normalidad. Esto provoca
+                que
+                el aire se acumule en los pulmones, lo que provoca que se produzca un sonido característico, el
+                silbido
+                o el ronquido. El asma es una enfermedad crónica que afecta a los pulmones. Se caracteriza por la
+                inflamación de las vías respiratorias, que se contraen y se estrechan, dificultando la respiración.
+                La
+                inflamación de las vías respiratorias provoca que los pulmones no funcionen correctamente, lo que
+                provoca que el aire no pueda circular con normalidad. Esto provoca que el aire se acumule en los
+                pulmones, lo que provoca que se produzca un sonido característico, el silbido o el ronquido.
+            </p>
+            <h3 class="sintomas">Síntomas</h3>
+            <ul>
+                <li>Dificultad para respirar</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

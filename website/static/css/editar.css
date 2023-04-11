@@ -47,7 +47,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #6280a6;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-size: 16px;
     padding: 15px;
     margin: 10px;
@@ -56,12 +56,13 @@ nav a {
 nav a:hover {
     border-right: 1px solid #6280a6;
     border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
 }
 
-/*HASTA AQUÍ PARA TODAS LAS PÁGINAS*/
+/*NAV BAR CSS*/
+
 
 .container-form {
     display: flex;
@@ -75,27 +76,27 @@ h1 {
     width: 400px;
     padding: 10px;
     background-color: #6280a6;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
     color: #fff;
-    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -webkit-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px rgba(233, 140, 166, 1);
 }
 
 .signup {
     width: 400px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
 }
+
 
 input {
     border: none;
@@ -105,61 +106,24 @@ input {
     padding: 5px;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     position: relative;
 }
 
 input::placeholder {
     color: #acc5e1;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     transform: translateY(3px);
 }
 
-.btnGuardar {
+.btnCreate {
     background-color: #e98ca7;
     color: white;
     border: none;
     padding: 5px 20px;
     width: 100%;
     cursor: pointer;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-weight: 500;
     font-size: 20px;
-}
-
-@media only screen and (max-width: 1500px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-.logo img {
-        width: 80px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}
-
-
-
-@media only screen and (max-width: 415px) {    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
 }

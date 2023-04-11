@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
 <header>
@@ -17,32 +17,32 @@
     </div>
     <nav>
         <ul>
-            <li><a href="diagnosis.html">Diagnosis</a></li>
-            <li><a href="nosotros.html">About Us</a></li>
-            <li><a href="login.html.html">Account</a></li>
+            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
+            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
         </ul>
+
     </nav>
 </header>
 
 <div class="container-form">
-    <h1>Login</h1>
-    <form class="login">
+    <h1>Cuenta</h1>
+    <form class="login" action="{{ url_for('auth.login') }}" method="post">
         <div class="form-username">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="paquitoEnfermo" required>
+            <img src="{{ url_for('static', filename='img/user.png') }}" alt="person-icon"/>
+            <input type="text" id="username" name="username" placeholder="Nombre de usuario" required/>
         </div>
         <div class="form-pass">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="p4quit0!" required>
+            <img src="{{ url_for('static', filename='img/password.png') }}" alt="user-icon"/>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required/>
         </div>
         <div class="form-btn">
-            <button type="submit">Login</button>
-            <h4>Don't have an account?</h4>
-            <button type="button">Sign Up</button>
+            <button class="btnsubmit" type="submit">ACCEDER</button>
+            <h4>¿No tiene cuenta?</h4>
+            <button class="btnsignup" type="button" onclick="location.href='/signup';">REGISTRARSE</button>
         </div>
     </form>
-
 </div>
-
 </body>
+
 </html>

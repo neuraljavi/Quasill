@@ -47,7 +47,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #6280a6;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-size: 16px;
     padding: 15px;
     margin: 10px;
@@ -56,14 +56,14 @@ nav a {
 nav a:hover {
     border-right: 1px solid #6280a6;
     border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
 }
 
-/*HASTA AQUÍ PARA TODAS LAS PÁGINAS*/
+/*NAV BAR CSS*/
 
-
+/* Style container form */
 .container-form,
 .container-diagnosis {
     display: inline-block;
@@ -88,12 +88,11 @@ nav a:hover {
     border: 1px solid #ccc;
     padding: 5px;
     background-color: #6381a8;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 350px;
     margin-bottom: 20px;
-    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -webkit-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px rgba(233, 140, 166, 1);
 }
 
 .img-user {
@@ -105,7 +104,7 @@ nav a:hover {
 
 h1 {
     padding-left: 20px;
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 15px;
@@ -116,11 +115,11 @@ h1 {
     width: 350px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
 }
 
 input {
@@ -131,17 +130,17 @@ input {
     padding: 5px;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     position: relative;
 }
 
 input::placeholder {
     color: #acc5e1;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     transform: translateY(3px);
 }
 
-.form-btn {
+.btnEdit {
     background-color: #e98ca7;
     color: white;
     padding: 10px;
@@ -149,38 +148,27 @@ input::placeholder {
     border-radius: 5px;
     font-size: 20px;
     font-weight: bold;
-    width: 100%;
-    cursor: pointer;
-}
-
-.btnEdit {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
     text-align: center;
     width: 100%;
-}
-
-.form-btn:hover {
-    background-color: #d45f7c;
+    cursor: pointer;
 }
 
 .result {
     width: 700px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
     margin-bottom: 30px;
 }
 
 .result:hover {
-    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
-    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -webkit-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px rgba(233, 140, 166, 1);
 }
 
 .circle {
@@ -205,46 +193,8 @@ input::placeholder {
 }
 
 h4 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     font-size: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
-}
-
-
-@media only screen and (max-width: 1500px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-    .logo img {
-        width: 80px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
-}
-
-
-@media only screen and (max-width: 415px) {
-    body {
-        font-size: 14px;
-        text-align: center;
-
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 10px;
-        margin: 5px;
-    }
 }

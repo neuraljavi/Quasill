@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DIAGNOSTICO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/diagnostico.css') }}">
+
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+           <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
+            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
+            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
+            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container-sintomas">
+    <h1>Introduce tus síntomas :</h1>
+    <div class="container-input">
+            <textarea placeholder="Remember, be nice!" name="inputSintomas" id="inputSintomas" cols="30" rows="10">
+            </textarea>
+    </div>
+    <div class="form-btn">
+        <button class="btnDiagnosis" type="submit">NUEVO DIAGNÓSTICO</button>
+    </div>
+</div>
+
+<div class="container-diagnosis">
+    <div class="result" onclick="location.href='/enfermedad.html';">
+        <h4>DIAGNÓSTICO:
+            <span class="data" id="disease-data"></span>
+        </h4>
+        <h4>PROBABILIDAD:
+            <span class="data" id="probability-data"></span>
+        </h4>
+        <div class="circle"></div>
+        <h4>15/11/2054
+            <span class="result-date" id="result-date"></span>
+        </h4>
+    </div>
+</div>
+
+</body>
+
+</html>
