@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
-from azure.cosmos import CosmosClient
-from .models import User
-import os
-import hashlib
 import re
+from .logic import login_user, register_user
+
+auth = Blueprint('auth', __name__)
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -13,6 +13,7 @@ def login():
 
         if login_user(username, password):
             return render_template("index.html", user=session.get('user_id'))
+
         else:
             return redirect(url_for('auth.login'))
     else:
@@ -25,8 +26,8 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-@auth.route('/sign-up', methods=['GET', 'POST'])
-def sign_up():
+@auth.route('/signup', methods=['GET', 'POST'])
+def signup():
     if request.method == 'POST':
         name = request.form.get('name')
         surname = request.form.get('surname')
@@ -35,16 +36,31 @@ def sign_up():
         email = request.form.get('email')
         password = request.form.get('password')
         password2 = request.form.get('password2')
-
+        print("coge los datos")
         if password != password2:
-            return redirect(url_for('auth.sign_up'))
+            return redirect(url_for('auth.signup'))
         if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return redirect(url_for('auth.sign_up'))
+            return redirect(url_for('auth.signup'))
         if not re.match(r"[A-Za-z0-9]+", username):
-            return redirect(url_for('auth.sign_up'))
+            return redirect(url_for('auth.signup'))
         if not name or not surname or not username or not email or not password or not password2:
-            return redirect(url_for('auth.sign_up'))
+            return redirect(url_for('auth.signup'))
+            print("error, falta algo")
         if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$", password):
-            return redirect(url_for('auth.sign_up'))
+            return redirect(url_for('auth.signup'))
+            print("valida los datos")
         register_user(name, surname, username, email, password, surname2)
+        print("registra el usuario")
+        return print("Usuario registrado") and redirect(url_for('auth.signup'))
+    else:
+        return render_template("signup.html")
 
+
+@auth.route('/cuenta')
+def cuenta():
+    return render_template("cuenta.html")
+
+
+@auth.route('/editar')
+def editar():
+    return render_template("editar.html")
