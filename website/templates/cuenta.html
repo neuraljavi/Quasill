@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>CUENTA</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cuenta.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
 
@@ -32,7 +33,7 @@
 <div class="container-form">
 
     <div class="h1img">
-<img src="{{ url_for('static', filename='/img/headwhite.png') }}" alt="user-icon" class="img-user">
+        <img src="{{ url_for('static', filename='img/headwhite.png') }}" alt="user-icon" class="img-user">
         <h1>MI PERFIL</h1>
     </div>
 
@@ -62,7 +63,7 @@
         </div>
 
         <div class="form-btn">
-            <button class="btnEdit" type="button" onclick="location.href='{{ url_for('auth.editar') }}'">EDITAR
+            <button class="btnGoEditar" type="button" onclick="location.href='{{ url_for('auth.editar') }}'">EDITAR
             </button>
         </div>
     </div>

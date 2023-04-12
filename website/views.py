@@ -9,7 +9,7 @@ def index():
     return render_template("index.html") if not session.get('user_id') else render_template("index.html", user=session.get('user_id'))
 
 @views.route('/index2')
-def home():
+def index2():
     return render_template("index2.html")
 
 @views.route('/diagnostico')

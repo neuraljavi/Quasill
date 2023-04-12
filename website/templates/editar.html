@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>EDITAR PERFIL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
 
@@ -30,7 +31,7 @@
 
 <div class="container-form">
     <h1>Editar datos</h1>
-    <form class="signup">
+    <form class="edit-delete" method="POST">
         <div class="form-name">
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" placeholder="Paco" required>
@@ -56,8 +57,13 @@
             <input type="password" id="password" name="password" placeholder="p4quit0Ch0c0" required>
         </div>
         <div class="form-btn">
-            <button class="btnCreate" type="button" onclick="location.href='cuenta.html';">GUARDAR</button>
+            <button id="btnUpdate" name="submit_button" value="btnUpdate" type="submit">GUARDAR</button>
         </div>
+        <br>
+        <div class="form-btn">
+            <button id="btnDelete" name="submit_button" value="btnDelete" type="submit">ELIMINAR CUENTA</button>
+        </div>
+
     </form>
 </div>
 </body>

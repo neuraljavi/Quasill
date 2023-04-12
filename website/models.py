@@ -24,15 +24,15 @@ class Diagnostic:
 
 
 class User:
-    def __init__(self, name, surname, username, email, surname2=None, user_id=None):
-        self.id = user_id
+    def __init__(self, name, surname, username, email, surname2=None, **kwargs):
+        self.id = None if 'id' not in kwargs else kwargs['id']
         self.name = name
         self.surname = surname
         self.surname2 = surname2
         self.username = username
-        self.diagnostics = []
+        self.diagnostics = None if 'diagnostics' not in kwargs else kwargs['diagnostics']
         self.email = email
-        self.password = None
+        self.password = None if 'password' not in kwargs else kwargs['password']
 
     def to_dict(self):
         return {

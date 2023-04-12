@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>QUASILL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resultados.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
 
@@ -18,7 +19,7 @@
         </a>
     </div>
     <nav>
-         <ul>
+        <ul>
             <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
             <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
             <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
