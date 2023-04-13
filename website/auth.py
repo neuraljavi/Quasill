@@ -26,12 +26,6 @@ def login():
         return render_template("login.html", user=session.get('user_id'))
 
 
-@auth.route('/logout')
-def logout():
-    session.pop('user_id')
-    return redirect(url_for('auth.login'))
-
-
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -78,6 +72,7 @@ def cuenta():
     return render_template("cuenta.html")
 
 
+
 @auth.route('/editar', methods=['GET', 'POST'])
 def editar():
     if request.method == 'POST':
@@ -99,3 +94,9 @@ def editar():
             print("usuario eliminado")
         return redirect(url_for('auth.cuenta'))
     return render_template('editar.html')
+
+
+@auth.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('views.index'))

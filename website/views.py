@@ -6,11 +6,15 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def index():
-    return render_template("index.html") if not session.get('user_id') else render_template("index.html", user=session.get('user_id'))
+    return render_template("index.html") \
+        if not session.get('user_id') \
+        else render_template("index2.html", user=session.get('user_id'))
+
 
 @views.route('/index2')
 def index2():
     return render_template("index2.html")
+
 
 @views.route('/diagnostico')
 def diagnostico():
@@ -30,6 +34,7 @@ def nosotros():
 @views.route('/resultados')
 def resultados():
     return render_template("resultados.html")
+
 
 @views.route('/enfermedad')
 def enfermedad():
