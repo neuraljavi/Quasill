@@ -28,7 +28,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
+    padding: 0;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -43,26 +43,22 @@ header {
 nav ul {
 	display: flex;
 	list-style: none;
+	padding-right: 20px;
 }
 
 .item-nav, .item-dropdown {
 	width: 130px;
+	border: 0;
 }
 
 nav a{
 	display: block;
 	color: #6280a6;
-	font-family: 'Calibri';
+	font-family: 'Calibri', sans-serif;
 	font-size: 16px;
 	padding: 15px;
 	text-align: center;
 	text-decoration: none;
-}
-
-.item-nav:hover {
-	border-left: 1px solid #6280a6;
-	border-right: 1px solid #6280a6;
-	border-top: 1px solid #6280a6;
 }
 
 .item-dropdown:hover {
@@ -78,7 +74,7 @@ nav a{
 	z-index: 1;
 	text-decoration: none;
 	color: #6280a6;
-	font-family: 'Calibri';
+	font-family: 'Calibri', sans-serif;
 	font-size: 16px;
 }
 
