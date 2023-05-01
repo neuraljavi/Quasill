@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>QUASILL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
 
@@ -19,11 +21,16 @@
     </div>
     <nav>
         <ul>
-            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
-            <li id="cuenta"><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
-            <ul class="subnav">
-                 <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-            </ul>
+            <li class="item-nav">
+                <a  href="{{ url_for('views.nosotros') }}">Nosotros</a>
+            </li>
+            <li id="cuenta" class="item-nav">
+                <a>Cuenta</a>
+                <ul class="nav-dropdown">
+                    <li><a class="item-dropdown" href="{{ url_for('auth.login') }}">Iniciar sesión</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.signup') }}">Registrarse</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 </header>

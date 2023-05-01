@@ -63,7 +63,6 @@ nav a:hover {
 
 /*NAV BAR CSS*/
 
-
 .container-form {
     display: flex;
     flex-direction: column;
@@ -86,7 +85,7 @@ h1 {
     box-shadow: 10px 10px rgba(233, 140, 166, 1);
 }
 
-.signup {
+.edit-delete {
     width: 400px;
     padding: 40px;
     background-color: #fff;
@@ -116,7 +115,7 @@ input::placeholder {
     transform: translateY(3px);
 }
 
-.btnCreate {
+.btnUpdate, .btnDelete {
     background-color: #e98ca7;
     color: white;
     border: none;

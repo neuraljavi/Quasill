@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>FEEDBACK</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
 
@@ -19,7 +20,7 @@
     </div>
     <nav>
         <ul>
-           <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
+            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
             <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
             <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
             <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>

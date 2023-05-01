@@ -140,7 +140,7 @@ input::placeholder {
     transform: translateY(3px);
 }
 
-.btnEdit {
+.btnGoEditar {
     background-color: #e98ca7;
     color: white;
     padding: 10px;
