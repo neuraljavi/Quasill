@@ -40,6 +40,7 @@ def login_user(username, password):
     password_bytes = password.encode('utf-8')
     hash_key = hashlib.pbkdf2_hmac('sha256', password_bytes, salt, 100000)
     salt_and_hash = salt + hash_key
+    salt_and_hash = salt_and_hash.hex()
     if salt_and_hash == user.password:
         session['user_id'] = user.id
         return True
