@@ -1,6 +1,7 @@
 from flask import send_from_directory
 from website import create_app, load_variables_from_json
 
+load_variables_from_json("local.settings.json")
 app = create_app()
 
 
@@ -12,5 +13,4 @@ def send_static(path):
 
 # if we run this file, we will execute this line
 if __name__ == "__main__":
-    load_variables_from_json("local.settings.json")
     app.run(debug=True)
