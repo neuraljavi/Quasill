@@ -4,11 +4,11 @@ from flask import session
 import os
 import hashlib
 
-url = "https://quasilldemo.documents.azure.com:443/"
-key = "mcNSjp5GoICXNMaynSrSMtgTGRcnQkMlVuXVAp0hf9UeVMEzpj1kY4pzGF05aSOp82NZiAgKwD95ACDb4zftIQ=="
+url = os.environ["url"]
+key = os.environ["key"]
 client = CosmosClient(url, credential=key)
-database = client.get_database_client("quasilldb")
-container = database.get_container_client("users")
+database = client.get_database_client(os.environ["database"])
+container = database.get_container_client(os.environ["container"])
 
 
 def register_user(name, surname, username, email, password, surname2=None):
