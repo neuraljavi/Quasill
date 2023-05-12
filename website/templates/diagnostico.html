@@ -5,29 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>DIAGNOSTICO</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/diagnostico.css') }}">
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
 
 <body>
-<header>
-    <div class="logo">
-        <!-- access index with views.index -->
-        <a href="{{ url_for('views.index') }}">
-            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
-            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
-            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
-            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
-            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <div class="logo">
+            <!-- access index with views.index -->
+            <a href="{{ url_for('views.index') }}">
+                <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo" />
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li class="item-nav">
+                    <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                </li>
+                <li class="item-nav">
+                    <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
+                </li>
+                <li id="cuenta" class="item-nav">
+                    <a>Cuenta</a>
+                    <ul class="nav-dropdown">
+                        <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
+                        <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
+                        <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
 <div class="container-sintomas">
     <h1>Introduce tus síntomas :</h1>

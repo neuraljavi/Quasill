@@ -1,4 +1,5 @@
 local.settings.json
 requirements.txt
+.idea
 .venv
 venv

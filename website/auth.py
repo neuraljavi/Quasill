@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 import re
-from website.logic import login_user, register_user, update_user, delete_user
+from website.logic import get_user, login_user, register_user, update_user, delete_user
 
 auth = Blueprint('auth', __name__)
 
@@ -14,12 +14,11 @@ def login():
         try:
             if login_user(username, password):
                 print("ha entrado")
-                return render_template("index.html", user=session.get('user_id'))
+                return render_template("index2.html", user=session.get('user_id'))
             else:
                 print("no ha entrado")
                 return redirect(url_for('auth.login'))
         except TypeError as e:
-            # Handle the TypeError here, for example, by logging the error
             print("Error:", e)
             return redirect(url_for('auth.login'))
     else:
@@ -69,31 +68,54 @@ def signup():
 
 @auth.route('/cuenta')
 def cuenta():
-    return render_template("cuenta.html")
+    user = get_user(session['user_id'])
+    return render_template("cuenta.html", user=user)
 
+
+from flask import render_template
 
 
 @auth.route('/editar', methods=['GET', 'POST'])
 def editar():
+    user_id = session.get('user_id')
+    user = get_user(user_id)  # retrieve user information from the database
     if request.method == 'POST':
         if request.form['submit_button'] == 'btnUpdate':
-            print("Updating")
+            # update user information
             name = request.form.get('name')
             surname = request.form.get('surname1')
             surname2 = request.form.get('surname2')
             username = request.form.get('username')
             email = request.form.get('email')
             password = request.form.get('password')
-            user_id = session.get('user_id')
             update_user(user_id, name, surname, username, email, password, surname2)
-            print("usuario actualizado")
-        if request.form['submit_button'] == 'btnDelete':
-            print("Deleting")
-            user_id = session.get('user_id')
+            print("Usuario actualizado")
+            return redirect(url_for('auth.cuenta'))
+        elif request.form['submit_button'] == 'btnDelete':
+            # delete user
             delete_user(user_id)
-            print("usuario eliminado")
-        return redirect(url_for('auth.cuenta'))
-    return render_template('editar.html')
+            print("Usuario eliminado")
+            return redirect(url_for('views.index'))
+    return render_template('editar.html', user=user)
+
+
+@auth.route('/eliminar', methods=['GET'])
+def eliminar():
+    return render_template('eliminar.html')
+
+
+@auth.route('/eliminar', methods=['POST'])
+def eliminar_cuenta():
+    user_id = session.get('user_id')
+    if user_id:
+        if delete_user(user_id):
+            session.clear()
+            print('Usuario eliminado exitosamente', 'success')
+        else:
+            print('Usuario no encontrado', 'danger')
+    else:
+        print('Usuario no autenticado', 'danger')
+    return redirect(url_for('views.index'))
 
 
 @auth.route('/logout')

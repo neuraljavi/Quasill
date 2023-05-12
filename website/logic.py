@@ -58,9 +58,13 @@ def delete_user(user_id):
     items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
     if len(items) == 0:
         return False
-    user = User(**items[0])
-    container.delete_item(user.id, partition_key=user.username)
-    return True
+    try:
+        user = User(**items[0])
+        container.delete_item(user.id, partition_key=user.username)
+        return True
+    except Exception as e:
+        print("Error deleting user:", e)
+        return False
 
 
 def update_user(user_id, name, surname, username, email, password, surname2=None):
@@ -85,3 +89,12 @@ def update_user(user_id, name, surname, username, email, password, surname2=None
         user.surname2 = surname2
     container.upsert_item(user.to_dict())
     return True
+
+
+def get_user(user_id):
+    query = "SELECT * FROM c WHERE c.id = @id"
+    params = [dict(name="@id", value=user_id)]
+    items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
+    if len(items) == 0:
+        return None
+    return User(**items[0])

@@ -3,22 +3,17 @@
     src: url('../fonts/Annexxus_Demo.ttf');
 }
 
-@font-face {
-    font-family: 'Cambria';
-}
-
-@font-face {
-    font-family: 'Calibri';
-}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Cambria', 'Calibri', sans-serif;
 }
 
 body {
-    background-color: #f7f7f792;
+    font-family: 'Cambria', sans-serif;
+    background-color: #f7f7f7;
 }
 
 header {
@@ -28,9 +23,6 @@ header {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    width: 100%;
 }
 
 .logo img {
@@ -44,22 +36,21 @@ nav ul {
     padding: 0;
 }
 
+
 nav a {
     text-decoration: none;
     color: #6280a6;
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Calibri';
     font-size: 16px;
     padding: 15px;
     margin: 10px;
 }
 
+
 nav a:hover {
     border-right: 1px solid #6280a6;
     border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0px -7px rgba(99, 129, 168, 1);
 }
-
-/*NAV BAR CSS*/
-
