@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>EDITAR PERFIL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 
 <body>
@@ -20,37 +20,49 @@
     </div>
     <nav>
         <ul>
-            <li><a href="{{ url_for( 'views.diagnostico') }}">Diagnóstico</a></li>
-            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
-            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
-            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
-            <li><a href="{{ url_for('views.index') }}">Salir</a></li>
+            <li class="item-nav">
+                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+            </li>
+            <li class="item-nav">
+                <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
+            </li>
+            <li id="cuenta" class="item-nav">
+                <a>Cuenta</a>
+                <ul class="nav-dropdown">
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+
+                </ul>
+            </li>
         </ul>
     </nav>
 </header>
-
 <div class="container-form">
     <h1>Editar datos</h1>
     <form class="edit-delete" method="POST">
         <div class="form-name">
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Paco" required>
+            <input type="text" id="name" name="name" placeholder="Paco" value="{{ user.name }}" required>
         </div>
         <div class="form-surname1">
             <label for="surname1">Primer apellido</label>
-            <input type="text" id="surname1" name="surname1" placeholder="Chocolatero" required>
+            <input type="text" id="surname1" name="surname1" placeholder="Chocolatero" value="{{ user.surname }}"
+                   required>
         </div>
         <div class="form-surname2">
             <label for="surname2">Segundo apellido</label>
-            <input type="text" id="surname2" name="surname2" placeholder="Perez">
+            <input type="text" id="surname2" name="surname2" value="{{ user.surname2 }}" placeholder="Perez">
         </div>
         <div class="form-email">
             <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="chocochurro@gmail.com" required>
+            <input type="email" id="email" name="email" placeholder="chocochurro@gmail.com" value="{{ user.email }}"
+                   required>
         </div>
         <div class="form-username">
             <label for="username">Nombre de usuario</label>
-            <input type="text" id="username" name="username" placeholder="paquitoEnfermo" required>
+            <input type="text" id="username" name="username" placeholder="paquitoEnfermo" value="{{ user.username }}"
+                   required>
         </div>
         <div class="form-pass">
             <label for="password">Contraseña</label>
@@ -60,11 +72,9 @@
             <button id="btnUpdate" name="submit_button" value="btnUpdate" type="submit">GUARDAR</button>
         </div>
     </form>
-    <form class="deleting" action="/editar" method="post">
-        <div class="form-btn" action="/editar" method="post">
-            <button id="btnDelete" name="submit_button" value="btnDelete" type="submit">ELIMINAR CUENTA</button>
-        </div>
-    </form>
+    <a class="eliminar" href="{{ url_for('auth.eliminar') }}">
+        <span>¿Desea eliminar su cuenta?</span>
+    </a>
 
 </div>
 </body>

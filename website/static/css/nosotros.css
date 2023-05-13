@@ -3,80 +3,40 @@
     src: url('../fonts/Annexxus_Demo.ttf');
 }
 
-@font-face {
-    font-family: 'Cambria';
-}
-
-@font-face {
-    font-family: 'Calibri';
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Cambria', 'Calibri', sans-serif;
 }
 
 body {
-    background-color: #f7f7f792;
+    font-family: 'Cambria', sans-serif;
+    background-color: #f7f7f7;
+    max-width: 100%;
 }
 
-header {
+.about {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    width: 100%;
 }
-
-.logo img {
-    width: 100px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: #6280a6;
-    font-family: 'Calibri', sans-serif;
-    font-size: 16px;
-    padding: 15px;
-    margin: 10px;
-}
-
-nav a:hover {
-    border-right: 1px solid #6280a6;
-    border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
-}
-
-/*NAV BAR CSS*/
-
 
 .tfg {
     background-color: #fff;
     padding: 20px;
-    height: 70vh;
-    margin-top: 50px;
-    margin-left: 20%;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 60%;
+    width: 80%;
+    max-width: 1200px;
+    margin-top: 70px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
+
 h1 {
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria';
     color: #6280a6;
     font-size: 80px;
     text-align: center;
@@ -84,7 +44,7 @@ h1 {
 }
 
 h3 {
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria';
     color: #6280a6;
     font-size: 20px;
     text-align: justify;
@@ -93,42 +53,63 @@ h3 {
 }
 
 .us {
-    margin: 0 auto;
-    width: 1080px;
-    height: 800px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 50px auto;
+    margin-top: 0;
 }
 
 .container-left {
-    float: left;
-    margin-left: 70px;
+    background: #FFFFFF;
     width: 40%;
-    margin-right: 20px;
-    height: 650px;
+    height: auto;
     background-color: #fff;
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria';
     color: #6280a6;
+    margin-right: 20px;
     margin-top: 15px;
     padding: 45px;
     text-align: justify;
-    -webkit-box-shadow: 10px 10px 1px #6381a8;
-    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
-    animation: tracking-in-expand 1.6s linear both
+    box-shadow: 10px 10px 0px 1px #6381a8;
+    animation: tracking-in-expand 1.6s linear both;
 }
 
-@keyframes tracking-in-expand {
-    0% {
-        letter-spacing: -.2em;
-        opacity: 0
-    }
+.container-right {
+    background: #FFFFFF;
+    width: 40%;
+    height: auto;
+    background-color: #fff;
+    font-family: 'Cambria';
+    color: #6280a6;
+    margin-left: 20px;
+    margin-top: 15px;
+    padding: 45px;
+    text-align: justify;
+    box-shadow: 10px 10px 0px 1px #e98ca7;
+    animation: tracking-in-expand 1.6s linear both;
+}
 
-    40% {
-        opacity: .6
-    }
+.container-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
 
-    100% {
-        opacity: 1
-    }
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+h2 {
+    font-family: 'Cambria';
+    color: #6280a6;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 15px;
 }
 
 p {
@@ -136,24 +117,6 @@ p {
     margin-bottom: 15px;
 }
 
-.container-right {
-    float: left;
-    margin-left: 70px;
-    width: 40%;
-    margin-right: 20px;
-    height: 650px;
-    background-color: #fff;
-    font-family: 'Cambria', sans-serif;
-    color: #6280a6;
-    margin-top: 15px;
-    padding: 45px;
-    text-align: justify;
-    -webkit-box-shadow: 10px 10px 1px #e98ca7;
-    -moz-box-shadow: 10px 10px 1px #e98ca7;
-    box-shadow: 10px 10px 1px #e98ca7;
-    animation: tracking-in-expand 1.6s linear both
-}
-
 @keyframes tracking-in-expand {
     0% {
         letter-spacing: -.2em;
@@ -169,6 +132,27 @@ p {
     }
 }
 
+@media screen and (max-width: 800px) {
+    .us {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
 
+    .container-left,
+    .container-right {
+        width: 90%;
+        margin: 0;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
 
+    .container-left {
+        order: 2;
+    }
 
+    .container-right {
+        order: 1;
+    }
+
+}

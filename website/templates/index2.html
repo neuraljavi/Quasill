@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>QUASILL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
@@ -20,15 +22,24 @@
     </div>
     <nav>
         <ul>
-            <li><a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a></li>
-            <li><a href="{{ url_for('views.nosotros') }}">Nosotros</a></li>
-            <li><a href="{{ url_for('auth.cuenta') }}">Cuenta</a></li>
-            <li><a href="{{ url_for('auth.editar') }}">Editar</a></li>
-            <li><a href="{{ url_for('auth.logout') }}">Salir</a></li>
+            <li class="item-nav">
+                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+            </li>
+            <li class="item-nav">
+                <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
+            </li>
+            <li id="cuenta" class="item-nav">
+                <a>Cuenta</a>
+                <ul class="nav-dropdown">
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+
+                </ul>
+            </li>
         </ul>
     </nav>
 </header>
-
 <div class="containers">
     <div class="container-left">
         <h1 id="quasill">Quasill</h1>

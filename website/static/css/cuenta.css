@@ -3,14 +3,6 @@
     src: url('../fonts/Annexxus_Demo.ttf');
 }
 
-@font-face {
-    font-family: 'Cambria';
-}
-
-@font-face {
-    font-family: 'Calibri';
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -21,49 +13,6 @@ body {
     background-color: #f7f7f792;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-.logo img {
-    width: 100px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: #6280a6;
-    font-family: 'Calibri', sans-serif;
-    font-size: 16px;
-    padding: 15px;
-    margin: 10px;
-}
-
-nav a:hover {
-    border-right: 1px solid #6280a6;
-    border-bottom: 1px solid #6280a6;
-    -webkit-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px -7px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 0 -7px rgba(99, 129, 168, 1);
-}
-
-/*NAV BAR CSS*/
-
-/* Style container form */
 .container-form,
 .container-diagnosis {
     display: inline-block;
@@ -88,11 +37,12 @@ nav a:hover {
     border: 1px solid #ccc;
     padding: 5px;
     background-color: #6381a8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 350px;
     margin-bottom: 20px;
-    -webkit-box-shadow: 10px 10px rgba(233, 140, 166, 1);
-    -moz-box-shadow: 10px 10px rgba(233, 140, 166, 1);
-    box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
 }
 
 .img-user {
@@ -104,7 +54,7 @@ nav a:hover {
 
 h1 {
     padding-left: 20px;
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria';
     text-align: center;
     margin-bottom: 20px;
     margin-top: 15px;
@@ -115,11 +65,11 @@ h1 {
     width: 350px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Calibri';
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
 }
 
 input {
@@ -130,17 +80,17 @@ input {
     padding: 5px;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Calibri';
     position: relative;
 }
 
 input::placeholder {
     color: #acc5e1;
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Calibri';
     transform: translateY(3px);
 }
 
-.btnGoEditar {
+.btnEdit {
     background-color: #e98ca7;
     color: white;
     padding: 10px;
@@ -157,18 +107,19 @@ input::placeholder {
     width: 700px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria';
     color: #6280a6;
-    -webkit-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
-    -moz-box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
-    box-shadow: 10px 10px 1px rgba(99, 129, 168, 1);
+    -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
+    box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
     margin-bottom: 30px;
+
 }
 
 .result:hover {
-    -webkit-box-shadow: 10px 10px rgba(233, 140, 166, 1);
-    -moz-box-shadow: 10px 10px rgba(233, 140, 166, 1);
-    box-shadow: 10px 10px rgba(233, 140, 166, 1);
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
+    box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
 }
 
 .circle {
@@ -193,8 +144,57 @@ input::placeholder {
 }
 
 h4 {
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria';
     font-size: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 1500px) {
+    .container-form {
+        display: none;
+    }
+
+    .container-diagnosis {
+        width: 700px;
+        margin: 150px auto 0;
+        /* lo centramos asi ok */
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 755px) {
+
+    .result {
+        width: 50%;
+        margin: 0 auto 20px;
+    }
+
+    .circle::after {
+        width: 250px;
+    }
+
+
+}
+
+@media screen and (max-width: 555px) {
+
+    .result {
+        width: 50%;
+        margin-bottom: 20px;
+        margin-right: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+    }
+
+    .circle::after {
+        width: 250px;
+    }
+
+    .container-diagnosis {
+        width: 100%;
+        margin: 0;
+    }
+
 }

@@ -1,41 +1,19 @@
-@font-face {
-    font-family: 'Annexus';
-    src: url('../fonts/Annexxus_Demo.ttf');
-}
-
-@font-face {
-    font-family: 'Cambria';
-}
-
-@font-face {
-    font-family: 'Calibri';
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-image: url('../img/bg1.gif');
-    background-repeat: no-repeat;
-}
-
 /*CUIDADO CON EL PADDING. ME DA PROBLEMAS. MUY GRANDE AHORA ESTÁ A 0 LOL PERO NO CARGA*/
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
 }
 
+/*z-index 999 para que cuando haga scroll, el contenido debajo de nav no me bloquee nav */
 .logo img {
 	width: 100px;
 }
@@ -43,15 +21,16 @@ header {
 nav ul {
 	display: flex;
 	list-style: none;
-	padding-right: 20px;
+	margin-right: 20px;
 }
 
-.item-nav, .item-dropdown {
+.item-nav,
+.item-dropdown {
 	width: 130px;
 	border: 0;
 }
 
-nav a{
+nav a {
 	display: block;
 	color: #6280a6;
 	font-family: 'Calibri', sans-serif;
@@ -61,10 +40,17 @@ nav a{
 	text-decoration: none;
 }
 
+.item-dropdown {
+	opacity: 0.5;
+}
+
 .item-dropdown:hover {
-	border-left: 1px solid #6280a6;
 	border-right: 1px solid #6280a6;
 	border-bottom: 1px solid #6280a6;
+	-webkit-box-shadow: 9px 9px 0px -7px rgba(99, 129, 168, 1);
+	-moz-box-shadow: 9px 9px 0px -7px rgba(99, 129, 168, 1);
+	box-shadow: 9px 9px 0px -7px rgba(99, 129, 168, 1);
+	opacity: 1;
 }
 
 .nav-dropdown {
@@ -80,4 +66,18 @@ nav a{
 
 #cuenta:hover .nav-dropdown {
 	display: block;
+}
+
+/* CÓDIGO PARA EL RESPONSIVE SIN ESTAR LOGGEADO */
+@media screen and (max-width: 768px) {
+
+	header {
+		width: 100%;
+
+	}
+
+	nav ul {
+		margin-right: 0;
+	}
+
 }
