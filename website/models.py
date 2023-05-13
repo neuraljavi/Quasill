@@ -51,27 +51,18 @@ class User:
         }
 
     def add_diagnostic(self, diagnostic: Diagnostic):
+        if self.diagnostics is None:
+            self.diagnostics = []
         self.diagnostics.append(diagnostic)
 
     def delete_diagnostic(self, diagnostic_id):
-        for diagnostic in self.diagnostics:
-            if diagnostic.id == diagnostic_id:
-                self.diagnostics.remove(diagnostic)
-                return True
-        return False
-
-    def feedback_of_diagnostic(self, diagnostic_id, real_disease):
-        for diagnostic in self.diagnostics:
-            if diagnostic.id == diagnostic_id:
-                diagnostic.real_disease = real_disease
-                return True
-        return False
+        self.diagnostics.remove(diagnostic_id)
+        if self.diagnostics is None:
+            self.diagnostics = []
+        return True
 
     def get_diagnostic(self, diagnostic_id):
-        for diagnostic in self.diagnostics:
-            if diagnostic.id == diagnostic_id:
-                return diagnostic
-        return None
+        return self.diagnostics[diagnostic_id]
 
     def get_diagnostics(self):
         return self.diagnostics

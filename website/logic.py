@@ -1,5 +1,5 @@
 from azure.cosmos import CosmosClient
-from .models import User
+from .models import User, Diagnostic
 from flask import session
 import os
 import hashlib
@@ -11,6 +11,15 @@ database = client.get_database_client(os.environ["database"])
 container = database.get_container_client(os.environ["container"])
 
 
+def get_user_by_id(user_id):
+    query = "SELECT * FROM c WHERE c.id = @id"
+    params = [dict(name="@id", value=user_id)]
+    items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
+    if len(items) == 0:
+        return None
+    return User(**items[0])
+
+
 def register_user(name, surname, username, email, password, surname2=None):
     query = "SELECT VALUE MAX(c.id) FROM c"
     items = list(container.query_items(query=query, enable_cross_partition_query=True))
@@ -18,7 +27,6 @@ def register_user(name, surname, username, email, password, surname2=None):
         id = 1
     else:
         id = int(items[0]) + 1
-
     print(id)
     user = User(name, surname, username, email, surname2=surname2, id=str(id))
     salt = os.urandom(32)
@@ -53,23 +61,13 @@ def login_user(username, password):
 
 
 def delete_user(user_id):
-    query = "SELECT * FROM c WHERE c.id = @id"
-    params = [dict(name="@id", value=user_id)]
-    items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
-    if len(items) == 0:
-        return False
-    user = User(**items[0])
+    user = get_user_by_id(user_id)
     container.delete_item(user.id, partition_key=user.username)
     return True
 
 
 def update_user(user_id, name, surname, username, email, password, surname2=None):
-    query = "SELECT * FROM c WHERE c.id = @id"
-    params = [dict(name="@id", value=user_id)]
-    items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
-    if len(items) == 0:
-        return False
-    user = User(**items[0])
+    user = get_user_by_id(user_id)
     user.name = name
     user.surname = surname
     user.username = username
@@ -85,3 +83,45 @@ def update_user(user_id, name, surname, username, email, password, surname2=None
         user.surname2 = surname2
     container.upsert_item(user.to_dict())
     return True
+
+
+def create_diagnostic(user_id: str, text: str, container):
+    user = get_user_by_id(user_id, container)
+    if user:
+        diagnostic = user.diagnosticate(text)
+        container.upsert_item(user.to_dict())
+        return True
+    return False
+
+
+def read_diagnostic(user_id: str, diagnostic_index: int, container) -> Diagnostic:
+    user = get_user_by_id(user_id, container)
+    if user:
+        return user.get_diagnostic(diagnostic_index)
+    return None
+
+
+def delete_diagnostic(user: User, diagnostic_index: int):
+    if 0 <= diagnostic_index < len(user.diagnostics):
+        user.delete_diagnostic(diagnostic_index)
+        container.upsert_item(user.to_dict())
+        return True
+    return False
+
+
+def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct_label: str, container):
+    if 0 <= diagnostic_index < len(user.diagnostics):
+        feedback_successful = user.proportionate_feedback(diagnostic_index, text, correct_label)
+        if feedback_successful:
+            container.upsert_item(user.to_dict())
+            return feedback_successful
+    return False
+
+
+def read_all_diagnostics(user_id: str, container) -> list[Diagnostic]:
+    user = get_user_by_id(user_id, container)
+    if user:
+        return user.get_diagnostics()
+    return []
+
+

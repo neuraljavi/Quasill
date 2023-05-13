@@ -3,14 +3,17 @@ from torch import nn
 from torchtext.data.utils import get_tokenizer
 from diagnosticator.classifier import TransformerClassifier
 from torchtext.vocab import Vocab
+import numpy as np
 
-D_MODEL = 128
-NHEAD = 8
-NUM_ENCODER_LAYERS = 6
-DROP_OUT = 0.1
-N_CLASSES = 384
-MAX_LENGTH = 128
+D_MODEL = 256
+NUM_HEADS = 2
+d_ff = 994
+NUM_ENCODER_LAYERS = 1
+DROP_OUT = 0.1981394172245322
+N_CLASSES = 385
+MAX_LENGTH = 512
 LEARNING_RATE = 0.0001
+
 
 DISEASES = {
     0: "Spontaneous abortion",
@@ -403,11 +406,21 @@ DISEASES = {
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
+def tensor_to_percentages(tensor):
+    # Convertir el tensor en un objeto numpy
+    np_tensor = tensor.cpu().detach().numpy()
+
+    # Convertir las probabilidades a porcentajes
+    percentages = np_tensor * 100
+
+    return percentages
+
+
 def load_model(vocab):
-    classifier = TransformerClassifier(d_model=D_MODEL, num_heads=NHEAD, d_ff=D_MODEL * 2,
+    classifier = TransformerClassifier(d_model=D_MODEL, num_heads=NUM_HEADS, d_ff=D_MODEL * 2,
                                        num_layers=NUM_ENCODER_LAYERS, input_dim=len(vocab),
                                        n_classes=N_CLASSES, max_length=MAX_LENGTH, droput=DROP_OUT)
-    classifier.load_state_dict(torch.load('classifier.pt'))
+    classifier.load_state_dict(torch.load('model/model.pth'))
     return classifier
 
 
@@ -458,7 +471,7 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
 def predict(text):
     # Carga el modelo y el vocabulario
     tokenizer = get_tokenizer('basic_english')
-    vocab = torch.load('vocab.pkl')
+    vocab = torch.load('model/vocab.pkl')
 
     # Codifica el texto de entrada
     encoded_text = encode(text, tokenizer, vocab, MAX_LENGTH).to(device)
@@ -475,10 +488,12 @@ def predict(text):
 
     # Calcula la salida del modelo
     with torch.inference_mode():
-        logits = classifier(torch.tensor(encoded_text))
+        logits = classifier(torch.tensor(input_tensor))
 
     # Calcula las probabilidades
     probabilities = torch.softmax(logits, dim=-1).squeeze(0).cpu().detach().numpy()
+
+    probabilities = tensor_to_percentages(probabilities)
 
     # Crea un diccionario con las probabilidades de cada etiqueta
     prob_dict = {}
@@ -495,7 +510,7 @@ def predict(text):
 def get_feedback(text, label):
     # Carga el modelo y el vocabulario
     tokenizer = get_tokenizer('basic_english')
-    vocab = torch.load('vocab.pkl')
+    vocab = torch.load('model/vocab.pkl')
     classifier = load_model(vocab)
 
     # Mueve el modelo a la GPU si está disponible
