@@ -85,8 +85,8 @@ def update_user(user_id, name, surname, username, email, password, surname2=None
     return True
 
 
-def create_diagnostic(user_id: str, text: str, container):
-    user = get_user_by_id(user_id, container)
+def create_diagnostic(user_id: str, text: str):
+    user = get_user_by_id(user_id)
     if user:
         diagnostic = user.diagnosticate(text)
         container.upsert_item(user.to_dict())
@@ -94,8 +94,8 @@ def create_diagnostic(user_id: str, text: str, container):
     return False
 
 
-def read_diagnostic(user_id: str, diagnostic_index: int, container) -> Diagnostic:
-    user = get_user_by_id(user_id, container)
+def read_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
+    user = get_user_by_id(user_id)
     if user:
         return user.get_diagnostic(diagnostic_index)
     return None
@@ -109,7 +109,7 @@ def delete_diagnostic(user: User, diagnostic_index: int):
     return False
 
 
-def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct_label: str, container):
+def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct_label: str):
     if 0 <= diagnostic_index < len(user.diagnostics):
         feedback_successful = user.proportionate_feedback(diagnostic_index, text, correct_label)
         if feedback_successful:
@@ -118,7 +118,7 @@ def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct
     return False
 
 
-def read_all_diagnostics(user_id: str, container) -> list[Diagnostic]:
+def read_all_diagnostics(user_id: str) -> list[Diagnostic]:
     user = get_user_by_id(user_id, container)
     if user:
         return user.get_diagnostics()

@@ -123,6 +123,7 @@ def get_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
     diagnostic = read_diagnostic(user_id, diagnostic_index)
     return jsonify(diagnostic), 200
 
+
 @auth.route('/diagnostics/<int:diagnostic_id>', methods=['PUT'])
 def update_diagnostic_route(diagnostic_id):
     user_id = session.get('user_id')

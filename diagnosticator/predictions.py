@@ -465,6 +465,10 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
     loss.backward()
     optimizer.step()
 
+    torch.save(model.state_dict(), 'model/model.pth')
+
+    model.eval()
+
     return loss.item()
 
 
@@ -484,14 +488,14 @@ def predict(text):
     classifier.eval()
 
     # Convierte el texto codificado en un tensor de entrada
-    input_tensor = torch.tensor(encoded_text).unsqueeze(0).to(device)
+    input_tensor = torch.tensor(encoded_text).to(device)
 
     # Calcula la salida del modelo
     with torch.inference_mode():
         logits = classifier(torch.tensor(input_tensor))
 
     # Calcula las probabilidades
-    probabilities = torch.softmax(logits, dim=-1).squeeze(0).cpu().detach().numpy()
+    probabilities = torch.softmax(logits, dim=-1).cpu().detach().numpy()
 
     probabilities = tensor_to_percentages(probabilities)
 
