@@ -17,7 +17,7 @@ def get_user_by_id(user_id):
     items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
     if len(items) == 0:
         return None
-    return User(**items[0])
+    return User.from_dict(items[0])
 
 
 def register_user(name, surname, username, email, password, surname2=None):
@@ -119,9 +119,7 @@ def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct
 
 
 def read_all_diagnostics(user_id: str) -> list[Diagnostic]:
-    user = get_user_by_id(user_id, container)
+    user = get_user_by_id(user_id)
     if user:
         return user.get_diagnostics()
     return []
-
-

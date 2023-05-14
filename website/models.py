@@ -38,6 +38,21 @@ class User:
         self.email = email
         self.password = None if 'password' not in kwargs else kwargs['password']
 
+    @classmethod
+    def from_dict(cls, data):
+        diagnostics = [Diagnostic(**diagnostic_data) for diagnostic_data in data.get('diagnostics', [])] if data.get(
+            'diagnostics') else None
+        return cls(
+            name=data['name'],
+            surname=data['surname'],
+            username=data['username'],
+            email=data['email'],
+            surname2=data.get('surname2'),
+            diagnostics=diagnostics,
+            id=data.get('id'),
+            password=data.get('password')
+        )
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -45,7 +60,7 @@ class User:
             'surname': self.surname,
             'surname2': self.surname2,
             'username': self.username,
-            'diagnostics': self.diagnostics,
+            'diagnostics': [diagnostic.to_dict() for diagnostic in self.diagnostics] if self.diagnostics else None,
             'email': self.email,
             'password': self.password
         }
