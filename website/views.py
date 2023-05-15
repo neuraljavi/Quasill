@@ -15,12 +15,6 @@ def index():
 def index2():
     return render_template("index2.html")
 
-
-@views.route('/diagnostico')
-def diagnostico():
-    return render_template("diagnostico.html")
-
-
 @views.route('/feedback')
 def feedback():
     return render_template("feedback.html")
