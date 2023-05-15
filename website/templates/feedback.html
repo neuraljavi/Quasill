@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>FEEDBACK</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
@@ -31,6 +31,20 @@
     </nav>
 </header>
 
+<div class="container-feedback">
+    <h1>Help us get better!</h1>
+    <h2>Help us improve our service by filling out this form.</h2>
+    <h3>Your medical insights are valuable to us. If you have consulted with a healthcare professional, we kindly
+        request you to provide the diagnosis you received.</h3>
+    <div class="container-form">
+        <form class="feedback-form" action="">
+                <textarea placeholder="After being examined by my doctor, she has told me..." name="inputFeedback"
+                          id="inputFeedback">
+                </textarea>
+            <button type="submit" class="btnSubmit">Submit</button>
+        </form>
+    </div>
+</div>
 
 </body>
 

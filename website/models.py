@@ -1,7 +1,8 @@
 import uuid
-from diagnosticator.predictions import predict, get_feedback
+from diagnosticator import predict, get_feedback
 
 
+# FUNCIÓN PARA LA CREACIÓN DE UN DIAGNÓSTICO
 def new_diagnostic(user_id, text):
     prediction = predict(text)
     diagnostic = Diagnostic(user_id, text, predictions=prediction)
@@ -9,11 +10,13 @@ def new_diagnostic(user_id, text):
 
 
 class Diagnostic:
-    def __init__(self, user_id, text="", predictions={}):
+    def __init__(self, user_id, text="", predictions={}, real_disease=None):
         self.text = text
         self.predictions = predictions
         self.user_id = user_id
-        self.real_disease = None
+        #TODO volver a cambiar a: self.real_disease = None y quitarlo de los argumentos
+        #para que Diagnostic pueda manejar real_disease como un argumento de entrada
+        self.real_disease = real_disease
 
     def return_diseases(self):
         return self.predictions
@@ -34,14 +37,14 @@ class User:
         self.surname = surname
         self.surname2 = surname2
         self.username = username
-        self.diagnostics = None if 'diagnostics' not in kwargs else kwargs['diagnostics']
+        self.diagnostics = [] if 'diagnostics' not in kwargs else kwargs['diagnostics']
         self.email = email
         self.password = None if 'password' not in kwargs else kwargs['password']
 
     @classmethod
     def from_dict(cls, data):
         diagnostics = [Diagnostic(**diagnostic_data) for diagnostic_data in data.get('diagnostics', [])] if data.get(
-            'diagnostics') else None
+            'diagnostics') else []
         return cls(
             name=data['name'],
             surname=data['surname'],
@@ -82,6 +85,7 @@ class User:
     def get_diagnostics(self):
         return self.diagnostics
 
+    # FUNCIÓN QUE DEVUELVE UN DIAGNÓSTICO
     def diagnosticate(self, text):
         diagnostic = new_diagnostic(self.id, text)
         self.diagnostics.append(diagnostic)
@@ -96,5 +100,3 @@ class User:
             return False
         diagnostic.real_disease = correct_label
         return True
-
-

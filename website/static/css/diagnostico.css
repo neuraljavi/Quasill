@@ -47,6 +47,7 @@ textarea {
     border-radius: 5px;
     font-family: 'Calibri';
     font-size: 16px;
+        padding: 20px;
 }
 
 textarea::placeholder {

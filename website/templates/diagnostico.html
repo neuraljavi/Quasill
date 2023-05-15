@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>DIAGNOSTICO</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/diagnostico.css') }}">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
@@ -13,60 +13,60 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <!-- access index with views.index -->
-            <a href="{{ url_for('views.index') }}">
-                <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo" />
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li class="item-nav">
-                    <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
-                </li>
-                <li class="item-nav">
-                    <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
-                </li>
-                <li id="cuenta" class="item-nav">
-                    <a>Cuenta</a>
-                    <ul class="nav-dropdown">
-                        <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                        <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                        <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li class="item-nav">
+                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+            </li>
+            <li class="item-nav">
+                <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
+            </li>
+            <li id="cuenta" class="item-nav">
+                <a>Cuenta</a>
+                <ul class="nav-dropdown">
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
 
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
 
 <div class="container-sintomas">
     <h1>Introduce tus síntomas :</h1>
     <div class="container-input">
-            <textarea placeholder="Remember, be nice!" name="inputSintomas" id="inputSintomas" cols="30" rows="10">
+        <form id="form-diagnosis" action="/diagnostico" method="post">
+            <textarea id="inputSintomas" name="inputSintomas" placeholder="Remember, be nice!" cols="30" rows="10">
             </textarea>
-    </div>
-    <div class="form-btn">
-        <button class="btnDiagnosis" type="submit">NUEVO DIAGNÓSTICO</button>
+            <div class="form-btn">
+                <button class="btnDiagnosis" type="submit">NUEVO DIAGNÓSTICO</button>
+            </div>
+        </form>
     </div>
 </div>
-
+<!--
 <div class="container-diagnosis">
     <div class="result" onclick="location.href='/enfermedad.html';">
         <h4>DIAGNÓSTICO:
-            <span class="data" id="disease-data"></span>
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
         <h4>PROBABILIDAD:
-            <span class="data" id="probability-data"></span>
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
         </h4>
         <div class="circle"></div>
-        <h4>15/11/2054
-            <span class="result-date" id="result-date"></span>
-        </h4>
     </div>
 </div>
-
+-->
+<script src="static/js/diagnosticos.js"></script>
 </body>
 
 </html>

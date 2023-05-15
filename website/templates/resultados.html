@@ -4,11 +4,10 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>QUASILL</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultados.css') }}">
+    <title>DIAGNOSTICO</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultados.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 
 <body>
@@ -33,12 +32,75 @@
                     <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
                     <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
                     <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
-
                 </ul>
             </li>
         </ul>
     </nav>
 </header>
 
+<div class="container-diagnosis">
+    <div class="result">
+        <h4>DIAGNOSTIC:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+        </h4>
+        <div class="circle"></div>
+        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+    </div>
+    <div class="result">
+        <h4>DIAGNOSTIC:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+        </h4>
+        <div class="circle"></div>
+        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+    </div>
+    <div class="result">
+        <h4>DIAGNOSTIC:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+        </h4>
+        <div class="circle"></div>
+        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+    </div>
+    <div class="result">
+        <h4>DIAGNOSTIC:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+        </h4>
+        <div class="circle"></div>
+        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+    </div>
+    <div class="result">
+        <h4>DIAGNOSTIC:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+        </h4>
+        <div class="circle"></div>
+        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+    </div>
+    <div class="result">
+        <h4>DIAGNOSTIC:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+        </h4>
+        <div class="circle"></div>
+        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+    </div>
+</div>
+
 </body>
+
 </html>

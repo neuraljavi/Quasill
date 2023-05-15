@@ -11,6 +11,7 @@ database = client.get_database_client(os.environ["database"])
 container = database.get_container_client(os.environ["container"])
 
 
+# COGEMOS EL ID DEL USUARIO
 def get_user_by_id(user_id):
     query = "SELECT * FROM c WHERE c.id = @id"
     params = [dict(name="@id", value=user_id)]
@@ -20,6 +21,7 @@ def get_user_by_id(user_id):
     return User.from_dict(items[0])
 
 
+# REGISTRAMOS AL USUARIO
 def register_user(name, surname, username, email, password, surname2=None):
     query = "SELECT VALUE MAX(c.id) FROM c"
     items = list(container.query_items(query=query, enable_cross_partition_query=True))
@@ -29,6 +31,7 @@ def register_user(name, surname, username, email, password, surname2=None):
         id = int(items[0]) + 1
     print(id)
     user = User(name, surname, username, email, surname2=surname2, id=str(id))
+    # HASHEAMOS LA CONTRASEÑA
     salt = os.urandom(32)
     password_bytes = password.encode('utf-8')
     salt_bytes = salt
@@ -41,6 +44,7 @@ def register_user(name, surname, username, email, password, surname2=None):
     session['user_id'] = user.id
 
 
+# EL USUARIO PUEDE HACER LOGIN CON SU USUARIO Y CONTRASEÑA
 def login_user(username, password):
     query = "SELECT * FROM c WHERE c.username = @username"
     params = [dict(name="@username", value=username)]
@@ -60,12 +64,14 @@ def login_user(username, password):
         return False
 
 
+# BORRAMOS AL USUARIO
 def delete_user(user_id):
     user = get_user_by_id(user_id)
     container.delete_item(user.id, partition_key=user.username)
     return True
 
 
+# EDITAMOS LOS DATOS DEL USUARIO
 def update_user(user_id, name, surname, username, email, password, surname2=None):
     user = get_user_by_id(user_id)
     user.name = name
@@ -85,15 +91,17 @@ def update_user(user_id, name, surname, username, email, password, surname2=None
     return True
 
 
+# CREAMOS UN DIAGNÓSTICO QUE DEVUELVA EL DIAGNÓSTICO
 def create_diagnostic(user_id: str, text: str):
     user = get_user_by_id(user_id)
     if user:
         diagnostic = user.diagnosticate(text)
         container.upsert_item(user.to_dict())
-        return True
-    return False
+        return diagnostic
+    return None
 
 
+# LEEMOS UN DIAGNÓSTICO
 def read_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
     user = get_user_by_id(user_id)
     if user:
@@ -101,6 +109,7 @@ def read_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
     return None
 
 
+# BORRAMOS UN DIAGNÓSTICO
 def delete_diagnostic(user: User, diagnostic_index: int):
     if 0 <= diagnostic_index < len(user.diagnostics):
         user.delete_diagnostic(diagnostic_index)
@@ -109,6 +118,7 @@ def delete_diagnostic(user: User, diagnostic_index: int):
     return False
 
 
+# PROPORCIONAMOS FEEDBACK RELACIONADO CON EL DIAGNÓSTICO
 def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct_label: str):
     if 0 <= diagnostic_index < len(user.diagnostics):
         feedback_successful = user.proportionate_feedback(diagnostic_index, text, correct_label)
@@ -118,6 +128,7 @@ def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct
     return False
 
 
+# LEEMOS TODOS LOS DIAGNÓSTICOS
 def read_all_diagnostics(user_id: str) -> list[Diagnostic]:
     user = get_user_by_id(user_id)
     if user:
