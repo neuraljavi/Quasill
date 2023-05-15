@@ -24,7 +24,7 @@
                 <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
             </li>
             <li id="cuenta" class="item-nav">
                 <a>Cuenta</a>
@@ -39,7 +39,9 @@
 </header>
 
 <div class="container-diagnosis">
-    <div class="result">
+
+
+    <div class="result" id="resultado1">
         <h4>DIAGNOSTIC:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
@@ -49,7 +51,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
-    <div class="result">
+    <div class="result" id="resultado2">
         <h4>DIAGNOSTIC:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
@@ -59,7 +61,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
-    <div class="result">
+    <div class="result" id="resultado3">
         <h4>DIAGNOSTIC:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
@@ -69,7 +71,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
-    <div class="result">
+    <div class="result" id="resultado4">
         <h4>DIAGNOSTIC:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
@@ -79,7 +81,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
-    <div class="result">
+    <div class="result" id="resultado5">
         <h4>DIAGNOSTIC:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
@@ -89,7 +91,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
-    <div class="result">
+    <div class="result" id="resultado6">
         <h4>DIAGNOSTIC:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>

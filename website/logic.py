@@ -97,7 +97,14 @@ def create_diagnostic(user_id: str, text: str):
     if user:
         diagnostic = user.diagnosticate(text)
         container.upsert_item(user.to_dict())
-        return diagnostic
+        # TODO CAMBIRLO A? -> return diagnostic
+        if diagnostic and 'predictions' in diagnostic.to_dict():
+            predictions = diagnostic.to_dict()['predictions']
+            return {
+                'disease': list(predictions.keys())[0],
+                'probability': list(predictions.values())[0]
+            }
+
     return None
 
 

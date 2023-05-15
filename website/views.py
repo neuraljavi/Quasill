@@ -15,20 +15,9 @@ def index():
 def index2():
     return render_template("index2.html")
 
-@views.route('/feedback')
-def feedback():
-    return render_template("feedback.html")
-
-
 @views.route('/nosotros')
 def nosotros():
     return render_template("nosotros.html")
-
-
-@views.route('/resultados')
-def resultados():
-    return render_template("resultados.html")
-
 
 @views.route('/enfermedad')
 def enfermedad():
