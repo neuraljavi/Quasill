@@ -140,9 +140,7 @@ def diagnosticar():
 
         # Create the diagnostic entry
         create_diagnostic(user_id, text)
-        #predicciones ordenadas segun los valores de las probabilidades
-        ordered_predictions_items = sorted(mi_diagnostico.predictions.items(), key=lambda item: item[1])
-        ordered_predictions = dict(ordered_predictions_items)
+
 
     else:  # This is a GET request
         diagnostic_data = {

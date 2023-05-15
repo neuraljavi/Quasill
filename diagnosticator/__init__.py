@@ -510,8 +510,10 @@ def predict(text):
         label = DISEASES[i]
         prob_dict[label] = prob
 
-    # Devuelve el diccionario de probabilidades
-    return prob_dict
+    ordered_predictions = dict(sorted(prob_dict.items(), key=lambda item: item[1]))
+
+    # Devuelve el diccionario de probabilidades ordenado según el valor de la probabilidad
+    return ordered_predictions
 
 
 def get_feedback(text, label):
