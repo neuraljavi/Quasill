@@ -424,7 +424,7 @@ def load_model(vocab):
     classifier = TransformerClassifier(d_model=D_MODEL, num_heads=NUM_HEADS, d_ff=D_FF,
                                        num_layers=NUM_ENCODER_LAYERS, input_dim=len(vocab),
                                        n_classes=N_CLASSES, max_length=MAX_LENGTH, droput=DROP_OUT)
-    classifier.load_state_dict(torch.load('diagnosticator/model/model.pth', map_location=torch.device('cpu')))
+    classifier.load_state_dict(torch.load('diagnosticator/model/model2.pth', map_location=torch.device('cpu')))
     return classifier
 
 
@@ -469,7 +469,7 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
     loss.backward()
     optimizer.step()
 
-    torch.save(model.state_dict(), 'diagnosticator/model/model.pth')
+    torch.save(model.state_dict(), 'diagnosticator/model/model2.pth')
 
     model.eval()
 
@@ -480,7 +480,7 @@ def predict(text):
     # Carga el modelo y el vocabulario
     nlp = spacy.load('en_core_web_sm')
     tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
-    vocab = torch.load('diagnosticator/model/vocab.pkl')
+    vocab = torch.load('diagnosticator/model/vocab2.pkl')
 
     # Codifica el texto de entrada
     encoded_text = encode(text, tokenizer, vocab, MAX_LENGTH)
@@ -522,7 +522,7 @@ def get_feedback(text, label):
     # Carga el modelo y el vocabulario
     nlp = spacy.load('en_core_web_sm')
     tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
-    vocab = torch.load('diagnosticator/model/vocab.pkl')
+    vocab = torch.load('diagnosticator/model/vocab2.pkl')
     classifier = load_model(vocab)
 
     # Get the key in DISEASES dictionary for the provided label
