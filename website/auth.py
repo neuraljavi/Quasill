@@ -167,9 +167,8 @@ def get_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
 @auth.route('/diagnostics/<int:diagnostic_id>', methods=['PUT'])
 def update_diagnostic_route(diagnostic_id):
     user_id = session.get('user_id')
-    text = request.json.get('text')
     correct_label = request.json.get('correct_label')
-    success = proportionate_feedback(user_id, diagnostic_id, text, correct_label)
+    success = proportionate_feedback(user_id, diagnostic_id, correct_label)
     if success:
         return jsonify({'status': 'success', 'message': 'Diagnostic updated'}), 200
     else:

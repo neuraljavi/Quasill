@@ -119,9 +119,9 @@ def delete_diagnostic(user: User, diagnostic_index: int):
 
 
 # PROPORCIONAMOS FEEDBACK RELACIONADO CON EL DIAGNÓSTICO
-def proportionate_feedback(user: User, diagnostic_index: int, text: str, correct_label: str):
+def proportionate_feedback(user: User, diagnostic_index: int, correct_label: str):
     if 0 <= diagnostic_index < len(user.diagnostics):
-        feedback_successful = user.proportionate_feedback(diagnostic_index, text, correct_label)
+        feedback_successful = user.proportionate_feedback(diagnostic_index, correct_label)
         if feedback_successful:
             container.upsert_item(user.to_dict())
             return feedback_successful

@@ -91,10 +91,11 @@ class User:
         self.diagnostics.append(diagnostic)
         return diagnostic
 
-    def proportionate_feedback(self, diagnostic_id, text, correct_label):
+    def proportionate_feedback(self, diagnostic_id, correct_label):
         diagnostic = self.get_diagnostic(diagnostic_id)
         if diagnostic is None:
             return False
+        text = diagnostic.text
         feedback = get_feedback(text, correct_label)
         if feedback is None:
             return False

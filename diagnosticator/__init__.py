@@ -4,6 +4,7 @@ from torchtext.data.utils import get_tokenizer
 from diagnosticator.classifier import TransformerClassifier
 from torchtext.vocab import Vocab
 import numpy as np
+import spacy
 
 D_MODEL = 256
 NUM_HEADS = 2
@@ -198,7 +199,7 @@ DISEASES = {
     180: "Kyphosis",
     181: "Cirrhosis",
     182: "Cystitis",
-    183: "interstitial cystitis",
+    183: "Interstitial cystitis",
     184: "Claudication",
     185: "Kleptomania",
     186: "Aortic Coarctation",
@@ -477,7 +478,8 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
 
 def predict(text):
     # Carga el modelo y el vocabulario
-    tokenizer = get_tokenizer('basic_english')
+    nlp = spacy.load('en_core_web_sm')
+    tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
     vocab = torch.load('diagnosticator/model/vocab.pkl')
 
     # Codifica el texto de entrada
@@ -518,11 +520,13 @@ def predict(text):
 
 def get_feedback(text, label):
     # Carga el modelo y el vocabulario
-    tokenizer = get_tokenizer('basic_english')
+    nlp = spacy.load('en_core_web_sm')
+    tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
     vocab = torch.load('diagnosticator/model/vocab.pkl')
     classifier = load_model(vocab)
 
-    label_index = DISEASES[label]
+    # Get the key in DISEASES dictionary for the provided label
+    label_index = [k for k, v in DISEASES.items() if v == label][0]
 
     # Mueve el modelo a la GPU si está disponible
     classifier.to(device)
