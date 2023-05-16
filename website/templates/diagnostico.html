@@ -26,7 +26,7 @@
                 <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('views.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
             </li>
             <li id="cuenta" class="item-nav">
                 <a>Cuenta</a>
@@ -42,13 +42,13 @@
 </header>
 
 <div class="container-sintomas">
-    <h1>Introduce tus síntomas :</h1>
+    <h1>Introduce your symptoms :</h1>
     <div class="container-input">
         <form id="form-diagnosis" action="/diagnostico" method="post">
-            <textarea id="inputSintomas" name="inputSintomas" placeholder="Remember, be nice!" cols="30" rows="10">
+            <textarea id="inputSintomas" name="inputSintomas" placeholder="I have cavities and my ankle hurts when I run." cols="30" rows="10">
             </textarea>
             <div class="form-btn">
-                <button class="btnDiagnosis" type="submit">NUEVO DIAGNÓSTICO</button>
+               <button class="btnDiagnosis" onclick="location.href='/resultados.html'">NUEVO DIAGNÓSTICO</button>
             </div>
         </form>
     </div>

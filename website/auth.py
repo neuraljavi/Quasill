@@ -74,9 +74,6 @@ def cuenta():
     return render_template("cuenta.html", user=user)
 
 
-from flask import render_template
-
-
 @auth.route('/editar', methods=['GET', 'POST'])
 def editar():
     user_id = session.get('user_id')
@@ -130,25 +127,29 @@ def logout():
 
 # RUTA QUE LLEVA A DIAGNOSTICO PARA QUE EL USUARIO PUEDA INTRODUCIR SUS SÍNTOMAS
 @auth.route('/diagnostico', methods=['POST', 'GET'])
-# no solo POST sino también GET por si alguien quiere acceder a la URL de /dignostico de forma directa
-def diagnosticar():
+# no solo POST sino también GET por si alguien quiere acceder a la URL de /diagnostico de forma directa
+def diagnostico():
     if request.method == 'POST':
         text = request.form.get('inputSintomas')
+        print(text)
         user_id = session.get('user_id')
-        # ESTO ME DEVUELVE UN DIAGNÓSTICO QUE TIENE EL DICT DE LAS PREDICTIONS
-        mi_diagnostico = create_diagnostic(user_id, text)
-
-        # Create the diagnostic entry
-        create_diagnostic(user_id, text)
-
+        print(user_id)
+        diagnostic_data = create_diagnostic(user_id, text)
+        print(diagnostic_data)
+        return redirect(
+            url_for('auth.resultados'))  # Redirigir a la página de resultados después de recibir los síntomas
 
     else:  # This is a GET request
-        diagnostic_data = {
-            'disease': '',
-            'probability': '',
-        }
+        diagnostic_data = create_diagnostic(session.get('user_id'), '')
+        return render_template('diagnostico.html', diagnostic=diagnostic_data)
 
-    return render_template('diagnostico.html', diagnostic=diagnostic_data)
+
+# RUTA QUE MUESTRA LOS RESULTADOS DEL DIAGNÓSTICO
+@auth.route('/resultados', methods=['GET'])
+def resultados():
+    # Puedes pasar un texto vacío o el último texto ingresado en el diagnóstico
+    diagnostic_data = create_diagnostic(session.get('user_id'), '')
+    return render_template('resultados.html', diagnostic=diagnostic_data)
 
 
 @auth.route('/diagnostics', methods=['GET'])
@@ -183,3 +184,8 @@ def delete_diagnostic_route(diagnostic_id):
         return jsonify({'status': 'success', 'message': 'Diagnostic deleted'}), 200
     else:
         return jsonify({'status': 'failure', 'message': 'Diagnostic not found'}), 404
+
+
+@auth.route('/feedback.html', methods=['GET'])
+def feedback_html():
+    return render_template('feedback.html')
