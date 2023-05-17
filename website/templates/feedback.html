@@ -7,9 +7,7 @@
     <title>FEEDBACK</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
-
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 
 <body>
@@ -23,17 +21,17 @@
     <nav>
         <ul>
             <li class="item-nav">
-                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
             </li>
             <li id="cuenta" class="item-nav">
-                <a>Cuenta</a>
+                <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.signup') }}">Cerrar sesión</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>
@@ -48,9 +46,401 @@
         request you to provide the diagnosis you received.</h3>
     <div class="container-form">
         <form class="feedback-form" action="">
-                <textarea placeholder="After being examined by my doctor, she has told me..." name="inputFeedback"
-                          id="inputFeedback">
-                </textarea>
+            <select class="lista-enfermedades">
+                <option value="Abdominal aortic aneurysm">Abdominal aortic aneurysm</option>
+                <option value="Absence seizure">Absence seizure</option>
+                <option value="Acalasia">Acalasia</option>
+                <option value="Acne">Acne</option>
+                <option value="Acromegaly">Acromegaly</option>
+                <option value="Acute Coronary Syndrome">Acute Coronary Syndrome</option>
+                <option value="Acute Respiratory Distress Syndrome">Acute Respiratory Distress Syndrome</option>
+                <option value="Acute Sinusitis">Acute Sinusitis</option>
+                <option value="Acute liver failure">Acute liver failure</option>
+                <option value="Acute lymphocytic leukemia">Acute lymphocytic leukemia</option>
+                <option value="Acute myeloid leukemia">Acute myeloid leukemia</option>
+                <option value="Acute renal failure">Acute renal failure</option>
+                <option value="Adenomyosis">Adenomyosis</option>
+                <option value="Adrenal gland cancer">Adrenal gland cancer</option>
+                <option value="Agoraphobia">Agoraphobia</option>
+                <option value="Albinism">Albinism</option>
+                <option value="Alcohol intolerance">Alcohol intolerance</option>
+                <option value="Alcohol poisoning">Alcohol poisoning</option>
+                <option value="Alfa-gal syndrome">Alfa-gal syndrome</option>
+                <option value="Allergies">Allergies</option>
+                <option value="Allergy to dust mites">Allergy to dust mites</option>
+                <option value="Amblyopia (lazy eye)">Amblyopia (lazy eye)</option>
+                <option value="Amenorrhea">Amenorrhea</option>
+                <option value="Amnesia">Amnesia</option>
+                <option value="Amnesia Global Transitor">Amnesia Global Transitor</option>
+                <option value="Amyloidosis">Amyloidosis</option>
+                <option value="Anaphylaxis">Anaphylaxis</option>
+                <option value="Anemia">Anemia</option>
+                <option value="Aneurysms">Aneurysms</option>
+                <option value="Angelman Syndrome">Angelman Syndrome</option>
+                <option value="Angina pectoris">Angina pectoris</option>
+                <option value="Angiosarcoma">Angiosarcoma</option>
+                <option value="Anorexia nervosa">Anorexia nervosa</option>
+                <option value="Anorgasmia in women">Anorgasmia in women</option>
+                <option value="Anterior Cruciate Ligament Injury">Anterior Cruciate Ligament Injury</option>
+                <option value="Antiphospholipid syndrome">Antiphospholipid syndrome</option>
+                <option value="Anus cancer">Anus cancer</option>
+                <option value="Aortic Coarctation">Aortic Coarctation</option>
+                <option value="Aortic aneurysm">Aortic aneurysm</option>
+                <option value="Aortic valvular insufficiency">Aortic valvular insufficiency</option>
+                <option value="Aphasia">Aphasia</option>
+                <option value="Aplastic anemia">Aplastic anemia</option>
+                <option value="Appendicitis">Appendicitis</option>
+                <option value="Arteriosclerosis/atherosclerosis">Arteriosclerosis/atherosclerosis</option>
+                <option value="Arthritis">Arthritis</option>
+                <option value="Asbestosis">Asbestosis</option>
+                <option value="Ascariasis">Ascariasis</option>
+                <option value="Ashtma">Ashtma</option>
+                <option value="Aspergillosis">Aspergillosis</option>
+                <option value="Astigmatism">Astigmatism</option>
+                <option value="Ataxia">Ataxia</option>
+                <option value="Atelectasis">Atelectasis</option>
+                <option value="Atrioventricular Septal Defect">Atrioventricular Septal Defect</option>
+                <option value="Bags under the eyes">Bags under the eyes</option>
+                <option value="Barotrauma">Barotrauma</option>
+                <option value="Basal cell carcinoma">Basal cell carcinoma</option>
+                <option value="Bedbugs">Bedbugs</option>
+                <option value="Black hairy tongue">Black hairy tongue</option>
+                <option value="Bladder cancer">Bladder cancer</option>
+                <option value="Bladder stones">Bladder stones</option>
+                <option value="Blastocystis hominis">Blastocystis hominis</option>
+                <option value="Blepharitis">Blepharitis</option>
+                <option value="Blocked tear duct">Blocked tear duct</option>
+                <option value="Blood in the urine (hematuria)">Blood in the urine (hematuria)</option>
+                <option value="Bone cancer">Bone cancer</option>
+                <option value="Botulism">Botulism</option>
+                <option value="Brachial plexus injury">Brachial plexus injury</option>
+                <option value="Bradycardia">Bradycardia</option>
+                <option value="Brain Tumor">Brain Tumor</option>
+                <option value="Branch Block">Branch Block</option>
+                <option value="Breast cancer">Breast cancer</option>
+                <option value="Breast enlargement in men (gynecomastia)">Breast enlargement in men (gynecomastia)
+                </option>
+                <option value="Broken Heart Syndrome">Broken Heart Syndrome</option>
+                <option value="Bronchiolitis">Bronchiolitis</option>
+                <option value="Bronchitis">Bronchitis</option>
+                <option value="Brucellosis">Brucellosis</option>
+                <option value="Brugada Syndrome">Brugada Syndrome</option>
+                <option value="Bruxism (grinding of teeth)">Bruxism (grinding of teeth)</option>
+                <option value="Bulimia nervosa">Bulimia nervosa</option>
+                <option value="Burning Mouth Syndrome">Burning Mouth Syndrome</option>
+                <option value="Bursitis">Bursitis</option>
+                <option value="C. difficile infection">C. difficile infection</option>
+                <option value="Calciphylaxis">Calciphylaxis</option>
+                <option value="Calluses and calluses">Calluses and calluses</option>
+                <option value="Cancer">Cancer</option>
+                <option value="Canker sores">Canker sores</option>
+                <option value="Carbon monoxide poisoning">Carbon monoxide poisoning</option>
+                <option value="Carbuncle">Carbuncle</option>
+                <option value="Cardiac arrhythmia">Cardiac arrhythmia</option>
+                <option value="Carpal Tunnel Syndrome">Carpal Tunnel Syndrome</option>
+                <option value="Cataracts">Cataracts</option>
+                <option value="Celiac disease">Celiac disease</option>
+                <option value="Cellulitis">Cellulitis</option>
+                <option value="Central sleep apnea">Central sleep apnea</option>
+                <option value="Cerebral Aneurysm">Cerebral Aneurysm</option>
+                <option value="Cervical cancer">Cervical cancer</option>
+                <option value="Cervical insufficiency">Cervical insufficiency</option>
+                <option value="Cervicitis">Cervicitis</option>
+                <option value="Chilblains">Chilblains</option>
+                <option value="Child speech apraxia">Child speech apraxia</option>
+                <option value="Chlamydia trachomatis">Chlamydia trachomatis</option>
+                <option value="Cholangiocarcinoma (bile duct cancer)">Cholangiocarcinoma (bile duct cancer)</option>
+                <option value="Cholecystitis">Cholecystitis</option>
+                <option value="Cholera">Cholera</option>
+                <option value="Chondrosarcoma">Chondrosarcoma</option>
+                <option value="Chronic Exercise Compartment Syndrome">Chronic Exercise Compartment Syndrome</option>
+                <option value="Chronic Fatigue Syndrome">Chronic Fatigue Syndrome</option>
+                <option value="Chronic Sinusitis">Chronic Sinusitis</option>
+                <option value="Chronic lymphocytic leukemia">Chronic lymphocytic leukemia</option>
+                <option value="Chronic myeloid leukemia">Chronic myeloid leukemia</option>
+                <option value="Churg-Strauss Syndrome">Churg-Strauss Syndrome</option>
+                <option value="Cirrhosis">Cirrhosis</option>
+                <option value="Claudication">Claudication</option>
+                <option value="Cleft lip and cleft palate">Cleft lip and cleft palate</option>
+                <option value="Clostridium difficile-associated diarrhea (CDAD)">Clostridium difficile-associated
+                    diarrhea (CDAD)</option>
+                <option value="Cluster headache">Cluster headache</option>
+                <option value="Colon cancer">Colon cancer</option>
+                <option value="Coma">Coma</option>
+                <option value="Complex Regional Pain Syndrome">Complex Regional Pain Syndrome</option>
+                <option value="Compulsive sexual behavior">Compulsive sexual behavior</option>
+                <option value="Concussion">Concussion</option>
+                <option value="Congenital Myasthenic Syndromes">Congenital Myasthenic Syndromes</option>
+                <option value="Congenital heart defects in children">Congenital heart defects in children</option>
+                <option value="Congenital heart disease in adults">Congenital heart disease in adults</option>
+                <option value="Costochondritis">Costochondritis</option>
+                <option value="Craniosynostosis">Craniosynostosis</option>
+                <option value="Cryoglobulinemia">Cryoglobulinemia</option>
+                <option value="Cushing's Syndrome">Cushing's Syndrome</option>
+                <option value="Cutaneous T-cell lymphoma">Cutaneous T-cell lymphoma</option>
+                <option value="Cyclic vomiting syndrome">Cyclic vomiting syndrome</option>
+                <option value="Cyclothymia (Cyclothymic Disorder)">Cyclothymia (Cyclothymic Disorder)</option>
+                <option value="Cystitis">Cystitis</option>
+                <option value="Cytomegalovirus infection">Cytomegalovirus infection</option>
+                <option value="Dandruff">Dandruff</option>
+                <option value="Dental abscess">Dental abscess</option>
+                <option value="Dental cavities">Dental cavities</option>
+                <option value="DiGeorge Syndrome (22q11.2 Deletion Syndrome)">DiGeorge Syndrome (22q11.2 Deletion
+                    Syndrome)</option>
+                <option value="Diabetic Coma">Diabetic Coma</option>
+                <option value="Diabetic ketoacidosis">Diabetic ketoacidosis</option>
+                <option value="Dilated cardiomyopathy">Dilated cardiomyopathy</option>
+                <option value="Dilated heart">Dilated heart</option>
+                <option value="Down Syndrome">Down Syndrome</option>
+                <option value="Dry Mouth">Dry Mouth</option>
+                <option value="Ductal Carcinoma In Situ">Ductal Carcinoma In Situ</option>
+                <option value="Dupuytren's contracture">Dupuytren's contracture</option>
+                <option value="Ear infection (middle ear)">Ear infection (middle ear)</option>
+                <option value="Ebstein anomaly">Ebstein anomaly</option>
+                <option value="Egg allergy">Egg allergy</option>
+                <option value="Ehlers-Danlos Syndrome">Ehlers-Danlos Syndrome</option>
+                <option value="Emotional lability">Emotional lability</option>
+                <option value="Endometrial cancer">Endometrial cancer</option>
+                <option value="Enlarged spleen (splenomegaly)">Enlarged spleen (splenomegaly)</option>
+                <option value="Esophagus cancer">Esophagus cancer</option>
+                <option value="Ewing's Sarcoma">Ewing's Sarcoma</option>
+                <option value="Excessive use of headache medication">Excessive use of headache medication</option>
+                <option value="Exercise-induced asthma">Exercise-induced asthma</option>
+                <option value="Febrile seizures">Febrile seizures</option>
+                <option value="Fecal incontinence">Fecal incontinence</option>
+                <option value="Fetal alcohol syndrome">Fetal alcohol syndrome</option>
+                <option value="Fibrocystic Breast Condition">Fibrocystic Breast Condition</option>
+                <option value="Food Allergy">Food Allergy</option>
+                <option value="Food poisoning">Food poisoning</option>
+                <option value="Freezing">Freezing</option>
+                <option value="Frontal lobe seizures">Frontal lobe seizures</option>
+                <option value="Gallstones">Gallstones</option>
+                <option value="Gastrointestinal bleeding">Gastrointestinal bleeding</option>
+                <option value="Geographic tongue">Geographic tongue</option>
+                <option value="Giant cell arteritis">Giant cell arteritis</option>
+                <option value="Giardia infection (giardiasis)">Giardia infection (giardiasis)</option>
+                <option value="Gilbert's Syndrome">Gilbert's Syndrome</option>
+                <option value="Glioma">Glioma</option>
+                <option value="Goiter">Goiter</option>
+                <option value="Golfer's Elbow">Golfer's Elbow</option>
+                <option value="Guillain-Barré Syndrome">Guillain-Barré Syndrome</option>
+                <option value="HPV infection">HPV infection</option>
+                <option value="Hair Loss">Hair Loss</option>
+                <option value="Hairy cell leukemia">Hairy cell leukemia</option>
+                <option value="Hamstring muscle injury">Hamstring muscle injury</option>
+                <option value="Head and neck cancer">Head and neck cancer</option>
+                <option value="Headaches in children">Headaches in children</option>
+                <option value="Heart attack">Heart attack</option>
+                <option value="Heart failure">Heart failure</option>
+                <option value="Heart murmurs">Heart murmurs</option>
+                <option value="Heartburn">Heartburn</option>
+                <option value="Heat exhaustion">Heat exhaustion</option>
+                <option value="Helicobacter pylori (H. pylori) infection">Helicobacter pylori (H. pylori) infection
+                </option>
+                <option value="Hodgkin's lymphoma (Hodgkin's disease)">Hodgkin's lymphoma (Hodgkin's disease)</option>
+                <option value="Horner's Syndrome">Horner's Syndrome</option>
+                <option value="Hot flashes">Hot flashes</option>
+                <option value="Hypertrophic cardiomyopathy">Hypertrophic cardiomyopathy</option>
+                <option value="Hürthle cell cancer">Hürthle cell cancer</option>
+                <option value="Idiopathic Intracranial Hypertension (Pseudotumor Cerebri)">Idiopathic Intracranial
+                    Hypertension (Pseudotumor Cerebri)</option>
+                <option value="Impetigo">Impetigo</option>
+                <option value="Indigestion">Indigestion</option>
+                <option value="Infant jaundice">Infant jaundice</option>
+                <option value="Inflammatory breast cancer">Inflammatory breast cancer</option>
+                <option value="Influenza (Flu)">Influenza (Flu)</option>
+                <option value="Insomnia">Insomnia</option>
+                <option value="interstitial cystitis">Interstitial cystitis</option>
+                <option value="Interventricular communication">Interventricular communication</option>
+                <option value="Intestinal ischemia">Intestinal ischemia</option>
+                <option value="Intestinal parasite infection">Intestinal parasite infection</option>
+                <option value="Intussusception">Intussusception</option>
+                <option value="Invasive Lobular Carcinoma">Invasive Lobular Carcinoma</option>
+                <option value="Iron deficiency anemia">Iron deficiency anemia</option>
+                <option value="Irritable Bowel Syndrome">Irritable Bowel Syndrome</option>
+                <option value="Ischemic colitis">Ischemic colitis</option>
+                <option value="Keloid Scars">Keloid Scars</option>
+                <option value="Kidney cancer">Kidney cancer</option>
+                <option value="Kidney stones">Kidney stones</option>
+                <option value="Kleptomania">Kleptomania</option>
+                <option value="Klinefelter's Syndrome">Klinefelter's Syndrome</option>
+                <option value="Klippel-Trenaunay syndrome">Klippel-Trenaunay syndrome</option>
+                <option value="Kyphosis">Kyphosis</option>
+                <option value="Lactose intolerance">Lactose intolerance</option>
+                <option value="Laryngitis">Laryngitis</option>
+                <option value="Latex allergy">Latex allergy</option>
+                <option value="Lead poisoning">Lead poisoning</option>
+                <option value="Leukemia">Leukemia</option>
+                <option value="Leukoplakia">Leukoplakia</option>
+                <option value="Lichen Planus">Lichen Planus</option>
+                <option value="Lichen Sclerosus">Lichen Sclerosus</option>
+                <option value="Lip cancer">Lip cancer</option>
+                <option value="Lipoma">Lipoma</option>
+                <option value="Liposarcoma">Liposarcoma</option>
+                <option value="Listeria infection">Listeria infection</option>
+                <option value="Liver cancer">Liver cancer</option>
+                <option value="Liver enlargement">Liver enlargement</option>
+                <option value="Long QT syndrome">Long QT syndrome</option>
+                <option value="Low sperm count">Low sperm count</option>
+                <option value="Ludopathy">Ludopathy</option>
+                <option value="Lung cancer">Lung cancer</option>
+                <option value="Lupus">Lupus</option>
+                <option value="Lymphoedema">Lymphoedema</option>
+                <option value="Lymphoma">Lymphoma</option>
+                <option value="Lynch Syndrome">Lynch Syndrome</option>
+                <option value="MRSA Infection">MRSA Infection</option>
+                <option value="Male breast cancer">Male breast cancer</option>
+                <option value="Marfan Syndrome">Marfan Syndrome</option>
+                <option value="Measles">Measles</option>
+                <option value="Medication allergies">Medication allergies</option>
+                <option value="Menstrual cramps">Menstrual cramps</option>
+                <option value="Merkel cell carcinoma">Merkel cell carcinoma</option>
+                <option value="Mesenteric ischemia">Mesenteric ischemia</option>
+                <option value="Mesenteric lymphadenitis">Mesenteric lymphadenitis</option>
+                <option value="Metabolic Syndrome">Metabolic Syndrome</option>
+                <option value="Microscopic colitis">Microscopic colitis</option>
+                <option value="Midgut Volvulus Syndrome">Midgut Volvulus Syndrome</option>
+                <option value="Milk allergy">Milk allergy</option>
+                <option value="Mitral valve failure">Mitral valve failure</option>
+                <option value="Mouth cancer">Mouth cancer</option>
+                <option value="Multiple system atrophy (MSA)">Multiple system atrophy (MSA)</option>
+                <option value="Muscle Cramp">Muscle Cramp</option>
+                <option value="Myelodysplastic Syndromes">Myelodysplastic Syndromes</option>
+                <option value="Myocardial ischemia">Myocardial ischemia</option>
+                <option value="Myofascial Pain Syndrome">Myofascial Pain Syndrome</option>
+                <option value="Nasopharyngeal Carcinoma">Nasopharyngeal Carcinoma</option>
+                <option value="Nephrotic syndrome">Nephrotic syndrome</option>
+                <option value="Nickel allergy">Nickel allergy</option>
+                <option value="Non melanoma skin cancer">Non melanoma skin cancer</option>
+                <option value="Non-Hodgkin's lymphoma">Non-Hodgkin's lymphoma</option>
+                <option value="Noonan Syndrome">Noonan Syndrome</option>
+                <option value="Norovirus infection">Norovirus infection</option>
+                <option value="Obstructive sleep apnea">Obstructive sleep apnea</option>
+                <option value="Obstructive sleep apnea in children">Obstructive sleep apnea in children</option>
+                <option value="Occupational asthma">Occupational asthma</option>
+                <option value="Oral Lichen Planus">Oral Lichen Planus</option>
+                <option value="Oral thrush">Oral thrush</option>
+                <option value="Ovarian Hyperstimulation Syndrome">Ovarian Hyperstimulation Syndrome</option>
+                <option value="Ovarian cancer">Ovarian cancer</option>
+                <option value="POEMS syndrome">POEMS syndrome</option>
+                <option value="Pancreatic cancer">Pancreatic cancer</option>
+                <option value="Panic attacks and panic disorder">Panic attacks and panic disorder</option>
+                <option value="Paraneoplastic Syndromes of the Nervous System">Paraneoplastic Syndromes of the Nervous
+                    System </option>
+                <option value="Patellofemoral Pain Syndrome">Patellofemoral Pain Syndrome</option>
+                <option value="Penicillin allergy">Penicillin allergy</option>
+                <option value="Peripheral nerve injuries">Peripheral nerve injuries</option>
+                <option value="Persistent arterial duct">Persistent arterial duct</option>
+                <option value="Pet allergy">Pet allergy</option>
+                <option value="Pigmentary acanthosis">Pigmentary acanthosis</option>
+                <option value="Pituitary insufficiency">Pituitary insufficiency</option>
+                <option value="Polycystic Ovary Syndrome">Polycystic Ovary Syndrome</option>
+                <option value="Popliteal Artery Entrapment Syndrome">Popliteal Artery Entrapment Syndrome</option>
+                <option value="Post-polio syndrome">Post-polio syndrome</option>
+                <option value="Posterior cortical atrophy">Posterior cortical atrophy</option>
+                <option value="Prader-Willi Syndrome">Prader-Willi Syndrome</option>
+                <option value="Pregnancy cholestasis">Pregnancy cholestasis</option>
+                <option value="Premature ventricular contractions">Premature ventricular contractions</option>
+                <option value="Premenstrual syndrome (PMS)">Premenstrual syndrome (PMS)</option>
+                <option value="Prescription drug abuse">Prescription drug abuse</option>
+                <option value="Primary biliary cholangitis">Primary biliary cholangitis</option>
+                <option value="Primary immunodeficiency">Primary immunodeficiency</option>
+                <option value="Primary progressive aphasia">Primary progressive aphasia</option>
+                <option value="Primary sclerosing cholangitis">Primary sclerosing cholangitis</option>
+                <option value="Prostate cancer">Prostate cancer</option>
+                <option value="Prostate cancer in stage 4">Prostate cancer in stage 4</option>
+                <option value="Pseudocolinesterase insufficiency">Pseudocolinesterase insufficiency</option>
+                <option value="Psoriasic arthritis">Psoriasic arthritis</option>
+                <option value="Pulmonary atresia">Pulmonary atresia</option>
+                <option value="Ramsay Hunt syndrome">Ramsay Hunt syndrome</option>
+                <option value="Rapid Gastric Emptying Syndrome">Rapid Gastric Emptying Syndrome</option>
+                <option value="Reactive arthritis">Reactive arthritis</option>
+                <option value="Rectal cancer">Rectal cancer</option>
+                <option value="Recurring breast cancer">Recurring breast cancer</option>
+                <option value="Restless legs syndrome">Restless legs syndrome</option>
+                <option value="Rett syndrome">Rett syndrome</option>
+                <option value="Reye's syndrome">Reye's syndrome</option>
+                <option value="Rheumatoid arthritis">Rheumatoid arthritis</option>
+                <option value="Rotator cuff injury">Rotator cuff injury</option>
+                <option value="Rumination syndrome">Rumination syndrome</option>
+                <option value="Sacroiliitis">Sacroiliitis</option>
+                <option value="Salmonella infection">Salmonella infection</option>
+                <option value="Sarcoidosis">Sarcoidosis</option>
+                <option value="Sarcoma">Sarcoma</option>
+                <option value="Scabies">Scabies</option>
+                <option value="Sciatica">Sciatica</option>
+                <option value="Seafood allergy">Seafood allergy</option>
+                <option value="Seizures">Seizures</option>
+                <option value="Self harm/cuts">Self harm/cuts</option>
+                <option value="Septicemia">Septicemia</option>
+                <option value="Serotonin syndrome">Serotonin syndrome</option>
+                <option value="Shaken baby syndrome">Shaken baby syndrome</option>
+                <option value="Sickle cell anemia">Sickle cell anemia</option>
+                <option value="Sinus Dysfunction Syndrome">Sinus Dysfunction Syndrome</option>
+                <option value="Sjögren's syndrome">Sjögren's syndrome</option>
+                <option value="Skin cancer">Skin cancer</option>
+                <option value="Sleep apnea">Sleep apnea</option>
+                <option value="Sleepwalking">Sleepwalking</option>
+                <option value="Small Bowel Bacterial Overgrowth">Small Bowel Bacterial Overgrowth</option>
+                <option value="Small intestine cancer">Small intestine cancer</option>
+                <option value="Soft Tissue Sarcoma">Soft Tissue Sarcoma</option>
+                <option value="Soft tissue sarcoma">Soft tissue sarcoma</option>
+                <option value="Solitary Rectal Ulcer Syndrome">Solitary Rectal Ulcer Syndrome</option>
+                <option value="Spinal cord injuries">Spinal cord injuries</option>
+                <option value="Spinal cord tumor">Spinal cord tumor</option>
+                <option value="Spontaneous abortion">Spontaneous abortion</option>
+                <option value="Squamous cell carcinoma of the skin">Squamous cell carcinoma of the skin</option>
+                <option value="Staphylococcal infections">Staphylococcal infections</option>
+                <option value="Stevens-Johnson syndrome">Stevens-Johnson syndrome</option>
+                <option value="Stickler Syndrome">Stickler Syndrome</option>
+                <option value="Stomach cancer">Stomach cancer</option>
+                <option value="Streptococcal tonsillitis">Streptococcal tonsillitis</option>
+                <option value="Stress urinary incontinence">Stress urinary incontinence</option>
+                <option value="Stroke">Stroke</option>
+                <option value="Sudden infant death syndrome (SIDS)">Sudden infant death syndrome (SIDS)</option>
+                <option value="Suicide and suicidal thoughts">Suicide and suicidal thoughts</option>
+                <option value="Sun allergy">Sun allergy</option>
+                <option value="Suspicious lumps in the breast">Suspicious lumps in the breast</option>
+                <option value="Sweating and body odor">Sweating and body odor</option>
+                <option value="Syphilis">Syphilis</option>
+                <option value="Syringomyelia">Syringomyelia</option>
+                <option value="Takayasu's arteritis">Takayasu's arteritis</option>
+                <option value="Tapeworm infection">Tapeworm infection</option>
+                <option value="Tennis Elbow">Tennis Elbow</option>
+                <option value="Testicular cancer">Testicular cancer</option>
+                <option value="Thoracic Outlet Syndrome">Thoracic Outlet Syndrome</option>
+                <option value="Thoracic aortic aneurysm">Thoracic aortic aneurysm</option>
+                <option value="Throat cancer">Throat cancer</option>
+                <option value="Thumb arthritis">Thumb arthritis</option>
+                <option value="Thyroid cancer">Thyroid cancer</option>
+                <option value="Tongue cancer">Tongue cancer</option>
+                <option value="Tonsil cancer">Tonsil cancer</option>
+                <option value="Tonsillitis">Tonsillitis</option>
+                <option value="Tourette Syndrome">Tourette Syndrome</option>
+                <option value="Toxic Shock Syndrome">Toxic Shock Syndrome</option>
+                <option value="Transitional ischemic accident">Transitional ischemic accident</option>
+                <option value="Traumatic brain injury">Traumatic brain injury</option>
+                <option value="Tricuspid valve failure">Tricuspid valve failure</option>
+                <option value="Triple X syndrome">Triple X syndrome</option>
+                <option value="Turner Syndrome">Turner Syndrome</option>
+                <option value="Ulcerative colitis">Ulcerative colitis</option>
+                <option value="Ureter cancer">Ureter cancer</option>
+                <option value="Urinary incontinence">Urinary incontinence</option>
+                <option value="Urinary tract infection">Urinary tract infection</option>
+                <option value="Urine color">Urine color</option>
+                <option value="Vagina cancer">Vagina cancer</option>
+                <option value="Vaginal atrophy">Vaginal atrophy</option>
+                <option value="Vaginal yeast infection">Vaginal yeast infection</option>
+                <option value="Vasovagal syncope">Vasovagal syncope</option>
+                <option value="Vitamin deficiency anemia">Vitamin deficiency anemia</option>
+                <option value="Vulvar cancer">Vulvar cancer</option>
+                <option value="Wheat allergy">Wheat allergy</option>
+                <option value="Wolff-Parkinson-White syndrome">Wolff-Parkinson-White syndrome</option>
+                <option value="Wrinkles">Wrinkles</option>
+            </select>
+            <textarea placeholder="Please provide any additional comments or feedback here" name="inputFeedback"
+                      id="inputFeedback"></textarea>
+
             <button type="submit" class="btnSubmit">Submit</button>
         </form>
     </div>

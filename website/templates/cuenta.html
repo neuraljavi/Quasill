@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>CUENTA</title>
+    <title>ACCOUNT</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cuenta.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
@@ -21,17 +21,17 @@
     <nav>
         <ul>
             <li class="item-nav">
-                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
             </li>
             <li id="cuenta" class="item-nav">
-                <a>Cuenta</a>
+                <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>
@@ -42,32 +42,32 @@
 
     <div class="h1img">
         <img src="{{ url_for('static', filename='img/headwhite.png') }}" alt="user-icon" class="img-user">
-        <h1>MI PERFIL</h1>
+        <h1>MY PROFILE</h1>
     </div>
 
     <div class="account">
         <div class="form-name">
-            <label for="name">Nombre</label>
+            <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Paco" value="{{ user.name }}" readonly>
             <span class="data" id="name-data"></span>
         </div>
 
         <div class="form-surname1">
-            <label for="surname1">Primer apellido</label>
+            <label for="surname1">Surname</label>
             <input type="text" id="surname1" name="surname1" placeholder="Chocolatero" value="{{ user.surname }}"
                    readonly>
             <span class="data" id="surname1-data"></span>
         </div>
 
         <div class="form-username">
-            <label for="username">Nombre de usuario</label>
+            <label for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="paquitoEnfermo" value="{{ user.username }}"
                    readonly>
             <span class="data" id="username-data"></span>
         </div>
 
         <div class="form-email">
-            <label for="email">Correo electrónico</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="chocochurro@gmail.com" value="{{ user.email }}"
                    readonly>
             <span class="data" id="email-data"></span>
@@ -77,28 +77,31 @@
 
 <div class="container-diagnosis">
     <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
-        <h4>ILLNESS:
-            <span class="data" id="disease-data"></span>
+        <h4>DIAGNOSTIC'S RESULTS FOR</h4>
+        <span class="data" id="disease-data"></span>
         </h4>
-        <h4>PROBABILIDAD:
+        <h4>Symptoms:
+            <span class="data" id="probability-data"></span>
+        </h4>
+        <div class="circle"></div>
+    </div>
+
+    <!--TODO: ESTOS DIVS DEBERÍAN APARECER CUANDO SE HAGAN MÁS DIAGNÓSTICOS CON JS!!-->
+
+    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
+        <h4>DIAGNOSTIC'S RESULTS FOR</h4>
+        <span class="data" id="disease-data"></span>
+        </h4>
+        <h4>Symptoms:
             <span class="data" id="probability-data"></span>
         </h4>
         <div class="circle"></div>
     </div>
     <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
-        <h4>ILLNESS:
-            <span class="data" id="disease-data"></span>
+        <h4>DIAGNOSTIC'S RESULTS FOR</h4>
+        <span class="data" id="disease-data"></span>
         </h4>
-        <h4>PROBABILIDAD:
-            <span class="data" id="probability-data"></span>
-        </h4>
-        <div class="circle"></div>
-    </div>
-    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
-        <h4>ILLNESS:
-            <span class="data" id="disease-data"></span>
-        </h4>
-        <h4>PROBABILIDAD:
+        <h4>Symptoms:
             <span class="data" id="probability-data"></span>
         </h4>
         <div class="circle"></div>

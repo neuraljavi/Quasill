@@ -46,7 +46,7 @@ function updateUser() {
 
 function deleteUser() {
     console.log("deleteUser function called");
-    document.getElementById("edit-delete").submit();
+    document.getElementById("btnDelete").submit();
     console.log("form submitted");
 }
 

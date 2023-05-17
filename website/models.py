@@ -41,6 +41,7 @@ class User:
         self.email = email
         self.password = None if 'password' not in kwargs else kwargs['password']
 
+# ACEPTA LOS DATOS DEL USUARIO Y LOS CONVIERTE EN UN USUARIO
     @classmethod
     def from_dict(cls, data):
         diagnostics = [Diagnostic(**diagnostic_data) for diagnostic_data in data.get('diagnostics', [])] if data.get(
@@ -63,6 +64,7 @@ class User:
             'surname': self.surname,
             'surname2': self.surname2,
             'username': self.username,
+            # dict indexado
             'diagnostics': [diagnostic.to_dict() for diagnostic in self.diagnostics] if self.diagnostics else None,
             'email': self.email,
             'password': self.password

@@ -4,52 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login</title>
+    <title>SIGN IN</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
 
 </head>
-<body> <header>
-        <div class="logo">
-            <!-- access index with views.index -->
-            <a href="{{ url_for('views.index') }}">
-                <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo" />
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li class="item-nav">
-                    <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
-                </li>
-                <li id="cuenta" class="item-nav">
-                    <a>Cuenta</a>
-                    <ul class="nav-dropdown">
-                        <li><a class="item-dropdown" href="{{ url_for('auth.login') }}">Iniciar sesión</a></li>
-                        <li><a class="item-dropdown" href="{{ url_for('auth.signup') }}">Registrarse</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
+<body>
+<header>
+    <div class="logo">
+        <!-- access index with views.index -->
+        <a href="{{ url_for('views.index') }}">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li class="item-nav">
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
+            </li>
+            <li id="cuenta" class="item-nav">
+                <a>Account</a>
+                <ul class="nav-dropdown">
+                    <li><a class="item-dropdown" href="{{ url_for('auth.login') }}">Sign in</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.signup') }}">Sign up</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
 
 <div class="container-form">
-    <h1>Cuenta</h1>
+    <h1>SIGN IN</h1>
     <form class="login" action="{{ url_for('auth.login') }}" method="post">
         <div class="form-username">
             <img src="{{ url_for('static', filename='img/user.png') }}" alt="person-icon"/>
-            <input type="text" id="username" name="username" placeholder="Nombre de usuario" required/>
+            <input type="text" id="username" name="username" placeholder="Username" required/>
         </div>
         <div class="form-pass">
             <img src="{{ url_for('static', filename='img/password.png') }}" alt="user-icon"/>
-            <input type="password" id="password" name="password" placeholder="Contraseña" required/>
+            <input type="password" id="password" name="password" placeholder="Password" required/>
         </div>
         <div class="form-btn">
-            <button class="btnsubmit" type="submit">ACCEDER</button>
-            <h4>¿No tiene cuenta?</h4>
-            <button class="btnsignup" type="button" onclick="location.href='/signup';">REGISTRARSE</button>
+            <button class="btnsubmit" type="submit">SIGN IN</button>
+            <h4>Don't have an account?</h4>
+            <button class="btnsignup" type="button" onclick="location.href='/signup';">SIGN UP</button>
         </div>
     </form>
 </div>

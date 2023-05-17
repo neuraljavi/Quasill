@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>EDITAR</title>
+    <title>DELETE ACCOUNT</title>
     <link rel="stylesheet" href="/css/eliminar.css"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/eliminar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
@@ -24,17 +24,17 @@
     <nav>
         <ul>
             <li class="item-nav">
-                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
             </li>
             <li id="cuenta" class="item-nav">
-                <a>Cuenta</a>
+                <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.signup') }}">Cerrar sesión</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>
@@ -42,23 +42,23 @@
 </header>
 
 <div class="container">
-    <h1>¿Eliminar cuenta?</h1>
+    <h1>Delete Your Account?</h1>
     <div class="container-info">
         <p>
-            Si desea eliminar su cuenta, pulse abajo en "ELIMINAR".
+            If you wish to delete your account, please click "DELETE" below.
         </p>
-        <p> Sus datos serán eliminados de la base de datos.
+        <p> Your information will be removed from our database.
         </p>
-        <p> Dejará de recibir notificaciones.
+        <p> You will cease to receive notifications.
         </p>
     </div>
+
     <div class="container-form">
-        <form action="{{ url_for('auth.eliminar') }}" method="POST">
+        <form action="{{ url_for('auth.eliminar_cuenta') }}" method="POST">
             <div class="form-submit">
-                <input class="btn-delete" type="submit" value="ELIMINAR"/>
+                <button id="btnDelete" name="submit_button" value="btnDelete" type="submit">DELETE</button>
             </div>
         </form>
-
     </div>
 </div>
 

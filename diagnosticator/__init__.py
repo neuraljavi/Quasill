@@ -500,7 +500,7 @@ def predict(text):
         logits = classifier(input_tensor)
 
     # Calcula las probabilidades
-    #TODO VOLVER A DEJARLO IGUAL: probabilities = torch.softmax(logits, dim=-1).cpu().detach().numpy()
+    # TODO VOLVER A DEJARLO IGUAL: probabilities = torch.softmax(logits, dim=-1).cpu().detach().numpy()
     probabilities = torch.softmax(logits, dim=-1).squeeze(0)
     probabilities = tensor_to_percentages(probabilities)
 
@@ -518,6 +518,8 @@ def predict(text):
     return ordered_predictions
 
 
+# LABEL ES EL NOMBRE DE LA ENFERMEDAD
+# TEXT ES EL INPUTSINTOMAS
 def get_feedback(text, label):
     # Carga el modelo y el vocabulario
     nlp = spacy.load('en_core_web_sm')

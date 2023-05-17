@@ -63,7 +63,7 @@ h1 {
     box-shadow: 10px 10px 0px 1px #6280a6
 }
 
-.btn-delete {
+#btnDelete {
     width: 100%;
     max-width: 400px;
     padding: 20px 40px 20px 40px;
@@ -76,7 +76,7 @@ h1 {
     color: #6280a6;
 }
 
-.btn-delete:hover {
+#btnDelete:hover {
     box-shadow: 10px 10px 0px 1px #9d0606;
     color: #9d0606;
 }

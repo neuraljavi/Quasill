@@ -4,12 +4,10 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DIAGNOSTICO</title>
+    <title>DIAGNOSIS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/diagnostico.css') }}">
-
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 
 <body>
@@ -21,20 +19,19 @@
         </a>
     </div>
     <nav>
-        <ul>
+       <ul>
             <li class="item-nav">
-                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
             </li>
             <li id="cuenta" class="item-nav">
-                <a>Cuenta</a>
+                <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
-
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>
@@ -45,27 +42,14 @@
     <h1>Introduce your symptoms :</h1>
     <div class="container-input">
         <form id="form-diagnosis" action="/diagnostico" method="post">
-            <textarea id="inputSintomas" name="inputSintomas" placeholder="I have cavities and my ankle hurts when I run." cols="30" rows="10">
-            </textarea>
+            <textarea id="inputSintomas" name="inputSintomas" placeholder="I have cavities and my ankle hurts when I run." cols="30" rows="10"></textarea>
             <div class="form-btn">
                <button class="btnDiagnosis" onclick="location.href='/resultados.html'">NUEVO DIAGNÓSTICO</button>
             </div>
         </form>
     </div>
 </div>
-<!--
-<div class="container-diagnosis">
-    <div class="result" onclick="location.href='/enfermedad.html';">
-        <h4>DIAGNÓSTICO:
-            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
-        </h4>
-        <h4>PROBABILIDAD:
-            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
-        </h4>
-        <div class="circle"></div>
-    </div>
-</div>
--->
+
 <script src="static/js/diagnosticos.js"></script>
 </body>
 

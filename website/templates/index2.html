@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>QUASILL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 
 <body>
@@ -23,44 +21,43 @@
     <nav>
         <ul>
             <li class="item-nav">
-                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
             </li>
             <li id="cuenta" class="item-nav">
-                <a>Cuenta</a>
+                <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
-
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 </header>
+
 <div class="containers">
     <div class="container-left">
         <h1 id="quasill">Quasill</h1>
-        <h2 id="quasill2">Da sentido tus síntomas</h2>
+        <h2 id="quasill2">From Symptoms to Clarity</h2>
         <h4 class="informacion">
-            Quasill es una aplicación que te permite diagnosticar tus síntomas y
-            obtener una lista de enfermedades que pueden estar causándolos.
-            Utilizamos la inteligencia artificial para analizar tus síntomas y
-            ofrecerte un diagnóstico.
+            Quasill is a user-friendly app designed to help you understand your symptoms better. It provides a list of
+            possible diseases associated with your symptoms, all by leveraging the power of artificial intelligence. Our
+            aim is to offer an insightful, AI-driven diagnosis to guide your health decisions.
         </h4>
     </div>
     <div class="container-right">
-        <h1 class="h1demo">Introduce tus síntomas :</h1>
+        <h1 class="h1demo">Introduce your symptoms:</h1>
         <div id="inputDemo"></div>
         <div class="form-btn">
-            <button id="btnDemo" type="button">DEMO DIAGNÓSTICO</button>
+            <button id="btnDemo" type="button">TRY THE DEMO</button>
         </div>
     </div>
 </div>
+
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
 </body>
-
 </html>

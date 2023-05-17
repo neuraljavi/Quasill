@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DIAGNOSTICO</title>
+    <title>RESULTS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resultados.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
@@ -21,17 +21,17 @@
     <nav>
         <ul>
             <li class="item-nav">
-                <a href="{{ url_for('views.nosotros') }}">Nosotros</a>
+                <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
             <li class="item-nav">
-                <a href="{{ url_for('auth.diagnostico') }}">Diagnóstico</a>
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
             </li>
             <li id="cuenta" class="item-nav">
-                <a>Cuenta</a>
+                <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Perfil</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Editar datos</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>
@@ -39,7 +39,6 @@
 </header>
 
 <div class="container-diagnosis">
-
 
     <div class="result" id="resultado1">
         <h4>ILLNESS:
@@ -51,6 +50,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
+
     <div class="result" id="resultado2">
         <h4>ILLNESS:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
@@ -61,6 +61,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
+
     <div class="result" id="resultado3">
         <h4>ILLNESS:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
@@ -71,6 +72,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
+
     <div class="result" id="resultado4">
         <h4>ILLNESS:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
@@ -81,6 +83,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
+
     <div class="result" id="resultado5">
         <h4>ILLNESS:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
@@ -91,6 +94,7 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
+
     <div class="result" id="resultado6">
         <h4>ILLNESS:
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
@@ -101,8 +105,8 @@
         <div class="circle"></div>
         <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
-</div>
 
+</div>
 </body>
 
 </html>

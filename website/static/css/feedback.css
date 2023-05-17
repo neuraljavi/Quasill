@@ -96,6 +96,7 @@ h3 {
     font-size: 16px;
     text-align: justify;
     padding: 20px;
+    margin-bottom: 10px;
 }
 
 textarea::placeholder {
@@ -104,4 +105,9 @@ textarea::placeholder {
 
 textarea:placeholder-shown {
     color: transparent;
+}
+
+.lista-enfermedades{
+    margin-bottom: 20px;
+    border-radius: 5px;
 }

@@ -1,3 +1,6 @@
+from azure.cosmos.exceptions import CosmosResourceNotFoundError
+from azure.core.exceptions import HttpResponseError
+
 from azure.cosmos import CosmosClient
 from .models import User, Diagnostic
 from flask import session
@@ -70,10 +73,20 @@ def login_user(username, password):
 
 
 # BORRAMOS AL USUARIO
+
 def delete_user(user_id):
-    user = get_user_by_id(user_id)
-    container.delete_item(user.id, partition_key=user.username)
-    return True
+    try:
+        user = get_user_by_id(user_id)
+        # EL VALOR DE LA PARTITION KEY ES EL ID DEL USUARIO
+        container.delete_item(item=user_id, partition_key=user.id)
+        print('Usuario eliminado exitosamente')
+        return True
+    except CosmosResourceNotFoundError:
+        print('Usuario no encontrado')
+        return False
+    except HttpResponseError as e:
+        print(f'Ha ocurrido un error al eliminar el usuario: {e}')
+        return False
 
 
 # EDITAMOS LOS DATOS DEL USUARIO

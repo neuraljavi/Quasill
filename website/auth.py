@@ -98,14 +98,17 @@ def editar():
     return render_template('editar.html', user=user)
 
 
-@auth.route('/eliminar', methods=['GET'])
+@auth.route('/eliminar', methods=['GET', 'POST'])
 def eliminar():
+    if request.method == 'POST':
+        return redirect(url_for('auth.eliminar_cuenta'))
     return render_template('eliminar.html')
 
 
-@auth.route('/eliminar', methods=['POST'])
+@auth.route('/eliminar_cuenta', methods=['POST'])
 def eliminar_cuenta():
     user_id = session.get('user_id')
+    print(f"usuario: {user_id}")
     if user_id:
         if delete_user(user_id):
             session.clear()
