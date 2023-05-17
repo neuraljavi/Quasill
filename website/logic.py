@@ -3,6 +3,7 @@ from .models import User, Diagnostic
 from flask import session
 import os
 import hashlib
+from azure.cosmos import exceptions
 
 url = os.environ["url"]
 key = os.environ["key"]
@@ -13,12 +14,16 @@ container = database.get_container_client(os.environ["container"])
 
 # COGEMOS EL ID DEL USUARIO
 def get_user_by_id(user_id):
-    query = "SELECT * FROM c WHERE c.id = @id"
-    params = [dict(name="@id", value=user_id)]
-    items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
-    if len(items) == 0:
+    try:
+        query = "SELECT * FROM c WHERE c.id = @id"
+        params = [dict(name="@id", value=user_id)]
+        items = list(container.query_items(query=query, parameters=params, enable_cross_partition_query=True))
+        if len(items) == 0:
+            return None
+        return User.from_dict(items[0])
+    except exceptions.CosmosResourceNotFoundError:
+        print(f"User with id {user_id} not found with error {e}")
         return None
-    return User.from_dict(items[0])
 
 
 # REGISTRAMOS AL USUARIO
@@ -120,8 +125,11 @@ def read_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
 def delete_diagnostic(user: User, diagnostic_index: int):
     if 0 <= diagnostic_index < len(user.diagnostics):
         user.delete_diagnostic(diagnostic_index)
-        container.upsert_item(user.to_dict())
-        return True
+        try:
+            container.upsert_item(user.to_dict())
+            return True
+        except exceptions.CosmosHttpResponseError:
+            return False
     return False
 
 
@@ -130,8 +138,12 @@ def proportionate_feedback(user: User, diagnostic_index: int, correct_label: str
     if 0 <= diagnostic_index < len(user.diagnostics):
         feedback_successful = user.proportionate_feedback(diagnostic_index, correct_label)
         if feedback_successful:
-            container.upsert_item(user.to_dict())
-            return feedback_successful
+            try:
+                container.upsert_item(user.to_dict())
+                return True
+            except exceptions.CosmosHttpResponseError:
+                return False
+            return True
     return False
 
 
