@@ -1,6 +1,6 @@
 
 //EL TEXTO SE ESCRIBE SOLO EN INPUTDEMO
-const text = "Me duele la muñeca izquierda y vomito sangre todas las noches :(";
+const text = "My wrist hurts and I have headaches all day. I can't sleep.";
 const typingDemo = document.getElementById("inputDemo");
 let i = 0;
 setInterval(() => {
@@ -19,13 +19,13 @@ btnDemo.addEventListener("click", () => {
   // Change the content of containerRight
   containerRight.innerHTML = `
     <div class="demo">
-    <h2>DIAGNÓSTICO: COVID-19</h2>
-    <h2>PROBABILIDAD: 150%</h2>
+    <h2>DISEASE: COVID-19</h2>
+    <h2>PROBABILITY: 150%</h2>
     <div class="circle"></div>
     </div>
     <div class="demo">
-    <h2>DIAGNÓSTICO: ANEMIA</h2>
-    <h2>PROBABILIDAD: 99%</h2>
+    <h2>DISEASE: ANEMIA</h2>
+    <h2>PROBABILITY: 99%</h2>
     <div class="circle"></div>
     </div>
 `;
@@ -38,6 +38,8 @@ btnDemo.addEventListener("click", () => {
 function submitForm() {
     document.getElementById("signupForm").submit();
 }
+
+//TODO: REVISAR ESTA FUNCION
 function updateUser() {
     console.log("updateUser function called");
     document.getElementById("edit-delete").submit();

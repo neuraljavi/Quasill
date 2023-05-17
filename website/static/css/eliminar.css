@@ -74,10 +74,11 @@ h1 {
     border: none;
     font-size: 20px;
     color: #6280a6;
+    cursor: pointer;
 }
 
 #btnDelete:hover {
-    box-shadow: 10px 10px 0px 1px #9d0606;
+    box-shadow: 10px 10px 1px 1px #9d0606;
     color: #9d0606;
 }
 
