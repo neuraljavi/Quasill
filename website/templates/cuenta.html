@@ -76,36 +76,17 @@
 </div>
 
 <div class="container-diagnosis">
-    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
-        <h4>DIAGNOSTIC'S RESULTS FOR</h4>
-        <span class="data" id="disease-data"></span>
-        </h4>
-        <h4>Symptoms:
-            <span class="data" id="probability-data"></span>
-        </h4>
-        <div class="circle"></div>
-    </div>
 
-    <!--TODO: ESTOS DIVS DEBERÍAN APARECER CUANDO SE HAGAN MÁS DIAGNÓSTICOS CON JS!!-->
+    {% for diagnostic in diagnostics %}
+    <div class="result" onclick="location.href='{{ url_for('auth.cuenta', diagnostic_id=diagnostic.id) }}'">
+            <h4>DIAGNOSTIC'S RESULTS FOR</h4>
+            <h4>Symptoms:
+                <span class="data" id="textSymptoms">{{ diagnostic.text }}</span>
+            </h4>
+            <div class="circle"></div>
+        </div>
+    {% endfor %}
 
-    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
-        <h4>DIAGNOSTIC'S RESULTS FOR</h4>
-        <span class="data" id="disease-data"></span>
-        </h4>
-        <h4>Symptoms:
-            <span class="data" id="probability-data"></span>
-        </h4>
-        <div class="circle"></div>
-    </div>
-    <div class="result" onclick="location.href='{{ url_for('views.enfermedad') }}'">
-        <h4>DIAGNOSTIC'S RESULTS FOR</h4>
-        <span class="data" id="disease-data"></span>
-        </h4>
-        <h4>Symptoms:
-            <span class="data" id="probability-data"></span>
-        </h4>
-        <div class="circle"></div>
-    </div>
 </div>
 
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>

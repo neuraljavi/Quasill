@@ -24,7 +24,8 @@ def get_user_by_id(user_id):
         if len(items) == 0:
             return None
         return User.from_dict(items[0])
-    except exceptions.CosmosResourceNotFoundError:
+    # Asignar el error a una variable con "as"
+    except exceptions.CosmosResourceNotFoundError as e:
         print(f"User with id {user_id} not found with error {e}")
         return None
 
@@ -122,15 +123,20 @@ def create_diagnostic(user_id: str, text: str):
                 'disease': list(predictions.keys())[0],
                 'probability': list(predictions.values())[0]
             }
-
     return None
 
 
 # LEEMOS UN DIAGNÓSTICO
-def read_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
+def read_diagnostic(user_id: str, diagnostic_index: int):
     user = get_user_by_id(user_id)
     if user:
-        return user.get_diagnostic(diagnostic_index)
+        diagnostic = user.get_diagnostic(diagnostic_index)
+        if diagnostic and 'predictions' in diagnostic.to_dict():
+            predictions = diagnostic.to_dict()['predictions']
+            # Devuelve las 6 predicciones principales
+            # Lista de tuplas (enfermedad, probabilidad)
+            top_predictions = sorted(predictions.items(), key=lambda x: x[1], reverse=True)[:6]
+            return top_predictions
     return None
 
 

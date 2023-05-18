@@ -68,10 +68,12 @@ def signup():
     print("jajaja error2")
 
 
+# A LA RUTA CUENTA LE PASAMOS LOS DATOS DEL USUARIO Y LOS DIAGNÓSTICOS QUE HA REALIZADO
 @auth.route('/cuenta')
 def cuenta():
     user = get_user_by_id(session['user_id'])
-    return render_template("cuenta.html", user=user)
+    diagnostics = user.get_diagnostics()
+    return render_template("cuenta.html", user=user, diagnostics=diagnostics)
 
 
 @auth.route('/editar', methods=['GET', 'POST'])

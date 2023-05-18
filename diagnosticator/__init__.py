@@ -6,11 +6,11 @@ from torchtext.vocab import Vocab
 import numpy as np
 import spacy
 
-D_MODEL = 256
-NUM_HEADS = 2
-D_FF = 994
-NUM_ENCODER_LAYERS = 1
-DROP_OUT = 0.1981394172245322
+D_MODEL = 160
+NUM_HEADS = 4
+D_FF = 553
+NUM_ENCODER_LAYERS = 2
+DROP_OUT = 0.15503851801377166
 N_CLASSES = 385
 MAX_LENGTH = 128
 LEARNING_RATE = 0.0001
@@ -424,7 +424,7 @@ def load_model(vocab):
     classifier = TransformerClassifier(d_model=D_MODEL, num_heads=NUM_HEADS, d_ff=D_FF,
                                        num_layers=NUM_ENCODER_LAYERS, input_dim=len(vocab),
                                        n_classes=N_CLASSES, max_length=MAX_LENGTH, droput=DROP_OUT)
-    classifier.load_state_dict(torch.load('diagnosticator/model/model2.pth', map_location=torch.device('cpu')))
+    classifier.load_state_dict(torch.load('diagnosticator/model/model3.pth', map_location=torch.device('cpu')))
     return classifier
 
 
@@ -469,7 +469,7 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
     loss.backward()
     optimizer.step()
 
-    torch.save(model.state_dict(), 'diagnosticator/model/model2.pth')
+    torch.save(model.state_dict(), 'diagnosticator/model/model3.pth')
 
     model.eval()
 
