@@ -89,6 +89,9 @@ class User:
 
     # FUNCIÓN QUE DEVUELVE UN DIAGNÓSTICO
     def diagnosticate(self, text):
+        if len(self.diagnostics) >= 20:
+            self.diagnostics.pop(0)
+
         diagnostic = new_diagnostic(self.id, text)
         self.diagnostics.append(diagnostic)
         return diagnostic

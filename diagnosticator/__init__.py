@@ -5,6 +5,7 @@ from diagnosticator.classifier import TransformerClassifier
 from torchtext.vocab import Vocab
 import numpy as np
 import spacy
+from itertools import islice
 
 D_MODEL = 160
 NUM_HEADS = 4
@@ -514,8 +515,10 @@ def predict(text):
 
     ordered_predictions = dict(sorted(prob_dict.items(), key=lambda item: item[1], reverse=True))
 
+    top_10_predictions = dict(islice(ordered_predictions.items(), 10))
+
     # Devuelve el diccionario de probabilidades ordenado según el valor de la probabilidad
-    return ordered_predictions
+    return top_10_predictions
 
 
 # LABEL ES EL NOMBRE DE LA ENFERMEDAD
