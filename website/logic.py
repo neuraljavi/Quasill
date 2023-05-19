@@ -141,14 +141,13 @@ def read_diagnostic(user_id: str, diagnostic_index: int):
 
 
 # BORRAMOS UN DIAGNÓSTICO
-def delete_diagnostic(user: User, diagnostic_index: int):
-    if 0 <= diagnostic_index < len(user.diagnostics):
-        user.delete_diagnostic(diagnostic_index)
-        try:
-            container.upsert_item(user.to_dict())
+def delete_diagnostic(user_id, diagnostic_index):
+    user = get_user_by_id(user_id)
+    if user:
+        success = user.delete_diagnostic(diagnostic_index)
+        if success:
+            container.upsert_item(user.to_dict())  # Actualiza el usuario en la base de datos
             return True
-        except exceptions.CosmosHttpResponseError:
-            return False
     return False
 
 

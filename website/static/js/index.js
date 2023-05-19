@@ -1,4 +1,3 @@
-
 //EL TEXTO SE ESCRIBE SOLO EN INPUTDEMO
 const text = "My wrist hurts and I have headaches all day. I can't sleep.";
 const typingDemo = document.getElementById("inputDemo");
@@ -38,17 +37,3 @@ btnDemo.addEventListener("click", () => {
 function submitForm() {
     document.getElementById("signupForm").submit();
 }
-
-//TODO: REVISAR ESTA FUNCION
-function updateUser() {
-    console.log("updateUser function called");
-    document.getElementById("edit-delete").submit();
-    console.log("form submitted");
-}
-
-function deleteUser() {
-    console.log("deleteUser function called");
-    document.getElementById("btnDelete").submit();
-    console.log("form submitted");
-}
-

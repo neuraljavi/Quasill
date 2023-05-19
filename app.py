@@ -5,7 +5,7 @@ load_variables_from_json("local.settings.json")
 app = create_app()
 
 
-# so static files can be accessed
+# PARA ACCEDER A LOS ARCHIVOS DE LA CARPETA STATIC
 @app.route('/static/<path:path>')
 def send_static(path):
     return send_from_directory('static', path)

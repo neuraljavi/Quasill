@@ -14,8 +14,8 @@ class Diagnostic:
         self.text = text
         self.predictions = predictions
         self.user_id = user_id
-        #TODO volver a cambiar a: self.real_disease = None y quitarlo de los argumentos
-        #para que Diagnostic pueda manejar real_disease como un argumento de entrada
+        # TODO volver a cambiar a: self.real_disease = None y quitarlo de los argumentos
+        # para que Diagnostic pueda manejar real_disease como un argumento de entrada
         self.real_disease = real_disease
 
     def return_diseases(self):
@@ -41,7 +41,7 @@ class User:
         self.email = email
         self.password = None if 'password' not in kwargs else kwargs['password']
 
-# ACEPTA LOS DATOS DEL USUARIO Y LOS CONVIERTE EN UN USUARIO
+    # ACEPTA LOS DATOS DEL USUARIO Y LOS CONVIERTE EN UN USUARIO
     @classmethod
     def from_dict(cls, data):
         diagnostics = [Diagnostic(**diagnostic_data) for diagnostic_data in data.get('diagnostics', [])] if data.get(
@@ -75,11 +75,14 @@ class User:
             self.diagnostics = []
         self.diagnostics.append(diagnostic)
 
-    def delete_diagnostic(self, diagnostic_id):
-        self.diagnostics.remove(diagnostic_id)
-        if self.diagnostics is None:
-            self.diagnostics = []
-        return True
+    def delete_diagnostic(self, diagnostic_index):
+        try:
+            self.diagnostics.pop(diagnostic_index)
+            print("delete_diagnostic borra el diagnóstico")
+            return True
+        except IndexError:
+            print("delete_diagnostic no borra el diagnóstico")
+            return False
 
     def get_diagnostic(self, diagnostic_id):
         return self.diagnostics[diagnostic_id]

@@ -1,4 +1,4 @@
-import jsonify as jsonify
+from flask import jsonify
 from flask import Blueprint, render_template, request, session, redirect, url_for
 import re
 from website.logic import get_user_by_id, login_user, register_user, update_user, delete_user, create_diagnostic, \
@@ -75,7 +75,6 @@ def cuenta():
     diagnostics = user.get_diagnostics()
     return render_template("cuenta.html", user=user, diagnostics=diagnostics)
 
-
 @auth.route('/editar', methods=['GET', 'POST'])
 def editar():
     user_id = session.get('user_id')
@@ -149,29 +148,40 @@ def diagnostico():
         return render_template('diagnostico.html', diagnostic=diagnostic_data)
 
 
-# RUTA QUE MUESTRA LOS RESULTADOS DEL DIAGNÓSTICO
+# MOSTRAMOS LOS RESULTADOS DEL DIAGNÓSTICO
 @auth.route('/resultados', methods=['GET'])
 def resultados():
-    # Puedes pasar un texto vacío o el último texto ingresado en el diagnóstico
-    diagnostic_data = create_diagnostic(session.get('user_id'), '')
-    return render_template('resultados.html', diagnostic=diagnostic_data)
-
-
-@auth.route('/diagnostics', methods=['GET'])
-def read_all_diagnostics_route():
     user_id = session.get('user_id')
-    diagnostics = read_all_diagnostics(user_id)
-    return jsonify(diagnostics), 200
+    if user_id:
+        diagnostic_data = create_diagnostic(user_id, '')
+        return render_template('resultados.html', diagnostic=diagnostic_data)
+    return render_template('resultados.html', diagnostic=None)
 
 
-@auth.route('/diagnostic/<int:diagnostic_id>', methods=['GET'])
+@auth.route('/mostrar_diagnosticos', methods=['GET'])
+def mostrar_diagnosticos():
+    user_id = session.get('user_id')
+    if user_id:
+        diagnostics = read_all_diagnostics(user_id)
+        diagnostic_list = []
+        for diagnostic in diagnostics:
+            diagnostic_dict = {
+                'disease': diagnostic['disease'],
+                'probability': diagnostic['probability']
+            }
+            diagnostic_list.append(diagnostic_dict)
+        return jsonify(diagnostics=diagnostic_list), 200
+    return jsonify(diagnostics=[]), 200
+
+
+@auth.route('/get_diagnostic/<int:diagnostic_id>', methods=['GET'])
 def get_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
     diagnostic = read_diagnostic(user_id, diagnostic_index)
     return jsonify(diagnostic), 200
 
 
-@auth.route('/diagnostics/<int:diagnostic_id>', methods=['PUT'])
-def update_diagnostic_route(diagnostic_id):
+@auth.route('/actualizar_diagnostico/<int:diagnostic_id>', methods=['PUT'])
+def actualizar_diagnostico(diagnostic_id):
     user_id = session.get('user_id')
     correct_label = request.json.get('correct_label')
     success = proportionate_feedback(user_id, diagnostic_id, correct_label)
@@ -181,14 +191,21 @@ def update_diagnostic_route(diagnostic_id):
         return jsonify({'status': 'failure', 'message': 'Diagnostic not found'}), 404
 
 
-@auth.route('/diagnostics/<int:diagnostic_id>', methods=['DELETE'])
-def delete_diagnostic_route(diagnostic_id):
+@auth.route('/delete_diagnostic', methods=['POST'])
+def delete_diagnostic_route():
     user_id = session.get('user_id')
-    success = delete_diagnostic(user_id, diagnostic_id)
-    if success:
-        return jsonify({'status': 'success', 'message': 'Diagnostic deleted'}), 200
+    diagnostic_index = request.form.get('index')
+
+    user = get_user_by_id(user_id)
+
+    if diagnostic_index:
+        success = user.delete_diagnostic(int(diagnostic_index))
+        if success:
+            return render_template('cuenta.html', user=user, diagnostics=user.diagnostics)
+        else:
+            return render_template('cuenta.html', user=user, diagnostics=user.diagnostics)
     else:
-        return jsonify({'status': 'failure', 'message': 'Diagnostic not found'}), 404
+        return render_template('cuenta.html', user=user, diagnostics=user.diagnostics)
 
 
 @auth.route('/feedback.html', methods=['GET'])

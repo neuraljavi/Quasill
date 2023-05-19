@@ -75,22 +75,30 @@
     </div>
 </div>
 
-<div class="container-diagnosis">
-
-    {% for diagnostic in diagnostics %}
-    <div class="result" onclick="location.href='{{ url_for('auth.cuenta', diagnostic_id=diagnostic.id) }}'">
-            <h4>DIAGNOSTIC'S RESULTS FOR</h4>
-            <h4>Symptoms:
-                <span class="data" id="textSymptoms">{{ diagnostic.text }}</span>
-            </h4>
-            <div class="circle"></div>
-        </div>
-    {% endfor %}
-
+<div class="container-diagnosis" id="diagnosticDiv">
+    <form method="POST" action="/delete_diagnostic">
+        {% set contador = diagnostics|length - 1 %}
+        {% for diagnostic in diagnostics|reverse %}
+            <div class="result" id="diagnostic-{{ counter }}">
+                <h4>DIAGNOSTIC'S RESULTS FOR</h4>
+                <h4>Symptoms:
+                    <span class="data" id="textSymptoms">{{ diagnostic.text }}</span>
+                </h4>
+                <div class="circle"></div>
+                <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Eliminar</button>
+            </div>
+            {% set contador = contador - 1 %}
+        {% endfor %}
+    </form>
 </div>
 
-<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
 
 </body>
 
 </html>
+
+<!--El diagnostico no tiene un ID, solo la posición que ocupa en la lista Diagnostic del User
+         Un usuario solo puede tener 20 diagnosticos. -->
+<!--Jinja2 tiene la variable especial loop.index0 que nos da el indice actual del bucle-->
