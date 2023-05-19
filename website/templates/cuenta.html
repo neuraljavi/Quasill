@@ -85,7 +85,11 @@
                     <span class="data" id="textSymptoms">{{ diagnostic.text }}</span>
                 </h4>
                 <div class="circle"></div>
-                <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Eliminar</button>
+                <div class="opciones">
+                     <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Delete</button>
+                <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+                </div>
+
             </div>
             {% set contador = contador - 1 %}
         {% endfor %}

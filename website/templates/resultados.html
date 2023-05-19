@@ -44,10 +44,9 @@
             <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
         </h4>
         <h4>PROBABILITY:
-            <span class="data" id="probability-data">{{ diagnostic.probability }}</span>
+            <span class="data" id="probability-data">{{ diagnostic.probability | round(2) }}%</span>
         </h4>
         <div class="circle"></div>
-        <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
     </div>
 </div>
 

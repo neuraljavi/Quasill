@@ -1,12 +1,11 @@
 from azure.cosmos.exceptions import CosmosResourceNotFoundError
 from azure.core.exceptions import HttpResponseError
-
-from azure.cosmos import CosmosClient
+from azure.cosmos import exceptions, CosmosClient
 from .models import User, Diagnostic
 from flask import session
 import os
 import hashlib
-from azure.cosmos import exceptions
+
 
 url = os.environ["url"]
 key = os.environ["key"]
@@ -32,25 +31,47 @@ def get_user_by_id(user_id):
 
 # REGISTRAMOS AL USUARIO
 def register_user(name, surname, username, email, password, surname2=None):
-    query = "SELECT VALUE MAX(c.id) FROM c"
-    items = list(container.query_items(query=query, enable_cross_partition_query=True))
-    if not items or items[0] is None:
-        id = 1
+
+    # COMPROBAR QUE EL USERNAME O EMAIL YA EXISTEN EN LA BBDD
+
+    query_username = f"SELECT * FROM c WHERE c.username = '{username}'"
+    items_username = list(container.query_items(query=query_username, enable_cross_partition_query=True))
+    query_email = f"SELECT * FROM c WHERE c.email = '{email}'"
+    items_email = list(container.query_items(query=query_email, enable_cross_partition_query=True))
+
+    if items_username or items_email:
+        print('El nombre de usuario ya existe')
+        print('El correo electrónico ya existe')
+        return False
     else:
-        id = int(items[0]) + 1
-    print(id)
-    user = User(name, surname, username, email, surname2=surname2, id=str(id))
-    # HASHEAMOS LA CONTRASEÑA
-    salt = os.urandom(32)
-    password_bytes = password.encode('utf-8')
-    salt_bytes = salt
-    hash_key = hashlib.pbkdf2_hmac('sha256', password_bytes, salt_bytes, 100000)
-    salt_hex = salt_bytes.hex()
-    hash_hex = hash_key.hex()
-    salt_and_hash = salt_hex + hash_hex
-    user.password = salt_and_hash
-    container.upsert_item(user.to_dict())
-    session['user_id'] = user.id
+        query = "SELECT VALUE MAX(c.id) FROM c"
+        items = list(container.query_items(query=query, enable_cross_partition_query=True))
+        if not items or items[0] is None:
+            id = 1
+        else:
+            id = int(items[0]) + 1
+        print(id)
+
+        query = "SELECT VALUE MAX(c.id) FROM c"
+        items = list(container.query_items(query=query, enable_cross_partition_query=True))
+        if not items or items[0] is None:
+            id = 1
+        else:
+            id = int(items[0]) + 1
+        print(id)
+        user = User(name, surname, username, email, surname2=surname2, id=str(id))
+        # HASHEAMOS LA CONTRASEÑA
+        salt = os.urandom(32)
+        password_bytes = password.encode('utf-8')
+        salt_bytes = salt
+        hash_key = hashlib.pbkdf2_hmac('sha256', password_bytes, salt_bytes, 100000)
+        salt_hex = salt_bytes.hex()
+        hash_hex = hash_key.hex()
+        salt_and_hash = salt_hex + hash_hex
+        user.password = salt_and_hash
+        container.upsert_item(user.to_dict())
+        session['user_id'] = user.id
+        return True
 
 
 # EL USUARIO PUEDE HACER LOGIN CON SU USUARIO Y CONTRASEÑA

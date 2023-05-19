@@ -2,7 +2,7 @@ document.querySelector('.btnDiagnosis').addEventListener('click', function (even
     var textarea = document.getElementById('inputSintomas');
     var text = textarea.value;
 
-    // Realizar una solicitud POST al endpoint "/diagnostico"
+    // Realizamos una solicitud POST a "/diagnostico"
     fetch('/diagnostico', {
         method: 'POST',
         headers: {
@@ -20,7 +20,7 @@ document.querySelector('.btnDiagnosis').addEventListener('click', function (even
             }
         })
         .then(function (data) {
-            // Redirigir a la página de resultados después de obtener el diagnóstico
+            // Redireccionamos a la página de resultados
             location.href = '/resultados.html';
         })
         .catch(function (error) {

@@ -1,5 +1,4 @@
-from flask import jsonify
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify
 import re
 from website.logic import get_user_by_id, login_user, register_user, update_user, delete_user, create_diagnostic, \
     read_all_diagnostics, read_diagnostic, proportionate_feedback, delete_diagnostic
@@ -60,9 +59,12 @@ def signup():
             print("valida los datos")
             return redirect(url_for('auth.signup'))
 
-        register_user(name, surname, username, email, password, surname2)
-        print("usuario registrado")
-        return redirect(url_for('auth.login'))
+        if register_user(name, surname, username, email, password, surname2):
+            print("usuario registrado")
+            return redirect(url_for('auth.login'))
+        else:
+            print("El nombre de usuario o el correo electrónico ya existen")
+            return redirect(url_for('auth.signup'))
     else:
         return render_template("signup.html")
     print("jajaja error2")
@@ -75,13 +77,13 @@ def cuenta():
     diagnostics = user.get_diagnostics()
     return render_template("cuenta.html", user=user, diagnostics=diagnostics)
 
+
 @auth.route('/editar', methods=['GET', 'POST'])
 def editar():
     user_id = session.get('user_id')
-    user = get_user_by_id(user_id)  # retrieve user information from the database
+    user = get_user_by_id(user_id)
     if request.method == 'POST':
         if request.form['submit_button'] == 'btnUpdate':
-            # update user information
             name = request.form.get('name')
             surname = request.form.get('surname1')
             surname2 = request.form.get('surname2')
@@ -141,9 +143,9 @@ def diagnostico():
         diagnostic_data = create_diagnostic(user_id, text)
         print(diagnostic_data)
         return redirect(
-            url_for('auth.resultados'))  # Redirigir a la página de resultados después de recibir los síntomas
+            url_for('auth.resultados'))
 
-    else:  # This is a GET request
+    else:
         diagnostic_data = create_diagnostic(session.get('user_id'), '')
         return render_template('diagnostico.html', diagnostic=diagnostic_data)
 

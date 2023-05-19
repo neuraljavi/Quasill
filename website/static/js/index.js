@@ -2,38 +2,18 @@
 const text = "My wrist hurts and I have headaches all day. I can't sleep.";
 const typingDemo = document.getElementById("inputDemo");
 let i = 0;
-setInterval(() => {
-  if (i <= text.length) {
-    typingDemo.innerHTML = text.slice(0, i);
+
+function typeWriter() {
+  if (i < text.length) {
+    typingDemo.innerHTML += text.charAt(i);
     i++;
+    setTimeout(typeWriter, 50);
   }
-}, 50);
-const btnDemo = document.getElementById("btnDemo");
-const containerRight = document.querySelector(".container-right");
-const originalContent = containerRight.innerHTML; // Store original content
-
-//BTNDEMO CAMBIA EL CONTENIDO DE CONTAINER-RIGHT
-
-btnDemo.addEventListener("click", () => {
-  // Change the content of containerRight
-  containerRight.innerHTML = `
-    <div class="demo">
-    <h2>DISEASE: COVID-19</h2>
-    <h2>PROBABILITY: 150%</h2>
-    <div class="circle"></div>
-    </div>
-    <div class="demo">
-    <h2>DISEASE: ANEMIA</h2>
-    <h2>PROBABILITY: 99%</h2>
-    <div class="circle"></div>
-    </div>
-`;
-  setTimeout(() => {
-    containerRight.innerHTML = originalContent;
-  }, 7000);
-});
+}
+typeWriter();
 
 // CREAR CUENTA - VIEW: SIGNUP
 function submitForm() {
     document.getElementById("signupForm").submit();
 }
+

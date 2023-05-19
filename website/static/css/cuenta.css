@@ -163,6 +163,24 @@ h4 {
     margin-top: 20px;
 }
 
+
+h5 {
+
+    text-align: right;
+    font-size: 15px;
+    font-style: italic;
+}
+
+h5:hover {
+    color: #e98ca7;
+    cursor: pointer;
+}
+
+.opciones{
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 1500px) {
     .container-form {
         display: none;
@@ -176,6 +194,7 @@ h4 {
     }
 
 }
+
 
 @media screen and (max-width: 755px) {
 
