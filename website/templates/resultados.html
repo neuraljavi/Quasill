@@ -39,17 +39,15 @@
 </header>
 
 <div class="container-diagnosis">
-    {% for disease, probability in top_diseases %}
-        <div class="result" id="resultado">
-            <h4>ILLNESS:
-                <span class="data" id="disease-data">{{ disease }}</span>
-            </h4>
-            <h4>PROBABILITY:
-                <span class="data" id="probability-data">{{ probability | round(2) }}%</span>
-            </h4>
-            <div class="circle"></div>
-        </div>
-    {% endfor %}
+    <div class="result" id="resultado">
+        <h4>ILLNESS:
+            <span class="data" id="disease-data">{{ diagnostic.disease }}</span>
+        </h4>
+        <h4>PROBABILITY:
+            <span class="data" id="probability-data">{{ diagnostic.probability}}%</span>
+        </h4>
+        <div class="circle"></div>
+    </div>
 </div>
 
 

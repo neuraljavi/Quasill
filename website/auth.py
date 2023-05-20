@@ -154,8 +154,9 @@ def resultados():
     user = get_user_by_id(session['user_id'])
     if user:
         diagnostic_data = user.get_last_diagnostic()
-        probabilities = diagnostic_data.get('probabilities', {})
-
+        print(diagnostic_data)
+        probabilities = diagnostic_data.return_diseases()
+        print(probabilities)
         # Ordena el diccionario de probabilidades por valor en orden descendente
         sorted_probabilities = dict(sorted(probabilities.items(), key=lambda item: item[1], reverse=True))
 
@@ -213,6 +214,7 @@ def delete_diagnostic_route():
     return redirect(url_for('auth.cuenta'))
 
 
-@auth.route('/feedback.html', methods=['GET'])
-def feedback_html():
+@auth.route('/feedback/<diag_id>', methods=['GET', 'POST'], endpoint='feedback')
+def feedback(diag_id):
+    # now you can use diag_id in your function
     return render_template('feedback.html')
