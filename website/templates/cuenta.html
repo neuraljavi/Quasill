@@ -75,7 +75,7 @@
     </div>
 </div>
 
-<div class="container-diagnosis" id="diagnosticDiv">
+<div class="container-diagnosis {% if no_results %}sin-resultados{% endif %}" id="diagnosticDiv" >
     <form method="POST" action="/delete_diagnostic">
         {% set contador = diagnostics|length - 1 %}
         {% for diagnostic in diagnostics|reverse %}

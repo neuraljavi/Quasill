@@ -28,7 +28,9 @@ body {
 .container-diagnosis {
     margin-left: 400px;
     margin-top: 150px;
+    min-height: 500px; /* Ajusta este valor a lo que necesites */
 }
+
 
 .h1img {
     display: flex;
@@ -176,7 +178,7 @@ h5:hover {
     cursor: pointer;
 }
 
-.opciones{
+.opciones {
     display: flex;
     justify-content: space-between;
 }
@@ -193,6 +195,13 @@ h5:hover {
         display: block;
     }
 
+.container-diagnosis.sin-resultados {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
 }
 
 
@@ -208,6 +217,13 @@ h5:hover {
     }
 
 
+.container-diagnosis.sin-resultados {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
 }
 
 @media screen and (max-width: 555px) {
@@ -229,4 +245,11 @@ h5:hover {
         margin: 0;
     }
 
+.container-diagnosis.sin-resultados {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
 }
