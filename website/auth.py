@@ -154,8 +154,17 @@ def resultados():
     user = get_user_by_id(session['user_id'])
     if user:
         diagnostic_data = user.get_last_diagnostic()
-        return render_template('resultados.html', diagnostic=diagnostic_data)
-    return render_template('resultados.html', diagnostic=None)
+        probabilities = diagnostic_data.get('probabilities', {})
+
+        # Ordena el diccionario de probabilidades por valor en orden descendente
+        sorted_probabilities = dict(sorted(probabilities.items(), key=lambda item: item[1], reverse=True))
+
+        # Selecciona las primeras 6 enfermedades
+        top_diseases = list(sorted_probabilities.items())[:6]
+
+        return render_template('resultados.html', diagnostic=diagnostic_data, top_diseases=top_diseases)
+    return render_template('resultados.html', diagnostic=None, top_diseases=[])
+
 
 
 @auth.route('/mostrar_diagnosticos', methods=['GET'])
