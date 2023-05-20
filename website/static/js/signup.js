@@ -1,14 +1,23 @@
-document.querySelector('.signup-form').addEventListener('submit', function(e) {
+document.querySelector('.signup').addEventListener('submit', function(e) {
     e.preventDefault();
 
     // Obtiene los valores del formulario
     const name = document.querySelector('#name').value;
-    const surname = document.querySelector('#surname').value;
+    const surname = document.querySelector('#surname1').value;
     const surname2 = document.querySelector('#surname2').value;
     const username = document.querySelector('#username').value;
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
     const password2 = document.querySelector('#password2').value;
+
+    console.log(name);
+    console.log(surname);
+    console.log(surname2);
+    console.log(username);
+    console.log(email);
+    console.log(password);
+    console.log(password2);
+
 
     // Realiza las comprobaciones de validación
     if (password !== password2) {
