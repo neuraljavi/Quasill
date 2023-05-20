@@ -40,38 +40,13 @@ def signup():
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
-        password2 = request.form.get('password2')
-
-        print(name, surname, surname2, username, email, password, password2)
-
-        if password != password2:
-            print("erro1")
-            return redirect(url_for('auth.signup'))
-
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            print("error2")
-            return redirect(url_for('auth.signup'))
-
-        if not re.match(r"[A-Za-z0-9]+", username):
-            print("error3")
-            return redirect(url_for('auth.signup'))
-        if not name or not surname or not username or not email or not password or not password2:
-            print("error4")
-            return redirect(url_for('auth.signup'))
-
-        if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])([a-zA-Z\d!@#$%^&*()]{8,})$", password):
-            print("valida los datos")
-            return redirect(url_for('auth.signup'))
 
         if register_user(name, surname, username, email, password, surname2):
-            print("usuario registrado")
             return redirect(url_for('auth.login'))
         else:
-            print("El nombre de usuario o el correo electrónico ya existen")
-            return redirect(url_for('auth.signup'))
+            return jsonify({'status': 'El nombre de usuario o el correo electrónico ya existen'}), 409
     else:
         return render_template("signup.html")
-    print("jajaja error2")
 
 
 # A LA RUTA CUENTA LE PASAMOS LOS DATOS DEL USUARIO Y LOS DIAGNÓSTICOS QUE HA REALIZADO
