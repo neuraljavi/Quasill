@@ -31,21 +31,24 @@ def login():
         return render_template("login.html", user=session.get('user_id'))
 
 
-@app.route('/signup', methods=['POST'])
+@auth.route('/signup', methods=['GET', 'POST'])
 def signup():
-    data = request.json
-    name = data['name']
-    surname = data['surname']
-    surname2 = data['surname2']
-    username = data['username']
-    email = data['email']
-    password = data['password']
+    if request.method == 'POST':
+        data = request.json
+        name = data['name']
+        surname = data['surname']
+        surname2 = data['surname2']
+        username = data['username']
+        email = data['email']
+        password = data['password']
 
-    # Registra al usuario
-    if register_user(name, surname, username, email, password, surname2):
-        return jsonify({'status': 'Usuario registrado'}), 200
+        # Registra al usuario
+        if register_user(name, surname, username, email, password, surname2):
+            return jsonify({'status': 'Usuario registrado'}), 200
+        else:
+            return jsonify({'status': 'El nombre de usuario o el correo electrónico ya están en uso'}), 409
     else:
-        return jsonify({'status': 'El nombre de usuario o el correo electrónico ya están en uso'}), 409
+        return render_template("signup.html")
 
 
 
