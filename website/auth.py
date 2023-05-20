@@ -31,22 +31,22 @@ def login():
         return render_template("login.html", user=session.get('user_id'))
 
 
-@auth.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['POST'])
 def signup():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        surname = request.form.get('surname1')
-        surname2 = request.form.get('surname2')
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
+    data = request.json
+    name = data['name']
+    surname = data['surname']
+    surname2 = data['surname2']
+    username = data['username']
+    email = data['email']
+    password = data['password']
 
-        if register_user(name, surname, username, email, password, surname2):
-            return redirect(url_for('auth.login'))
-        else:
-            return jsonify({'status': 'El nombre de usuario o el correo electrónico ya existen'}), 409
+    # Registra al usuario
+    if register_user(name, surname, username, email, password, surname2):
+        return jsonify({'status': 'Usuario registrado'}), 200
     else:
-        return render_template("signup.html")
+        return jsonify({'status': 'El nombre de usuario o el correo electrónico ya están en uso'}), 409
+
 
 
 # A LA RUTA CUENTA LE PASAMOS LOS DATOS DEL USUARIO Y LOS DIAGNÓSTICOS QUE HA REALIZADO

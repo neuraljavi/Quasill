@@ -1,22 +1,48 @@
-document.querySelector('#signup-form').addEventListener('submit', function(e) {
+document.querySelector('.signup-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
+    // Obtiene los valores del formulario
     const name = document.querySelector('#name').value;
-    const surname = document.querySelector('#surname1').value;
+    const surname = document.querySelector('#surname').value;
     const surname2 = document.querySelector('#surname2').value;
     const username = document.querySelector('#username').value;
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
+    const password2 = document.querySelector('#password2').value;
 
-    var data = {
-        'name': name,
-        'surname': surname,
-        'surname2': surname2,
-        'username': username,
-        'email': email,
-        'password': password,
+    // Realiza las comprobaciones de validación
+    if (password !== password2) {
+        alert('Las contraseñas no coinciden');
+        return;
+    }
+    if (!/[^@]+@[^@]+\.[^@]+/.test(email)) {
+        alert('El formato de correo electrónico no es válido');
+        return;
+    }
+    if (!/[A-Za-z0-9]+/.test(username)) {
+        alert('El nombre de usuario contiene caracteres no permitidos');
+        return;
+    }
+    if (!name || !surname || !username || !email || !password || !password2) {
+        alert('Todos los campos son obligatorios');
+        return;
+    }
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])([a-zA-Z\d!@#$%^&*()]{8,})$/.test(password)) {
+        alert('La contraseña no cumple con los requisitos de seguridad');
+        return;
+    }
+
+    // Prepara los datos a enviar
+    const data = {
+        name: name,
+        surname: surname,
+        surname2: surname2,
+        username: username,
+        email: email,
+        password: password,
     };
 
+    // Envía los datos al servidor
     fetch('/signup', {
         method: 'POST',
         headers: {
@@ -24,13 +50,13 @@ document.querySelector('#signup-form').addEventListener('submit', function(e) {
         },
         body: JSON.stringify(data)
     }).then(response => {
-        if (!response.ok) {
-            return response.json().then(data => { throw new Error(data.status) })
+        if (response.ok) {
+            window.location.href = '/login';
+        } else {
+            // Si el servidor responde con un error, muestra un mensaje de alerta
+            response.json().then(data => {
+                alert(data.status);
+            });
         }
-        return response.json();
-    }).then(data => {
-        window.location.href = '/login';
-    }).catch(error => {
-        alert(error);
     });
 });
