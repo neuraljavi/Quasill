@@ -39,8 +39,8 @@
 </header>
 
 <div class="container-diagnosis">
-    <div class="result" id="resultado">
-        {% for disease, probability in top_diseases %}
+    {% for disease, probability in top_diseases %}
+        <div class="result" id="resultado">
             <h4>ILLNESS:
                 <span class="data" id="disease-data">{{ disease }}</span>
             </h4>
@@ -48,8 +48,9 @@
                 <span class="data" id="probability-data">{{ probability }}%</span>
             </h4>
             <div class="circle"></div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+
 </div>
 
 
