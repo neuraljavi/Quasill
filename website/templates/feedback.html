@@ -41,13 +41,15 @@
 
 
 <div class="container-feedback">
+
     <h1>Help us get better!</h1>
     <h2>Help us improve our service by filling out this form.</h2>
     <h3>Your medical insights are valuable to us. If you have consulted with a healthcare professional, we kindly
         request you to provide the diagnosis you received.</h3>
-    <div class="container-form">
-        <form class="feedback-form" action="">
-            <select class="lista-enfermedades">
+
+    <div class="container-form" method="POST">
+        <form class="feedback-form" id="feedbackForm">
+            <select class="lista-enfermedades" name="disease">
                 <option value="Abdominal aortic aneurysm">Abdominal aortic aneurysm</option>
                 <option value="Absence seizure">Absence seizure</option>
                 <option value="Acalasia">Acalasia</option>
@@ -164,7 +166,8 @@
                 <option value="Claudication">Claudication</option>
                 <option value="Cleft lip and cleft palate">Cleft lip and cleft palate</option>
                 <option value="Clostridium difficile-associated diarrhea (CDAD)">Clostridium difficile-associated
-                    diarrhea (CDAD)</option>
+                    diarrhea (CDAD)
+                </option>
                 <option value="Cluster headache">Cluster headache</option>
                 <option value="Colon cancer">Colon cancer</option>
                 <option value="Coma">Coma</option>
@@ -187,7 +190,8 @@
                 <option value="Dental abscess">Dental abscess</option>
                 <option value="Dental cavities">Dental cavities</option>
                 <option value="DiGeorge Syndrome (22q11.2 Deletion Syndrome)">DiGeorge Syndrome (22q11.2 Deletion
-                    Syndrome)</option>
+                    Syndrome)
+                </option>
                 <option value="Diabetic Coma">Diabetic Coma</option>
                 <option value="Diabetic ketoacidosis">Diabetic ketoacidosis</option>
                 <option value="Dilated cardiomyopathy">Dilated cardiomyopathy</option>
@@ -244,7 +248,8 @@
                 <option value="Hypertrophic cardiomyopathy">Hypertrophic cardiomyopathy</option>
                 <option value="Hürthle cell cancer">Hürthle cell cancer</option>
                 <option value="Idiopathic Intracranial Hypertension (Pseudotumor Cerebri)">Idiopathic Intracranial
-                    Hypertension (Pseudotumor Cerebri)</option>
+                    Hypertension (Pseudotumor Cerebri)
+                </option>
                 <option value="Impetigo">Impetigo</option>
                 <option value="Indigestion">Indigestion</option>
                 <option value="Infant jaundice">Infant jaundice</option>
@@ -327,7 +332,8 @@
                 <option value="Pancreatic cancer">Pancreatic cancer</option>
                 <option value="Panic attacks and panic disorder">Panic attacks and panic disorder</option>
                 <option value="Paraneoplastic Syndromes of the Nervous System">Paraneoplastic Syndromes of the Nervous
-                    System </option>
+                    System
+                </option>
                 <option value="Patellofemoral Pain Syndrome">Patellofemoral Pain Syndrome</option>
                 <option value="Penicillin allergy">Penicillin allergy</option>
                 <option value="Peripheral nerve injuries">Peripheral nerve injuries</option>
@@ -439,12 +445,14 @@
                 <option value="Wolff-Parkinson-White syndrome">Wolff-Parkinson-White syndrome</option>
                 <option value="Wrinkles">Wrinkles</option>
             </select>
-            <textarea placeholder="Please provide any additional comments or feedback here" name="inputFeedback"
+            <textarea placeholder="Please provide any additional comments or feedback here"
                       id="inputFeedback"></textarea>
-            <button type="submit" class="btnSubmit">Submit</button>
+            <button type="submit" class="btnSubmit" onclick="">Submit</button>
         </form>
     </div>
+
 </div>
+<script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
 
 </body>
 </html>

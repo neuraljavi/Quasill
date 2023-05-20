@@ -445,6 +445,7 @@ def encode(text, tokenizer, vocab, max_length):
 
 
 def update_model(model, user_input, correct_label, tokenizer, vocab):
+    print("ha llegado a update_model")
     model.train()
 
     # Define el optimizador y la función de pérdida
@@ -453,7 +454,7 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
 
     # Tokeniza y codifica el texto de entrada
     encoded_text = encode(user_input, tokenizer, vocab, MAX_LENGTH)
-    input_tensor = torch.tensor(encoded_text).to(device)
+    input_tensor = torch.tensor(encoded_text).unsqueeze(0).to(device)
 
     # Codifica la etiqueta correcta
     label_tensor = torch.tensor([correct_label]).to(device)
@@ -461,6 +462,7 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
     # Calcula la salida del modelo
     logits = model(input_tensor)
 
+    print("ha llegado a update_model 2")
     optimizer.zero_grad()
 
     # Calcula la pérdida
@@ -473,7 +475,7 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
     torch.save(model.state_dict(), 'diagnosticator/model/model3.pth')
 
     model.eval()
-
+    print("ha llegado a update_model 3")
     return loss.item()
 
 

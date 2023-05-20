@@ -1,5 +1,9 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify
 import re
+
+from pyexpat import model
+
+from diagnosticator import DISEASES, update_model
 from website.logic import get_user_by_id, login_user, register_user, update_user, delete_user, create_diagnostic, \
     read_all_diagnostics, read_diagnostic, proportionate_feedback, delete_diagnostic
 from website.models import Diagnostic, new_diagnostic
@@ -189,11 +193,14 @@ def get_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
     return jsonify(diagnostic), 200
 
 
+# btnsubmit
 @auth.route('/actualizar_diagnostico/<int:diagnostic_id>', methods=['PUT'])
 def actualizar_diagnostico(diagnostic_id):
+    print("actualizando")
     user_id = session.get('user_id')
+    diagnostic_id = int(diagnostic_id)
     correct_label = request.json.get('correct_label')
-    success = proportionate_feedback(user_id, diagnostic_id, correct_label)
+    success = proportionate_feedback(user_id=user_id, diagnostic_index=diagnostic_id, correct_label=correct_label)
     if success:
         return jsonify({'status': 'success', 'message': 'Diagnostic updated'}), 200
     else:
@@ -202,14 +209,13 @@ def actualizar_diagnostico(diagnostic_id):
 
 @auth.route('/delete_diagnostic', methods=['POST'])
 def delete_diagnostic_route():
+    print("borrando")
     user_id = session.get('user_id')
     diagnostic_index = request.form.get('index')
 
-    user = get_user_by_id(user_id)
-
     if diagnostic_index:
-        user.delete_diagnostic(int(diagnostic_index))
-
+        delete_diagnostic(user_id, diagnostic_index)
+        print("borrado")
     return redirect(url_for('auth.cuenta'))
 
 

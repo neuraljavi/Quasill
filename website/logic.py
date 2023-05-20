@@ -173,7 +173,8 @@ def delete_diagnostic(user_id, diagnostic_index):
 
 
 # PROPORCIONAMOS FEEDBACK RELACIONADO CON EL DIAGNÓSTICO
-def proportionate_feedback(user: User, diagnostic_index: int, correct_label: str):
+def proportionate_feedback(user_id, diagnostic_index: int, correct_label: str):
+    user = get_user_by_id(user_id)
     if 0 <= diagnostic_index < len(user.diagnostics):
         feedback_successful = user.proportionate_feedback(diagnostic_index, correct_label)
         if feedback_successful:

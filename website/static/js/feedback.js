@@ -1,6 +1,6 @@
 // Obtiene el ID de diagnóstico de la URL
 const urlParams = new URLSearchParams(window.location.search);
-const diagId = urlParams.get('diag_id');
+const diagId = window.location.pathname.split('/').pop();
 
 // Cuando se envía el formulario, envía una solicitud PUT a actualizar_diagnostico
 document.querySelector('.feedback-form').addEventListener('submit', function(e) {

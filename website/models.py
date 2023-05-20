@@ -76,6 +76,7 @@ class User:
         self.diagnostics.append(diagnostic)
 
     def delete_diagnostic(self, diagnostic_index):
+        diagnostic_index = int(diagnostic_index)
         try:
             self.diagnostics.pop(diagnostic_index)
             print("delete_diagnostic borra el diagnóstico")
