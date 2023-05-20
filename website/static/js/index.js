@@ -13,7 +13,7 @@ function typeWriter() {
 typeWriter();
 
 // CREAR CUENTA - VIEW: SIGNUP
-function submitForm() {
-    document.getElementById("signupForm").submit();
-}
+//function submitForm() {
+  //  document.getElementById("signupForm").submit();
+//}
 

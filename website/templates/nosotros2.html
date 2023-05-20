@@ -23,11 +23,15 @@
             <li class="item-nav">
                 <a href="{{ url_for('views.nosotros') }}">About us</a>
             </li>
+            <li class="item-nav">
+                <a href="{{ url_for('auth.diagnostico') }}">Diagnosis</a>
+            </li>
             <li id="cuenta" class="item-nav">
                 <a>Account</a>
                 <ul class="nav-dropdown">
-                    <li><a class="item-dropdown" href="{{ url_for('auth.login') }}">Log in</a></li>
-                    <li><a class="item-dropdown" href="{{ url_for('auth.signup') }}">Sign up</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.cuenta') }}">Account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.editar') }}">Edit account</a></li>
+                    <li><a class="item-dropdown" href="{{ url_for('auth.logout') }}">Log out</a></li>
                 </ul>
             </li>
         </ul>

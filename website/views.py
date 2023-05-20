@@ -15,9 +15,13 @@ def index():
 def index2():
     return render_template("index2.html")
 
+
 @views.route('/nosotros')
 def nosotros():
-    return render_template("nosotros.html")
+    return render_template("nosotros.html") \
+        if not session.get('user_id') \
+        else render_template("nosotros2.html", user=session.get('user_id'))
+
 
 @views.route('/enfermedad')
 def enfermedad():
