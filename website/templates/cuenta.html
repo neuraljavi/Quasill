@@ -87,7 +87,7 @@
                 <div class="circle"></div>
                 <div class="opciones">
                      <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Delete</button>
-                <h5 onclick="location.href='/feedback.html';">Feedback?</h5>
+                <h5 onclick="location.href='{{ url_for('views.feedback', diag_id=contador) }}';">Feedback?</h5>
                 </div>
 
             </div>

@@ -109,3 +109,6 @@ class User:
             return False
         diagnostic.real_disease = correct_label
         return True
+
+    def get_last_diagnostic(self):
+        return self.diagnostics[-1]

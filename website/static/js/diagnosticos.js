@@ -27,3 +27,24 @@ document.querySelector('.btnDiagnosis').addEventListener('click', function (even
             console.error(error);
         });
 });
+
+function preventNewline(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+    }
+}
+
+function checkWordCount() {
+    var textarea = document.getElementById('inputSintomas');
+    var wordCount = textarea.value.split(/\s+/).filter(function(word) {
+        return /\S/.test(word);
+    }).length;
+
+    var button = document.querySelector('.btnDiagnosis');
+    if (wordCount < 5) {
+        button.disabled = true;
+    } else {
+        button.disabled = false;
+    }
+}
+

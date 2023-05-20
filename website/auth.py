@@ -142,20 +142,18 @@ def diagnostico():
         print(user_id)
         diagnostic_data = create_diagnostic(user_id, text)
         print(diagnostic_data)
-        return redirect(
-            url_for('auth.resultados'))
+        return redirect(url_for('auth.resultados'))
 
     else:
-        diagnostic_data = create_diagnostic(session.get('user_id'), '')
-        return render_template('diagnostico.html', diagnostic=diagnostic_data)
+        return render_template('diagnostico.html', result=False)
 
 
 # MOSTRAMOS LOS RESULTADOS DEL DIAGNÓSTICO
 @auth.route('/resultados', methods=['GET'])
 def resultados():
-    user_id = session.get('user_id')
-    if user_id:
-        diagnostic_data = create_diagnostic(user_id, '')
+    user = get_user_by_id(session['user_id'])
+    if user:
+        diagnostic_data = user.get_last_diagnostic()
         return render_template('resultados.html', diagnostic=diagnostic_data)
     return render_template('resultados.html', diagnostic=None)
 
@@ -201,13 +199,9 @@ def delete_diagnostic_route():
     user = get_user_by_id(user_id)
 
     if diagnostic_index:
-        success = user.delete_diagnostic(int(diagnostic_index))
-        if success:
-            return render_template('cuenta.html', user=user, diagnostics=user.diagnostics)
-        else:
-            return render_template('cuenta.html', user=user, diagnostics=user.diagnostics)
-    else:
-        return render_template('cuenta.html', user=user, diagnostics=user.diagnostics)
+        user.delete_diagnostic(int(diagnostic_index))
+
+    return redirect(url_for('auth.cuenta'))
 
 
 @auth.route('/feedback.html', methods=['GET'])
