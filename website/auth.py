@@ -163,9 +163,8 @@ def resultados():
         # Selecciona las primeras 6 enfermedades
         top_diseases = list(sorted_probabilities.items())[:6]
 
-        return render_template('resultados.html', diagnostic=diagnostic_data, top_diseases=top_diseases)
-    return render_template('resultados.html', diagnostic=None, top_diseases=[])
-
+        return render_template('resultados.html', top_diseases=top_diseases)
+    return render_template('resultados.html', top_diseases=[])
 
 
 @auth.route('/mostrar_diagnosticos', methods=['GET'])
