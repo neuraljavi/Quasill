@@ -27,14 +27,13 @@ body {
 
 h1 {
     width: 400px;
-    padding: 10px;
     background-color: #6280a6;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Cambria';
+    color: #fff;
+    font-family: 'Cambria', serif;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
-    color: #fff;
+    padding: 10px;
     -webkit-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
     -moz-box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
     box-shadow: 10px 10px 0px 0px rgba(233, 140, 166, 1);
@@ -44,8 +43,8 @@ h1 {
     width: 400px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Calibri';
     color: #6280a6;
+    font-family: 'Calibri', sans-serif;
     -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
     -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
     box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
@@ -60,13 +59,12 @@ input {
     padding: 5px;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     position: relative;
 }
 
 input::placeholder {
     color: #acc5e1;
-    font-family: 'Calibri';
     transform: translateY(3px);
 }
 
@@ -77,7 +75,7 @@ input::placeholder {
     padding: 5px 20px;
     width: 100%;
     cursor: pointer;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-weight: 500;
     font-size: 20px;
 }

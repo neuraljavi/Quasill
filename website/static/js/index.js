@@ -1,3 +1,5 @@
+// FUNCIÓN CREADA POR ALEJANDRA
+
 //EL TEXTO SE ESCRIBE SOLO EN INPUTDEMO
 const text = "My wrist hurts and I have headaches all day. I can't sleep.";
 const typingDemo = document.getElementById("inputDemo");
@@ -11,9 +13,3 @@ function typeWriter() {
   }
 }
 typeWriter();
-
-// CREAR CUENTA - VIEW: SIGNUP
-//function submitForm() {
-  //  document.getElementById("signupForm").submit();
-//}
-

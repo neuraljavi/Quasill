@@ -33,7 +33,7 @@ body {
     padding: 40px;
     padding-bottom: 0;
     background-color: #fff;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     color: #6280a6;
     margin-left: auto;
     margin-right: auto;
@@ -41,7 +41,7 @@ body {
 }
 
 h1 {
-    font-family: Cambria;
+    font-family: Cambria, sans-serif;
     width: 80%;
     max-width: 500px;
     padding: 10px;
@@ -68,12 +68,11 @@ h1 {
     max-width: 400px;
     padding: 20px 40px 20px 40px;
     background-color: #fff;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     color: #6280a6;
     text-decoration: none;
     border: none;
     font-size: 20px;
-    color: #6280a6;
     cursor: pointer;
 }
 
@@ -86,6 +85,5 @@ p {
     font-size: 18px;
     text-align: justify;
     margin: 10px;
-
 }
 

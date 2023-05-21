@@ -13,7 +13,6 @@
 <body>
 <header>
     <div class="logo">
-        <!-- access index with views.index -->
         <a href="{{ url_for('views.index') }}">
             <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
         </a>
@@ -39,6 +38,7 @@
 </header>
 
 <div class="container-diagnosis">
+
     {% for disease, probability in top_diseases %}
         <div class="result" id="resultado">
             <h4>ILLNESS:
@@ -52,7 +52,6 @@
     {% endfor %}
 
 </div>
-
 
 </body>
 

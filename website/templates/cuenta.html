@@ -13,7 +13,6 @@
 <body>
 <header>
     <div class="logo">
-        <!-- access index with views.index -->
         <a href="{{ url_for('views.index') }}">
             <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
         </a>
@@ -75,13 +74,17 @@
     </div>
 </div>
 
+<!--NO_RESULTS POR SI NO HAY RESULTADOS Y QUE EL DIV DEL PERFIL NO SE DESCOLOQUE-->
 <div class="container-diagnosis {% if no_results %}sin-resultados{% endif %}" id="diagnosticDiv">
+    <!--El diagnostico no tiene un ID, solo la posición que ocupa en la lista Diagnostic del User
+             Un usuario solo puede tener 20 diagnosticos. -->
     <form method="POST" action="/delete_diagnostic">
         {% set contador = diagnostics|length - 1 %}
         {% for diagnostic in diagnostics|reverse %}
-            <div class="result" id="diagnostic-{{ counter }}"
-                 onclick="location.href='{{ url_for('auth.resultados', diag_id=contador) }}';">
-                <h4>DIAGNOSTIC'S RESULTS FOR</h4>
+            <div class="result">
+                <h4 id="diagnostic-{{ counter }}"
+                    onclick="location.href='{{ url_for('auth.resultados', diag_id=contador) }}';">DIAGNOSTIC'S RESULTS
+                    FOR</h4>
                 <h4>Symptoms:
                     <span class="data" id="textSymptoms">{{ diagnostic.text }}</span>
                 </h4>
@@ -90,17 +93,13 @@
                     <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Delete</button>
                     <h5 onclick="location.href='{{ url_for('auth.feedback', diag_id=contador) }}';">Feedback?</h5>
                 </div>
-
             </div>
             {% set contador = contador - 1 %}
         {% endfor %}
     </form>
-</div>
 
+</div>
 </body>
 
 </html>
 
-<!--El diagnostico no tiene un ID, solo la posición que ocupa en la lista Diagnostic del User
-         Un usuario solo puede tener 20 diagnosticos. -->
-<!--Jinja2 tiene la variable especial loop.index0 que nos da el indice actual del bucle-->

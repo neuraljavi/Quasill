@@ -13,7 +13,6 @@
 <body>
 <header>
     <div class="logo">
-        <!-- access index with views.index -->
         <a href="{{ url_for('views.index') }}">
             <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
         </a>
@@ -41,12 +40,14 @@
 <div class="container-sintomas">
     <h1>Introduce your symptoms :</h1>
     <div class="container-input">
+
         <form id="form-diagnosis" action="/diagnostico" method="post">
             <textarea id="inputSintomas" name="inputSintomas" placeholder="I have cavities and my ankle hurts when I run." cols="30" rows="10" oninput="checkWordCount()" onkeydown="preventNewline(event)"></textarea>
             <div class="form-btn">
                <button class="btnDiagnosis" onclick="location.href='/resultados.html'" disabled>DIAGNOSTICATE</button>
             </div>
         </form>
+
     </div>
 </div>
 

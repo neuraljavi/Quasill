@@ -1,3 +1,4 @@
+// FUNCIÓN CREADA POR ALEJANDRA
 document.querySelector('.btnDiagnosis').addEventListener('click', function (event) {
     var textarea = document.getElementById('inputSintomas');
     var text = textarea.value;
@@ -6,6 +7,7 @@ document.querySelector('.btnDiagnosis').addEventListener('click', function (even
     fetch('/diagnostico', {
         method: 'POST',
         headers: {
+            //Cómo interpreta los datos el servidor
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: new URLSearchParams({
@@ -20,13 +22,12 @@ document.querySelector('.btnDiagnosis').addEventListener('click', function (even
             }
         })
         .then(function (data) {
-            // Redireccionamos a la página de resultados
+            // Redireccionamos a resultados si OK
             location.href = '/resultados.html';
         })
-        .catch(function (error) {
-            console.error(error);
-        });
 });
+
+// FUNCIONES CREADAS POR JAVIER
 
 function preventNewline(event) {
     if (event.key === 'Enter') {
@@ -36,7 +37,7 @@ function preventNewline(event) {
 
 function checkWordCount() {
     var textarea = document.getElementById('inputSintomas');
-    var wordCount = textarea.value.split(/\s+/).filter(function(word) {
+    var wordCount = textarea.value.split(/\s+/).filter(function (word) {
         return /\S/.test(word);
     }).length;
 

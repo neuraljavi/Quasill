@@ -2,6 +2,8 @@ import uuid
 from diagnosticator import predict, get_feedback
 
 
+# MODELOS CREADOS POR JAVIER
+
 # FUNCIÓN PARA LA CREACIÓN DE UN DIAGNÓSTICO
 def new_diagnostic(user_id, text):
     prediction = predict(text)
@@ -14,8 +16,7 @@ class Diagnostic:
         self.text = text
         self.predictions = predictions
         self.user_id = user_id
-        # TODO volver a cambiar a: self.real_disease = None y quitarlo de los argumentos
-        # para que Diagnostic pueda manejar real_disease como un argumento de entrada
+        # PARA QUE DIAGNOSTIC PUEDA MANEJAR real_disease COMO UN ARGUMENTO DE ENTRADA
         self.real_disease = real_disease
 
     def return_diseases(self):

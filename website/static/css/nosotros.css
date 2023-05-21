@@ -24,19 +24,19 @@ body {
 
 .tfg {
     background-color: #fff;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 1200px;
     margin-top: 70px;
+    margin-bottom: 30px;
     margin-right: auto;
     margin-left: auto;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
 h1 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     color: #6280a6;
     font-size: 80px;
     text-align: center;
@@ -44,28 +44,31 @@ h1 {
 }
 
 h3 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     color: #6280a6;
     font-size: 20px;
     text-align: justify;
     margin-top: 15px;
     padding: 45px;
 }
-.aviso{
-    font-family: 'Cambria';
+
+h3 .aviso {
+    font-family: 'Cambria', serif;
     color: #6280a6;
     font-size: 20px;
     text-align: justify;
     margin-top: 15px;
+    padding-bottom: 0;
 }
 
 h6 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     color: #6280a6;
     font-size: 15px;
     text-align: justify;
     margin-top: 15px;
     padding: 45px;
+    padding-top: 0;
 }
 
 
@@ -75,15 +78,17 @@ h6 {
     align-items: center;
     justify-content: center;
     max-width: 1200px;
-    margin: 50px auto;
     margin-top: 0;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container-left {
     width: 40%;
     height: auto;
     background-color: #fff;
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     color: #6280a6;
     margin-right: 20px;
     margin-top: 15px;
@@ -97,7 +102,7 @@ h6 {
     width: 40%;
     height: auto;
     background-color: #fff;
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     color: #6280a6;
     margin-left: 20px;
     margin-top: 15px;
@@ -120,7 +125,7 @@ img {
 }
 
 h2 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     color: #6280a6;
     font-size: 40px;
     text-align: center;

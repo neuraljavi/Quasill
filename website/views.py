@@ -1,9 +1,12 @@
 from flask import Blueprint, render_template, session
 
-# Blueprint is a way to organize a group of related views and other code
+# CREAMOS UN BLUEPRINT PARA VIEWS QUE NO ESTÁN DIRECTAMENTE RELACIONADAS CON EL USUARIO
 views = Blueprint('views', __name__)
 
 
+# RUTAS DE VIEWS DE ALEJANDRA
+
+# HAY 2 TEMPLATES DE INDEX Y SE MUESTRA UNA O LA OTRA SI EL USUARIO ESTÁ LOGUEADO O NO
 @views.route('/')
 def index():
     return render_template("index.html") \
@@ -16,6 +19,7 @@ def index2():
     return render_template("index2.html")
 
 
+# HAY 2 TEMPLATES DE NOSOTROS Y SE MUESTRA UNA O LA OTRA SI EL USUARIO ESTÁ LOGUEADO O NO
 @views.route('/nosotros')
 def nosotros():
     return render_template("nosotros.html") \

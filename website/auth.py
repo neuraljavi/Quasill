@@ -1,14 +1,13 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify
-import re
-
-from pyexpat import model
-
-from diagnosticator import DISEASES, update_model
 from website.logic import get_user_by_id, login_user, register_user, update_user, delete_user, create_diagnostic, \
     read_all_diagnostics, read_diagnostic, proportionate_feedback, delete_diagnostic
-from website.models import Diagnostic, new_diagnostic
+from website.models import Diagnostic
+
+# CREAMOS UN BLUEPRINT PARA AUTH
 
 auth = Blueprint('auth', __name__)
+
+# RUTAS DE AUTH DE ALEJANDRA RELACIONADAS CON EL USUARIO
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -16,7 +15,6 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
         try:
             if login_user(username, password):
                 print("ha entrado")
@@ -41,15 +39,13 @@ def signup():
         username = data['username']
         email = data['email']
         password = data['password']
-
-        # Registra al usuario
+        # REGISTRAMOS AL USUARIO
         if register_user(name, surname, username, email, password, surname2):
             return jsonify({'status': 'Usuario registrado'}), 200
         else:
             return jsonify({'status': 'El nombre de usuario o el correo electrónico ya están en uso'}), 409
     else:
         return render_template("signup.html")
-
 
 
 # A LA RUTA CUENTA LE PASAMOS LOS DATOS DEL USUARIO Y LOS DIAGNÓSTICOS QUE HA REALIZADO
@@ -75,13 +71,10 @@ def editar():
             update_user(user_id, name, surname, username, email, password, surname2)
             print("Usuario actualizado")
             return redirect(url_for('auth.cuenta'))
-        elif request.form['submit_button'] == 'btnDelete':
-            # delete user
-            delete_user(user_id)
-            print("Usuario eliminado")
-            return redirect(url_for('views.index'))
     return render_template('editar.html', user=user)
 
+
+# REDIRECCIONAMOS A LA PÁGINA DE ELIMINAR CUENTA
 
 @auth.route('/eliminar', methods=['GET', 'POST'])
 def eliminar():
@@ -90,12 +83,14 @@ def eliminar():
     return render_template('eliminar.html')
 
 
+# ELIMINAMOS CUENTA UNA VEZ PULSADO EL BOTÓN DELETE
 @auth.route('/eliminar_cuenta', methods=['POST'])
 def eliminar_cuenta():
     user_id = session.get('user_id')
     print(f"usuario: {user_id}")
     if user_id:
         if delete_user(user_id):
+            # ELIMINAMOS LOS DATOS DE LA SESIÓN UNA VEZ ELIMINADO EL USUARIO
             session.clear()
             print('Usuario eliminado exitosamente', 'success')
         else:
@@ -111,11 +106,10 @@ def logout():
     return redirect(url_for('views.index'))
 
 
-# RUTAS RELACIONADAS CON EL DIAGNÓSTICO
+# RUTAS RELACIONADAS CON EL DIAGNÓSTICO REALIZADAS POR JAVIER
 
 # RUTA QUE LLEVA A DIAGNOSTICO PARA QUE EL USUARIO PUEDA INTRODUCIR SUS SÍNTOMAS
 @auth.route('/diagnostico', methods=['POST', 'GET'])
-# no solo POST sino también GET por si alguien quiere acceder a la URL de /diagnostico de forma directa
 def diagnostico():
     if request.method == 'POST':
         text = request.form.get('inputSintomas')
@@ -125,7 +119,6 @@ def diagnostico():
         diagnostic_data = create_diagnostic(user_id, text)
         print(diagnostic_data)
         return redirect(url_for('auth.resultados'))
-
     else:
         return render_template('diagnostico.html', result=False)
 
@@ -138,24 +131,18 @@ def resultados(diag_id=None):
     if user:
         diagnostics = user.diagnostics
         if diag_id is not None:
-            # Obtén el diagnóstico específico si 'diag_id' está presente
             if diag_id >= 0 and diag_id < len(diagnostics):
                 diagnostic_data = diagnostics[diag_id]
             else:
                 return "Diagnostic not found", 404
         else:
-            # De lo contrario, obtén el último diagnóstico
             diagnostic_data = user.get_last_diagnostic()
-
         print(diagnostic_data)
         probabilities = diagnostic_data.return_diseases()
-        print(probabilities)
         sorted_probabilities = dict(sorted(probabilities.items(), key=lambda item: item[1], reverse=True))
         top_diseases = list(sorted_probabilities.items())[:6]
-
         return render_template('resultados.html', top_diseases=top_diseases)
     return render_template('resultados.html', top_diseases=[])
-
 
 
 @auth.route('/mostrar_diagnosticos', methods=['GET'])
@@ -180,7 +167,13 @@ def get_diagnostic(user_id: str, diagnostic_index: int) -> Diagnostic:
     return jsonify(diagnostic), 200
 
 
-# btnsubmit
+# SELECCIONAMOS EL DIAGNÓSTICO SOBRE EL QUE QUEREMOS VER LOS RESULTADOS
+@auth.route('/select_diagnostic/<int:diagnostic_id>', methods=['GET'])
+def select_diagnostic_route(diagnostic_id):
+    return redirect(url_for('auth.resultados', diag_id=diagnostic_id))
+
+
+# CUANDO PULSAMOS EN BTNSUBMIT DEL FEEDBACK
 @auth.route('/actualizar_diagnostico/<int:diagnostic_id>', methods=['PUT'])
 def actualizar_diagnostico(diagnostic_id):
     print("actualizando")
@@ -199,7 +192,6 @@ def delete_diagnostic_route():
     print("borrando")
     user_id = session.get('user_id')
     diagnostic_index = request.form.get('index')
-
     if diagnostic_index:
         delete_diagnostic(user_id, diagnostic_index)
         print("borrado")
@@ -208,10 +200,4 @@ def delete_diagnostic_route():
 
 @auth.route('/feedback/<diag_id>', methods=['GET', 'POST'], endpoint='feedback')
 def feedback(diag_id):
-    # now you can use diag_id in your function
     return render_template('feedback.html')
-
-
-@auth.route('/select_diagnostic/<int:diagnostic_id>', methods=['GET'])
-def select_diagnostic_route(diagnostic_id):
-    return redirect(url_for('auth.resultados', diag_id=diagnostic_id))

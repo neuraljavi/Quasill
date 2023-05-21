@@ -39,7 +39,7 @@ body {
 	width: 30%;
 	padding: 40px;
 	background-color: #fff;
-	font-family: 'Cambria';
+	font-family: 'Cambria', serif;
 	color: #6280a6;
 	-webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
 	-moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
@@ -60,7 +60,7 @@ body {
 	border: 2px solid #6381a8;
 	padding: 20px;
 	color: black;
-	font-family: 'Calibri';
+	font-family: 'Calibri', sans-serif;
 	position: relative;
 	height: 100px;
 }
@@ -120,40 +120,6 @@ Twitter: @xsgames_
 	margin-top: 20px;
 	font-weight: normal;
 	text-align: justify;
-}
-
-/* BTN::after */
-
-.circle {
-	position: relative;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	background-color: #acc5e1;
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-
-.circle::after {
-	content: "";
-	position: absolute;
-	top: 60%;
-	left: 100%;
-	width: 400px;
-	height: 2px;
-	background-color: #acc5e1;
-	transform: translateY(-50%);
-}
-
-h2 {
-	font-family: 'Cambria';
-	font-size: 25px;
-	margin-bottom: 20px;
-	margin-top: 20px;
-}
-
-.demo {
-	margin-top: 20px;
 }
 
 @media screen and (max-width: 900px) {

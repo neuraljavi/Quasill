@@ -6,14 +6,14 @@
 }
 
 body {
-    font-family: 'Cambria', sans-serif;
+    font-family: 'Cambria', serif;
     background-color: #f7f7f7;
     height: 1000px;
 }
 
 /**/
 h1 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     font-size: 40px;
     color: #6280a6;
     text-align: center;
@@ -25,7 +25,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+
     padding: 20px;
     width: 100%;
     height: 400px;
@@ -33,20 +33,21 @@ h1 {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0px;
 }
 
-
 textarea {
-     resize: none;
-    width: 100%; /* Adjusted width for a rectangular shape */
-    height: 150px; /* Adjusted height for approximately 90 words */
+    resize: none;
+    width: 100%;
+    height: 150px;
     border: 1px solid #6280a6;
     border-radius: 5px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-size: 16px;
     padding: 20px;
-    overflow-y: auto; /* Enables vertical scroll if content exceeds height */
-
+    overflow-y: auto;
 }
 
 textarea::placeholder {
@@ -57,19 +58,18 @@ textarea:placeholder-shown {
     color: transparent;
 }
 
-
 /* RESULTADO */
 
 .result {
+    background-color: #fff;
+    font-family: 'Cambria', serif;
+    color: #6280a6;
     width: 700px;
     padding: 40px;
-    background-color: #fff;
-    font-family: 'Cambria';
-    color: #6280a6;
+    margin: 0 auto;
     -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
     -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
     box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
-    margin: 0 auto;
 }
 
 .result:hover {
@@ -79,11 +79,11 @@ textarea:placeholder-shown {
 }
 
 .circle {
+    background-color: #acc5e1;
     position: relative;
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: #acc5e1;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -100,34 +100,29 @@ textarea:placeholder-shown {
 }
 
 h4 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', serif;
     font-size: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-/*BTN */
-
 .btnDiagnosis {
-    width: 100%;
     background-color: #e98ca7;
     color: white;
+    width: 100%;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
     padding: 8px;
     border: none;
     border-radius: 5px;
     margin-top: 20px;
     margin-left: auto;
-    font-size: 20px;
-    font-weight: normal;
-    text-align: center;
-    font-family: 'Calibri';
     cursor: pointer;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 @media screen and (max-width: 555px) {
 

@@ -29,16 +29,17 @@ h1 {
 .result {
     width: 700px;
     padding: 40px;
+    padding-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #fff;
-    font-family: 'Cambria';
     color: #6280a6;
+    font-family: 'Cambria', sans-serif;
     -webkit-box-shadow: 10px 10px 0px 1px #6280a6;
     -moz-box-shadow: 10px 10px 0px 1px #6280a6;
     box-shadow: 10px 10px 0px 1px #6280a6;
-    margin: 0 auto;
-    margin-top: 40px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
 }
 
 /*
@@ -70,7 +71,7 @@ h1 {
 }
 
 h4 {
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     font-size: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -90,9 +91,8 @@ h4 {
     font-size: 20px;
     font-weight: normal;
     text-align: center;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     cursor: pointer;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;

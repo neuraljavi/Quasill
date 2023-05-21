@@ -6,13 +6,15 @@ from flask import session
 import os
 import hashlib
 
-
 url = os.environ["url"]
 key = os.environ["key"]
 client = CosmosClient(url, credential=key)
 database = client.get_database_client(os.environ["database"])
 container = database.get_container_client(os.environ["container"])
 counter_container = database.get_container_client(os.environ["VERIFICATOR"])
+
+
+# FUNCIONES CRUD PARA LOS USUARIOS CREADOS POR ALEJANDRA
 
 
 # COGEMOS EL ID DEL USUARIO
@@ -32,7 +34,6 @@ def get_user_by_id(user_id):
 
 # REGISTRAMOS AL USUARIO
 def register_user(name, surname, username, email, password, surname2=None):
-
     # COMPROBAR QUE EL USERNAME O EMAIL YA EXISTEN EN LA BBDD
 
     query_username = f"SELECT * FROM c WHERE c.username = '{username}'"
@@ -58,7 +59,7 @@ def register_user(name, surname, username, email, password, surname2=None):
             counter_container.upsert_item(items[0])
         print(user_id)
         user = User(name, surname, username, email, surname2=surname2, id=str(user_id))
-        # HASHEAMOS LA CONTRASEÑA
+        # HASHEAMOS LA CONTRASEÑA DEL USUARIO CREADO POR JAVIER
         salt = os.urandom(32)
         password_bytes = password.encode('utf-8')
         salt_bytes = salt
@@ -80,6 +81,8 @@ def login_user(username, password):
     if len(items) == 0:
         return False
     user = User(**items[0])
+    print(f"El user es: {items[0]}")
+    # HASHING CREADO POR JAVIER
     salt_hex = user.password[:64]
     salt = bytes.fromhex(salt_hex)
     password_bytes = password.encode('utf-8')
@@ -125,9 +128,12 @@ def update_user(user_id, name, surname, username, email, password, surname2=None
         user.password = salt_and_hash.hex()
     if surname2:
         user.surname2 = surname2
+    # SI to do BIEN, ACTUALIZAMOS EL USUARIO
     container.upsert_item(user.to_dict())
     return True
 
+
+# FUNCIONES CRUD PARA LOS DIAGNÓSTICOS CREADOS POR JAVIER
 
 # CREAMOS UN DIAGNÓSTICO QUE DEVUELVA EL DIAGNÓSTICO
 def create_diagnostic(user_id: str, text: str):
@@ -135,7 +141,6 @@ def create_diagnostic(user_id: str, text: str):
     if user:
         diagnostic = user.diagnosticate(text)
         container.upsert_item(user.to_dict())
-        # TODO CAMBIRLO A? -> return diagnostic
         if diagnostic and 'predictions' in diagnostic.to_dict():
             predictions = diagnostic.to_dict()['predictions']
             return {
@@ -165,12 +170,14 @@ def delete_diagnostic(user_id, diagnostic_index):
     if user:
         success = user.delete_diagnostic(diagnostic_index)
         if success:
-            container.upsert_item(user.to_dict())  # Actualiza el usuario en la base de datos
+            # ACTUALIZAMOS LA LISTA DEL USUARIO EN LA BBDD
+            container.upsert_item(user.to_dict())
             return True
     return False
 
 
 # PROPORCIONAMOS FEEDBACK RELACIONADO CON EL DIAGNÓSTICO
+# ACTUALIZAMOS EL DIAGNÓSTICO CON EL FEEDBACK EN LA BBDD
 def proportionate_feedback(user_id, diagnostic_index: int, correct_label: str):
     user = get_user_by_id(user_id)
     if 0 <= diagnostic_index < len(user.diagnostics):

@@ -14,7 +14,6 @@
 <body>
 <header>
     <div class="logo">
-        <!-- access index with views.index -->
         <a href="{{ url_for('views.index') }}">
             <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
         </a>
@@ -39,15 +38,14 @@
     </nav>
 </header>
 
-
 <div class="container-feedback">
-
     <h1>Help us get better!</h1>
     <h2>Help us improve our service by filling out this form.</h2>
     <h3>Your medical insights are valuable to us. If you have consulted with a healthcare professional, we kindly
         request you to provide the diagnosis you received.</h3>
 
     <div class="container-form" method="POST">
+
         <form class="feedback-form" id="feedbackForm">
             <select class="lista-enfermedades" name="disease">
                 <option value="Abdominal aortic aneurysm">Abdominal aortic aneurysm</option>
@@ -449,10 +447,13 @@
                       id="inputFeedback"></textarea>
             <button type="submit" class="btnSubmit" onclick="">Submit</button>
         </form>
+
     </div>
 
 </div>
+
 <script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
 
 </body>
+
 </html>

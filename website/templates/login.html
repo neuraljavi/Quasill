@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 <body>
 <header>
     <div class="logo">
-        <!-- access index with views.index -->
         <a href="{{ url_for('views.index') }}">
             <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
         </a>
@@ -36,6 +34,7 @@
 
 <div class="container-form">
     <h1>SIGN IN</h1>
+
     <form class="login" action="{{ url_for('auth.login') }}" method="post">
         <div class="form-username">
             <img src="{{ url_for('static', filename='img/user.png') }}" alt="person-icon"/>
@@ -46,11 +45,12 @@
             <input type="password" id="password" name="password" placeholder="Password" required/>
         </div>
         <div class="form-btn">
-            <button class="btnsubmit" type="submit">SIGN IN</button>
+            <button class="btnSubmit" type="submit">SIGN IN</button>
             <h4>Don't have an account?</h4>
-            <button class="btnsignup" type="button" onclick="location.href='/signup';">SIGN UP</button>
+            <button class="btnSignup" type="button" onclick="location.href='/signup';">SIGN UP</button>
         </div>
     </form>
+
 </div>
 </body>
 

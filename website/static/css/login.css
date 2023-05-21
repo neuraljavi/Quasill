@@ -36,7 +36,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #6280a6;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-size: 16px;
     padding: 15px;
     margin: 10px;
@@ -63,8 +63,7 @@ h1 {
     width: 400px;
     padding: 10px;
     background-color: #6280a6;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Cambria';
+    font-family: 'Cambria', sans-serif;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
@@ -78,7 +77,7 @@ h1 {
     width: 400px;
     padding: 40px;
     background-color: #fff;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     color: #acc5e1;
     -webkit-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
     -moz-box-shadow: 10px 10px 0px 1px rgba(99, 129, 168, 1);
@@ -124,7 +123,7 @@ input::placeholder {
     margin-bottom: 20px;
 }
 
-.btnsubmit {
+.btnSubmit {
     background-color: #6280a6;
     color: white;
     border: none;
@@ -132,12 +131,12 @@ input::placeholder {
     width: 100%;
     cursor: pointer;
     margin-bottom: 10px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-weight: 500;
     font-size: 20px;
 }
 
-.btnsignup {
+.btnSignup {
     background-color: #e98ca7;
     color: white;
     border: none;
@@ -145,7 +144,7 @@ input::placeholder {
     width: 100%;
     cursor: pointer;
     margin-bottom: 10px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     font-weight: 500;
     font-size: 20px;
 }
@@ -155,5 +154,5 @@ input::placeholder {
     color: grey;
     margin-right: 10px;
     margin-bottom: 10px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
 }

@@ -1,3 +1,5 @@
+// FUNCIÓN CREADA POR JAVIER
+
 // Obtiene el ID de diagnóstico de la URL
 const urlParams = new URLSearchParams(window.location.search);
 const diagId = window.location.pathname.split('/').pop();

@@ -1,3 +1,5 @@
+// FUNCIONES CREADAS POR JAVIER
+
 document.querySelector('.signup').addEventListener('submit', function (e) {
     e.preventDefault();
 

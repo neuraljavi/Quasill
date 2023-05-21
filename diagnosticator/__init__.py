@@ -481,8 +481,8 @@ def update_model(model, user_input, correct_label, tokenizer, vocab):
 
 def predict(text):
     # Carga el modelo y el vocabulario
-    nlp = spacy.load('en_core_web_sm')
-    tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
+    nlp = spacy.load('es_core_news_sm')
+    tokenizer = get_tokenizer('spacy', language='es_core_news_sm')
     vocab = torch.load('diagnosticator/model/vocab2.pkl')
 
     # Codifica el texto de entrada
@@ -527,8 +527,8 @@ def predict(text):
 # TEXT ES EL INPUTSINTOMAS
 def get_feedback(text, label):
     # Carga el modelo y el vocabulario
-    nlp = spacy.load('en_core_web_sm')
-    tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
+    nlp = spacy.load('es_core_news_sm')
+    tokenizer = get_tokenizer('spacy', language='es_core_news_sm')
     vocab = torch.load('diagnosticator/model/vocab2.pkl')
     classifier = load_model(vocab)
 

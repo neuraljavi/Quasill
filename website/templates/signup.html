@@ -14,7 +14,6 @@
 
 <header>
     <div class="logo">
-        <!-- access index with views.index -->
         <a href="{{ url_for('views.index') }}">
             <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="logo"/>
         </a>
@@ -37,6 +36,7 @@
 
 <div class="container-form">
     <h1>SIGN UP</h1>
+
     <form class="signup" id="signupForm" action="{{ url_for('auth.signup') }}" method="post">
         <div class="form-name">
             <label for="name">Name</label>
@@ -70,6 +70,7 @@
             <button class="btnCreate" type="submit">CREATE ACCOUNT</button>
         </div>
     </form>
+
 </div>
 
 <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
