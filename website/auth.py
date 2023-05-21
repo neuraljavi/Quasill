@@ -132,21 +132,30 @@ def diagnostico():
 
 # MOSTRAMOS LOS RESULTADOS DEL DIAGNÓSTICO
 @auth.route('/resultados', methods=['GET'])
-def resultados():
+@auth.route('/resultados/<int:diag_id>', methods=['GET'])
+def resultados(diag_id=None):
     user = get_user_by_id(session['user_id'])
     if user:
-        diagnostic_data = user.get_last_diagnostic()
+        diagnostics = user.diagnostics
+        if diag_id is not None:
+            # Obtén el diagnóstico específico si 'diag_id' está presente
+            if diag_id >= 0 and diag_id < len(diagnostics):
+                diagnostic_data = diagnostics[diag_id]
+            else:
+                return "Diagnostic not found", 404
+        else:
+            # De lo contrario, obtén el último diagnóstico
+            diagnostic_data = user.get_last_diagnostic()
+
         print(diagnostic_data)
         probabilities = diagnostic_data.return_diseases()
         print(probabilities)
-        # Ordena el diccionario de probabilidades por valor en orden descendente
         sorted_probabilities = dict(sorted(probabilities.items(), key=lambda item: item[1], reverse=True))
-
-        # Selecciona las primeras 6 enfermedades
         top_diseases = list(sorted_probabilities.items())[:6]
 
         return render_template('resultados.html', top_diseases=top_diseases)
     return render_template('resultados.html', top_diseases=[])
+
 
 
 @auth.route('/mostrar_diagnosticos', methods=['GET'])
@@ -201,3 +210,8 @@ def delete_diagnostic_route():
 def feedback(diag_id):
     # now you can use diag_id in your function
     return render_template('feedback.html')
+
+
+@auth.route('/select_diagnostic/<int:diagnostic_id>', methods=['GET'])
+def select_diagnostic_route(diagnostic_id):
+    return redirect(url_for('auth.resultados', diag_id=diagnostic_id))

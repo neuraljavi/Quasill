@@ -1,4 +1,4 @@
-document.querySelector('.signup').addEventListener('submit', function(e) {
+document.querySelector('.signup').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Obtiene los valores del formulario
@@ -37,7 +37,14 @@ document.querySelector('.signup').addEventListener('submit', function(e) {
         return;
     }
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])([a-zA-Z\d!@#$%^&*()]{8,})$/.test(password)) {
-        alert('La contraseña no cumple con los requisitos de seguridad');
+        alert('La contraseña no cumple con los requisitos de seguridad:' + '\n' +
+            'Debe contener al menos 8 caracteres' + '\n' +
+            'Debe contener al menos una letra mayúscula' + '\n' +
+            'Debe contener al menos una letra minúscula' + '\n' +
+            'Debe contener al menos un número' + '\n' +
+            'Debe contener al menos un carácter especial' + '\n' +
+            'No puede contener espacios');
+
         return;
     }
 

@@ -75,19 +75,20 @@
     </div>
 </div>
 
-<div class="container-diagnosis {% if no_results %}sin-resultados{% endif %}" id="diagnosticDiv" >
+<div class="container-diagnosis {% if no_results %}sin-resultados{% endif %}" id="diagnosticDiv">
     <form method="POST" action="/delete_diagnostic">
         {% set contador = diagnostics|length - 1 %}
         {% for diagnostic in diagnostics|reverse %}
-            <div class="result" id="diagnostic-{{ counter }}">
+            <div class="result" id="diagnostic-{{ counter }}"
+                 onclick="location.href='{{ url_for('auth.resultados', diag_id=contador) }}';">
                 <h4>DIAGNOSTIC'S RESULTS FOR</h4>
                 <h4>Symptoms:
                     <span class="data" id="textSymptoms">{{ diagnostic.text }}</span>
                 </h4>
                 <div class="circle"></div>
                 <div class="opciones">
-                     <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Delete</button>
-                <h5 onclick="location.href='{{ url_for('auth.feedback', diag_id=contador) }}';">Feedback?</h5>
+                    <button class="btnDelete" type="submit" name="index" value="{{ contador }}">Delete</button>
+                    <h5 onclick="location.href='{{ url_for('auth.feedback', diag_id=contador) }}';">Feedback?</h5>
                 </div>
 
             </div>
