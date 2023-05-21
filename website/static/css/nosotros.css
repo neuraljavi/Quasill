@@ -51,6 +51,23 @@ h3 {
     margin-top: 15px;
     padding: 45px;
 }
+.aviso{
+    font-family: 'Cambria';
+    color: #6280a6;
+    font-size: 20px;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+h6 {
+    font-family: 'Cambria';
+    color: #6280a6;
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 15px;
+    padding: 45px;
+}
+
 
 .us {
     display: flex;
