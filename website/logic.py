@@ -12,6 +12,7 @@ key = os.environ["key"]
 client = CosmosClient(url, credential=key)
 database = client.get_database_client(os.environ["database"])
 container = database.get_container_client(os.environ["container"])
+counter_container = database.get_container_client(os.environ["VERIFICATOR"])
 
 
 # COGEMOS EL ID DEL USUARIO
@@ -44,22 +45,19 @@ def register_user(name, surname, username, email, password, surname2=None):
         print('El correo electrónico ya existe')
         return False
     else:
-        query = "SELECT VALUE MAX(c.id) FROM c"
-        items = list(container.query_items(query=query, enable_cross_partition_query=True))
+        # OBTENER EL VALOR ACTUAL DE ID
+        query = f"SELECT * FROM c WHERE c.id = 'counter'"
+        items = list(counter_container.query_items(query=query, enable_cross_partition_query=True))
         if not items or items[0] is None:
-            id = 1
+            user_id = 1
+            counter = {'id': 'counter', 'value': 1}
+            counter_container.upsert_item(counter)
         else:
-            id = int(items[0]) + 1
-        print(id)
-
-        query = "SELECT VALUE MAX(c.id) FROM c"
-        items = list(container.query_items(query=query, enable_cross_partition_query=True))
-        if not items or items[0] is None:
-            id = 1
-        else:
-            id = int(items[0]) + 1
-        print(id)
-        user = User(name, surname, username, email, surname2=surname2, id=str(id))
+            user_id = items[0]['value'] + 1
+            items[0]['value'] = user_id
+            counter_container.upsert_item(items[0])
+        print(user_id)
+        user = User(name, surname, username, email, surname2=surname2, id=str(user_id))
         # HASHEAMOS LA CONTRASEÑA
         salt = os.urandom(32)
         password_bytes = password.encode('utf-8')
