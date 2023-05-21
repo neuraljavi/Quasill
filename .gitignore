@@ -4,3 +4,5 @@ requirements.txt
 .venv
 venv
 .idea
+.idea/
+.deployment

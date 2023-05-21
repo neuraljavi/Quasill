@@ -405,8 +405,7 @@ DISEASES = {
 }
 
 # TODO: VOLVER A DEJAR ESTO COMO ESTABA...
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-device = torch.device('cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 def tensor_to_percentages(tensor):
@@ -424,8 +423,12 @@ def tensor_to_percentages(tensor):
 def load_model(vocab):
     classifier = TransformerClassifier(d_model=D_MODEL, num_heads=NUM_HEADS, d_ff=D_FF,
                                        num_layers=NUM_ENCODER_LAYERS, input_dim=len(vocab),
-                                       n_classes=N_CLASSES, max_length=MAX_LENGTH, droput=DROP_OUT)
-    classifier.load_state_dict(torch.load('diagnosticator/model/model3.pth', map_location=torch.device('cpu')))
+                                       n_classes=N_CLASSES, max_length=MAX_LENGTH, droput=DROP_OUT).to(device)
+    if device == 'cuda':
+        classifier = torch.load('model.pt')
+        classifier.load_state_dict(torch.load('diagnosticator/model/model3.pth'))
+    else:
+        classifier.load_state_dict(torch.load('diagnosticator/model/model3.pth', map_location=torch.device('cpu')))
     return classifier
 
 

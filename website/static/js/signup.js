@@ -12,15 +12,6 @@ document.querySelector('.signup').addEventListener('submit', function (e) {
     const password = document.querySelector('#password').value;
     const password2 = document.querySelector('#password2').value;
 
-    console.log(name);
-    console.log(surname);
-    console.log(surname2);
-    console.log(username);
-    console.log(email);
-    console.log(password);
-    console.log(password2);
-
-
     // Realiza las comprobaciones de validación
     if (password !== password2) {
         alert('Las contraseñas no coinciden');
