@@ -1,0 +1,6 @@
+flask
+gunicorn
+torch==1.12.1
+torchtext
+spacy
+azure-cosmos
