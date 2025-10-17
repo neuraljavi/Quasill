@@ -1,6 +1,6 @@
 flask
 gunicorn
-torch==1.12.1
+torch==2.8.0
 torchtext
 spacy
 azure-cosmos
